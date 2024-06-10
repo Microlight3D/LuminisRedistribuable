@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabrication &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assembly" href="assembly.html" />
+    <link rel="prev" title="Slicing via script" href="../getting_started/slicing_script.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/first_custom_fabrication.html">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/complex_duplication.html">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/mesh_generation.html">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PPData.html">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PPParameters.html">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="polyhedron.html">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Fabrication</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/class_reference/fabrication.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fabrication">
+<span id="class-fabrication"></span><h1>Fabrication<a class="headerlink" href="#fabrication" title="Permalink to this heading"></a></h1>
+<p><strong>ML3DFab.Models.FabricationTask.Fabrication</strong></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>A Fabrication is the container for all print data including fabrication <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">tasks</span></a>, print order etc. There is a single Fabrication object per Luminis instance. This object is available in python scripts
+through the fabrication object. Direct modifications to this object allows to add, remove or modify fabrication tasks and modify print order.</p>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="configuration.html#class-configuration"><span class="std std-ref">Configuration</span></a>[]</p></td>
+<td><p><a class="reference internal" href="#class-fabrication-property-configurations"><span class="std std-ref">Configurations</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="assembly.html#class-assembly"><span class="std std-ref">Assembly</span></a>[]</p></td>
+<td><p><a class="reference internal" href="#class-fabrication-property-assemblies"><span class="std std-ref">Assemblies</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a>[]</p></td>
+<td><p><a class="reference internal" href="#class-fabrication-property-blueprint"><span class="std std-ref">Blueprint</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="assembly.html#class-assembly"><span class="std std-ref">Assembly</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-findassemblybyid"><span class="std std-ref">findAssemblyById</span></a> ( id : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-findtaskbyidfromassemblies"><span class="std std-ref">findTaskByIdFromAssemblies</span></a> ( id : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-findtaskbyfilename"><span class="std std-ref">findTaskByFileName</span></a> ( fileName : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-findtaskbyidfromblueprint"><span class="std std-ref">findTaskByIdFromBlueprint</span></a> ( id : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean-values">bool</a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-containsid"><span class="std std-ref">containsId</span></a> ( id : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-addassembly"><span class="std std-ref">addAssembly</span></a> ( assembly : <a class="reference internal" href="assembly.html#class-assembly"><span class="std std-ref">Assembly</span></a> )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-removeassemblies"><span class="std std-ref">removeAssemblies</span></a> ( assemblyArray : <a class="reference internal" href="assembly.html#class-assembly"><span class="std std-ref">Assembly</span></a>[] )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-removetask"><span class="std std-ref">removeTask</span></a> ( task : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a> )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-removetasks"><span class="std std-ref">removeTasks</span></a> ( tasks : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a>[] )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-addtaskstoblueprint"><span class="std std-ref">addTasksToBlueprint</span></a> ( tasks : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a>[] )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-addtasktoblueprint"><span class="std std-ref">addTaskToBlueprint</span></a> ( task : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a> )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-fabrication-method-clear"><span class="std std-ref">clear</span></a> ( )</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Permalink to this heading"></a></h2>
+<p id="class-fabrication-property-configurations"><strong>Configurations</strong> : <a class="reference internal" href="configuration.html#class-configuration"><span class="std std-ref">Configuration</span></a>[]</p>
+<p>Hardware configuration required to print every tasks in the fabrication. This is optional and not used in 2PP fabrication handling yet.</p>
+<hr class="docutils" />
+<p id="class-fabrication-property-assemblies"><strong>Assemblies</strong> : <a class="reference internal" href="assembly.html#class-assembly"><span class="std std-ref">Assembly</span></a>[]</p>
+<p>Unsorted list of fabrication assemblies. Assemblies contain fabrication tasks.</p>
+<hr class="docutils" />
+<p id="class-fabrication-property-blueprint"><strong>Blueprint</strong> : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a>[]</p>
+<p>List of all fabrication tasks ordered by print order. This list defines what tasks will be printed. If a task is not present in
+the Blueprint list it will not be printed.</p>
+</section>
+<section id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this heading"></a></h2>
+<p id="class-fabrication-method-findassemblybyid"><strong>findAssemblyById</strong> <strong>(</strong> id : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> <strong>)</strong> -&gt; <a class="reference internal" href="assembly.html#class-assembly"><span class="std std-ref">Assembly</span></a></p>
+<p>Returns the first assembly matching the given id in <a class="reference internal" href="#class-fabrication-property-assemblies"><span class="std std-ref">Assemblies</span></a> if it exists, null otherwise.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-findtaskbyidfromassemblies"><strong>findTaskByIdFromAssemblies</strong> <strong>(</strong> id : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> <strong>)</strong> -&gt; <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a></p>
+<p>Returns the first task matching the given id in all tasks of all assemblies in <a class="reference internal" href="#class-fabrication-property-assemblies"><span class="std std-ref">Assemblies</span></a> if it exists, null otherwise</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-findtaskbyfilename"><strong>findTaskByFileName</strong> <strong>(</strong> fileName : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> <strong>)</strong> -&gt; <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a></p>
+<p>Returns the first task matching the given file name in <a class="reference internal" href="#class-fabrication-property-assemblies"><span class="std std-ref">Assemblies</span></a> if it exists, null otherwise.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-findtaskbyidfromblueprint"><strong>findTaskByIdFromBlueprint</strong> <strong>(</strong> id : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> <strong>)</strong> -&gt; <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a></p>
+<p>Returns the first task matching the given id in <a class="reference internal" href="#class-fabrication-property-blueprint"><span class="std std-ref">Blueprint</span></a> if it exists, null otherwise.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-containsid"><strong>containsId</strong> <strong>(</strong> id : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean-values">bool</a></p>
+<p>Returns true if a task with the given id is present in either any assembly of <a class="reference internal" href="#class-fabrication-property-assemblies"><span class="std std-ref">Assemblies</span></a> or in
+<a class="reference internal" href="#class-fabrication-property-blueprint"><span class="std std-ref">Blueprint</span></a>, false otherwise.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-addassembly"><strong>addAssembly</strong> <strong>(</strong> assembly : <a class="reference internal" href="assembly.html#class-assembly"><span class="std std-ref">Assembly</span></a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Add an assembly to Assemblies. Fires the AssemblyAdded event. If the assembly contains tasks
+also fires the TaskAddedToAssembly event for each of its tasks.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-removeassemblies"><strong>removeAssemblies</strong> <strong>(</strong> assemblyArray : <a class="reference internal" href="assembly.html#class-assembly"><span class="std std-ref">Assembly</span></a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Remove the given assembly from Assemblies. Fires the AssemblyDeleted event. If the assembly contains tasks
+also fires the TaskDeletedFromAssembly event for each of its tasks</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-removetask"><strong>removeTask</strong> <strong>(</strong> task : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Remove remove the given task from <a class="reference internal" href="#class-fabrication-property-assemblies"><span class="std std-ref">Assemblies</span></a> and
+<a class="reference internal" href="#class-fabrication-property-blueprint"><span class="std std-ref">Blueprint</span></a>.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-removetasks"><strong>removeTasks</strong> <strong>(</strong> tasks : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Remove all tasks in the given “task” array from <a class="reference internal" href="#class-fabrication-property-assemblies"><span class="std std-ref">Assemblies</span></a> and
+<a class="reference internal" href="#class-fabrication-property-blueprint"><span class="std std-ref">Blueprint</span></a>.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-addtaskstoblueprint"><strong>addTasksToBlueprint</strong> <strong>(</strong> tasks : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Add the given tasks in the given “task” array to <a class="reference internal" href="#class-fabrication-property-blueprint"><span class="std std-ref">Blueprint</span></a> only.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-addtasktoblueprint"><strong>addTaskToBlueprint</strong> <strong>(</strong> task : <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">Task</span></a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Add the given task to <a class="reference internal" href="#class-fabrication-property-blueprint"><span class="std std-ref">Blueprint</span></a> only.</p>
+<hr class="docutils" />
+<p id="class-fabrication-method-clear"><strong>clear</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Remove all assemblies from <a class="reference internal" href="#class-fabrication-property-assemblies"><span class="std std-ref">Assemblies</span></a> and tasks from <a class="reference internal" href="#class-fabrication-property-blueprint"><span class="std std-ref">Blueprint</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../getting_started/slicing_script.html" class="btn btn-neutral float-left" title="Slicing via script" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="assembly.html" class="btn btn-neutral float-right" title="Assembly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

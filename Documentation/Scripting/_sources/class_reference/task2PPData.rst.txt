@@ -1,0 +1,202 @@
+.. _class_task2PPData:
+
+Task2PPData
+===========
+
+**ML3DFab.Models.FabricationTask.Task2PPData**
+
+Description
+-----------
+
+Task2PPData are a part of every fabrication :ref:`task<class_task2PP>` they contain all the raw 
+data defining the task's printing trajectories, laser power, speed, etc. There is one Task2PPData 
+in each fabrication :ref:`task<class_task2PP>`.
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `float`_\[\]                        | :ref:`getVertices<class_task2PPData_method_getVertices>` ( )                                                                 |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                             | :ref:`setVertices<class_task2PPData_method_setVertices>` ( value : `float`_\[\] )                                            |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_\[\]                          | :ref:`getPathIndices<class_task2PPData_method_getPathIndices>` ( )                                                           |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                             | :ref:`setPathIndices<class_task2PPData_method_setPathIndices>` ( value : `int`_\[\] )                                        |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_\[\]                          | :ref:`getSegmentIndices<class_task2PPData_method_getSegmentIndices>` ( )                                                     |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                             | :ref:`setSegmentIndices<class_task2PPData_method_setSegmentIndices>` ( value : `int`_\[\] )                                  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_\[\]                          | :ref:`getVerticalSliceIndices<class_task2PPData_method_getVerticalSliceIndices>` ( )                                         |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                             | :ref:`setVerticalSliceIndices<class_task2PPData_method_setVerticalSliceIndices>` ( value : `int`_\[\] )                      |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_\[\]                          | :ref:`getHorizontalSliceIndices<class_task2PPData_method_getHorizontalSliceIndices>` ( )                                     |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                             | :ref:`setHorizontalSliceIndices<class_task2PPData_method_setHorizontalSliceIndices>` ( value : `int`_\[\] )                  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_\[\]                          | :ref:`getFillingSliceIndices<class_task2PPData_method_getFillingSliceIndices>` ( )                                           |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                             | :ref:`setFillingSliceIndices<class_task2PPData_method_setFillingSliceIndices>` ( value : `int`_\[\] )                        |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_                              | :ref:`SegmentIndexToPathIndex<class_task2PPData_method_segmentIndexToPathIndex>` ( segmentIndex : `int`_ )                   |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_                              | :ref:`PathIndexToSegmentIndex<class_task2PPData_method_pathIndexToSegmentIndex>` ( pathIndex : `int`_ )                      |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+
+Method Descriptions
+-------------------
+
+.. _class_task2PPData_method_getVertices:
+
+**getVertices** **(** **)** -> `float`_\[\]
+
+Get the array of all slicing segments. The vertices array can be sorted in an arbitrary 
+way but alway keeping path integrity. An array of float, representing 3 by 3 the fabrication 
+points.
+
+----
+
+.. _class_task2PPData_method_setVertices:
+
+**setVertices** **(** value : `float`_\[\] **)** -> `None`_ 
+
+Set the array of all slicing segments.
+
+----
+
+.. _class_task2PPData_method_getPathIndices:
+
+**getPathIndices** **(** **)** -> `int`_\[\]
+
+Get the vertex indices pointing to all slice paths. Each couple of values represents 
+the start and end vertex indices of a path. To access the corresponding vertex in the
+vertices array the value must be multiplied by 3 (as one vertex takes 3 slots in the vertices array).
+
+vertices:
+
+.. table::
+   :widths: auto
+
+   +---+---+---+---+---+---+---+---+---+---+---+
+   |0  |1  |2  |...|i  |i+1|i+2|...|j  |j+1|j+2|
+   +---+---+---+---+---+---+---+---+---+---+---+
+   |x1 |y1 |z1 |...|xn |yn |zn |...|xm |ym |zm |
+   +---+---+---+---+---+---+---+---+---+---+---+
+
+pathIndices:
+
+.. table::
+   :widths: auto
+
+   +-+---+-------+---+
+   |0|1  |2      |3  |
+   +-+---+-------+---+
+   |0|i/3|(i+3)/3|j/3|
+   +-+---+-------+---+
+
+----
+
+.. _class_task2PPData_method_setPathIndices:
+
+**setPathIndices** **(** value : `int`_\[\] **)** -> `None`_
+
+TODO
+
+----
+
+.. _class_task2PPData_method_getSegmentIndices:
+
+**getSegmentIndices** **(** **)** -> `int`_\[\]
+
+Get the vertex indices pointing to starts and ends of path segments.
+Each couple of values represents the start and end vertex indices of 
+a segment of a path. To access the corresponding vertex in the vertices 
+array the value must be multiplied by 3 (as one vertex takes 3 slots in 
+the vertices array).
+
+----
+
+.. _class_task2PPData_method_setSegmentIndices:
+
+**setSegmentIndices** **(** value : `int`_\[\] **)** -> `None`_
+
+Set the vertex indices pointing to starts and ends of path segments.
+
+----
+
+.. _class_task2PPData_method_getVerticalSliceIndices:
+
+**getVerticalSliceIndices** **(** **)** -> `int`_\[\]
+
+Get vertex indices pointing to starts and ends of vertical slice segments. 
+Each couple of values represents the start and end vertex indices of a 
+vertical slice path segment. To access the corresponding vertex in the 
+vertices array the value must be multiplied by 3 (as one vertex takes 3 
+slots in the vertices array).
+
+----
+
+.. _class_task2PPData_method_setVerticalSliceIndices:
+
+**setVerticalSliceIndices** **(** value : `int`_\[\] **)** -> `None`_
+
+Get vertex indices pointing to starts and ends of vertical slice segments.
+
+----
+
+.. _class_task2PPData_method_getHorizontalSliceIndices:
+
+**getHorizontalSliceIndices** **(** **)** -> `int`_\[\]
+
+Get vertex indices pointing to starts and ends of horizontal slice segments. 
+Each couple of values represents the start and end vertex indices of a horizontal 
+slice  path segment. To access the corresponding vertex in the vertices array the 
+value must be multiplied by 3 (as one vertex takes 3 slots in the vertices array).
+
+----
+
+.. _class_task2PPData_method_setHorizontalSliceIndices:
+
+**setHorizontalSliceIndices** **(** value : `int`_\[\] **)** -> `None`_
+
+Set vertex indices pointing to starts and ends of horizontal slice segments.
+
+----
+
+.. _class_task2PPData_method_getFillingSliceIndices:
+
+**getFillingSliceIndices** **(** **)** -> `int`_\[\]
+
+Get vertex indices pointing to starts and ends of filling slice segments. Each couple 
+of values represents the start  and end vertex indices of a filling slice  path segment. 
+To access the corresponding vertex in the vertices array the value must be multiplied 
+by 3 (as one vertex takes 3 slots in the vertices array).
+
+----
+
+.. _class_task2PPData_method_setFillingSliceIndices:
+
+**setFillingSliceIndices** **(** value : `int`_\[\] **)** -> `None`_
+
+Set vertex indices pointing to starts and ends of filling slice segments.
+
+----
+
+.. _class_task2PPData_method_segmentIndexToPathIndex:
+
+**SegmentIndexToPathIndex** **(** segmentIndex : `int`_ **)** -> `int`_
+
+Returns the index in the path array of the path containing the given vertex.
+
+----
+
+.. _class_task2PPData_method_pathIndexToSegmentIndex:
+
+**PathIndexToSegmentIndex** **(** pathIndex : `int`_ **)** -> `int`_
+
+Returns the index in the segment array of the first vertex of the given path.

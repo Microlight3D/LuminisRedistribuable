@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task2PPParameters &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SlicingParameters" href="slicingParameters.html" />
+    <link rel="prev" title="Task2PPData" href="task2PPData.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/first_custom_fabrication.html">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/complex_duplication.html">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/mesh_generation.html">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fabrication.html">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PPData.html">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="polyhedron.html">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Task2PPParameters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/class_reference/task2PPParameters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="task2ppparameters">
+<span id="class-task2ppparameters"></span><h1>Task2PPParameters<a class="headerlink" href="#task2ppparameters" title="Permalink to this heading"></a></h1>
+<p><strong>ML3DFab.Models.FabricationTask.Task2PPParameters</strong></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>Task2PPParameters holds all important fabrication task parameters. It is half the information needed to fabricate a task, the other half being the raw trajectories data
+held in <a class="reference internal" href="task2PPData.html#class-task2ppdata"><span class="std std-ref">Task2PPData</span></a>.</p>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-position"><span class="std std-ref">Position</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-stageposition"><span class="std std-ref">StagePosition</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2">Vector2</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-voxelsize"><span class="std std-ref">VoxelSize</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2">Vector2</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-voxelopverlap"><span class="std std-ref">VoxelOverLap</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">Dict</a>[ <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a> ]</p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-lasercurve"><span class="std std-ref">LaserCurve</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-slicinglaserpower"><span class="std std-ref">SlicingLaserPower</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-slicingexposuretime"><span class="std std-ref">SlicingExposureTime</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-shelllaserpower"><span class="std std-ref">ShellLaserPower</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-shellexposuretime"><span class="std std-ref">ShellExposureTime</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-fillinglaserpower"><span class="std std-ref">FillingLaserPower</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-fillingexposuretime"><span class="std std-ref">FillingExposureTime</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-refractiveindex"><span class="std std-ref">RefractiveIndex</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-numericalaperture"><span class="std std-ref">NumericalAperture</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean-values">bool</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-isimmersion"><span class="std std-ref">IsImmersion</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-dimensions"><span class="std std-ref">Dimensions</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-property-zscalefactor"><span class="std std-ref">ZScaleFactor</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppparameters-method-duplicate"><span class="std std-ref">duplicate</span></a> ( )</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Permalink to this heading"></a></h2>
+<p id="class-task2ppparameters-property-position"><strong>Position</strong> : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Task’s center of mass location in fabrication stage space. The center of mass of a task is defined as the center of its axis-aligned
+bounding box on the X and Y axies and its lowest point on the Z axis.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-stageposition"><strong>StagePosition</strong> : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Task’s center of mass location in large stage space. The center of mass of a task is defined as the center of its axis-aligned
+bounding box on the X and Y axies and its lowest point on the Z axis.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-voxelsize"><strong>VoxelSize</strong> : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2">Vector2</a></p>
+<p>Voxel lateral (X) and vertical (Y) theoretical targeted sizes for the task, in micro-meters (µm).</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-voxelopverlap"><strong>VoxelOverLap</strong> : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2">Vector2</a></p>
+<p>Voxel lateral (X) and vertical (Y) overlap for the task, in percent (%). Voxel overlap define the amount two given voxels extend over each other.
+If voxel overlap is set to 0%, the distance betweet two voxels centers will be exactly the size of a voxel.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-lasercurve"><strong>LaserCurve</strong> : <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">Dict</a>[ <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a> ]</p>
+<p>Piece-wise affine function deffined by the points LaserCurve(x) = y such as x is a Z elevation, in micro-meters (µm), in fabrication stage range and x a
+laser power offset, in percent (%). Intermediate values are interpolated and extrapolated. Laser power offset will be added to task laser power to compensate resist thickness traversal.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-slicinglaserpower"><strong>SlicingLaserPower</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Laser power, in percent (%), to be uniformely applied all slicing trajectories of the task.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-slicingexposuretime"><strong>SlicingExposureTime</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Exposure time per voxel, in micro-seconds (µs), to be uniformely applied all slicing trajectories of the task.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-shelllaserpower"><strong>ShellLaserPower</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Laser power, in percent (%), to be uniformely applied all shell trajectories of the task.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-shellexposuretime"><strong>ShellExposureTime</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Exposure time per voxel, in micro-seconds (µs), to be uniformely applied all shell trajectories of the task.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-fillinglaserpower"><strong>FillingLaserPower</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Laser power, in percent (%), to be uniformely applied to all infill trajectories of the task.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-fillingexposuretime"><strong>FillingExposureTime</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Exposure time per voxel, in micro-seconds (µs), to be uniformely applied to all infill trajectories of the task.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-refractiveindex"><strong>RefractiveIndex</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Resin refractive index used for this task.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-numericalaperture"><strong>NumericalAperture</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Numerical aperture of the objective used for this task.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-isimmersion"><strong>IsImmersion</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean-values">bool</a></p>
+<p>True if the objective used for this task is an immersive one, false otherwise.</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-dimensions"><strong>Dimensions</strong> : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Dimensions of the task, in micro-meters (µm).</p>
+<hr class="docutils" />
+<p id="class-task2ppparameters-property-zscalefactor"><strong>ZScaleFactor</strong> : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a></p>
+<p>Z scale deformation compensation factor. Used to deform the task on the Z axis to compensate shrinking due to optical medium change.
+Given n the objective’s numerical aperture and r the resist’s refractive index the Z scale factor is defined like so :</p>
+<p><span class="math notranslate nohighlight">\(r * sqrt((1 - (n / (2 / r))^2) / (1 - (n / 2)^2))\)</span></p>
+</section>
+<section id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this heading"></a></h2>
+<p id="class-task2ppparameters-method-duplicate"><strong>duplicate</strong> <strong>(</strong> <strong>)</strong> -&gt;  <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Create and return a shallow copy of the task parameter.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="task2PPData.html" class="btn btn-neutral float-left" title="Task2PPData" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="slicingParameters.html" class="btn btn-neutral float-right" title="SlicingParameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

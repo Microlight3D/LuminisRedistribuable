@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminis scripting API documentation &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Your first custom fabrication" href="getting_started/first_custom_fabrication.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#">
+            
+              <img src="_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/first_custom_fabrication.html">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/first_custom_fabrication.html#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/first_custom_fabrication.html#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/first_custom_fabrication.html#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/complex_duplication.html">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/complex_duplication.html#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/complex_duplication.html#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/complex_duplication.html#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/mesh_generation.html">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/mesh_generation.html#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/mesh_generation.html#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/mesh_generation.html#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/mesh_generation.html#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/fabrication.html">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fabrication.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fabrication.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fabrication.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fabrication.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fabrication.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/task2PPData.html">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PPData.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PPData.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PPData.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/task2PPParameters.html">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PPParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PPParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PPParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PPParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/task2PPParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/polyhedron.html">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/polyhedron.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/polyhedron.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/polyhedron.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/polyhedron.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/polyhedron.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/transform.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/transform.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/transform.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_reference/meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="class_reference/meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Luminis scripting API documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="luminis-scripting-api-documentation">
+<h1>Luminis scripting API documentation<a class="headerlink" href="#luminis-scripting-api-documentation" title="Permalink to this heading"></a></h1>
+</section>
+<section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<p>Welcome to the documentation for Luminis scripting API. This API enables
+Luminis advanced user to automate, optimize and customize their 3D micro-printing process
+using Microlight3D micro-printer.</p>
+<p>This documentation contains all API class reference and tutorials to help you use Luminis’ Python scripting to it’s full potential. A good place to start is the turorial on how to generate <a class="reference internal" href="getting_started/first_custom_fabrication.html#tuto-first-custom-fabrication"><span class="std std-ref">your first curstom fabrication</span></a> using Luminis’ scripting.</p>
+<section id="technology">
+<h2>Technology<a class="headerlink" href="#technology" title="Permalink to this heading"></a></h2>
+<p>Luminis’ scripting language is <a class="reference external" href="https://docs.python.org/2.7/">Python 2.7</a> interfaced to the Luminis’ C# API using <a class="reference external" href="https://ironpython.net/documentation/">IronPython</a>.</p>
+</section>
+<section id="execute-a-script">
+<h2>Execute a script<a class="headerlink" href="#execute-a-script" title="Permalink to this heading"></a></h2>
+<p>Executing a script is very strait forward: simply open Luminis and click on the “import” button (Ctrl + i), choose a python file and load it. Luminis will automaticaly detect it is a script and try to execute it. If any error occurs during execution a pop-up message will appear describing the error.</p>
+<div class="toctree-wrapper compound" id="sec-start">
+</div>
+<div class="toctree-wrapper compound" id="sec-manual">
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started/first_custom_fabrication.html" class="btn btn-neutral float-right" title="Your first custom fabrication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

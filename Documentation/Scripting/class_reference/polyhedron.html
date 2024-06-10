@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polyhedron &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mesh" href="mesh.html" />
+    <link rel="prev" title="Resist" href="resist.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/first_custom_fabrication.html">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/complex_duplication.html">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/mesh_generation.html">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fabrication.html">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PPData.html">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PPParameters.html">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Polyhedron</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/class_reference/polyhedron.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="polyhedron">
+<span id="class-polyhedron"></span><h1>Polyhedron<a class="headerlink" href="#polyhedron" title="Permalink to this heading"></a></h1>
+<p><strong>Interface.Common.Models.Polyhedrons.Polyhedron</strong></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>A polyhedron is a <a class="reference internal" href="mesh.html#class-mesh"><span class="std std-ref">mesh</span></a> instanciated with a <a class="reference internal" href="transform.html#class-transform"><span class="std std-ref">transform</span></a>. They allow to duplicate objects at low cost. The Luminis’ polyhedron list is accessible via the “polyhedrons” object.</p>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a></p></td>
+<td><p><a class="reference internal" href="#class-polyhedron-property-id"><span class="std std-ref">Id</span></a></p></td>
+<td><p>“”</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a></p></td>
+<td><p><a class="reference internal" href="#class-polyhedron-property-name"><span class="std std-ref">Name</span></a></p></td>
+<td><p>“”</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a></p></td>
+<td><p><a class="reference internal" href="#class-polyhedron-property-mesh"><span class="std std-ref">Mesh</span></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="transform.html#class-transform"><span class="std std-ref">Transform</span></a></p></td>
+<td><p><a class="reference internal" href="#class-polyhedron-property-transform"><span class="std std-ref">Transform</span></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-polyhedron"><span class="std std-ref">Polyhedron</span></a></p></td>
+<td><p><a class="reference internal" href="#class-polyhedron-method-cut"><span class="std std-ref">cut</span></a> ( planePosition : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, planeNormal : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, fillHoles : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean-values">bool</a> )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#class-polyhedron"><span class="std std-ref">Polyhedron</span></a>[]</p></td>
+<td><p><a class="reference internal" href="#class-polyhedron-method-gridcut"><span class="std std-ref">gridCut</span></a> ( startPosition : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, endPosition : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, cellSize : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, fillHoles : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean-values">bool</a> )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#class-polyhedron"><span class="std std-ref">Polyhedron</span></a></p></td>
+<td><p><a class="reference internal" href="#class-polyhedron-method-duplicate"><span class="std std-ref">duplicate</span></a> ( )</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Permalink to this heading"></a></h2>
+<p id="class-polyhedron-property-id"><strong>Id</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a></p>
+<p>Unique ID</p>
+<hr class="docutils" />
+<p id="class-polyhedron-property-name"><strong>Name</strong> : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a></p>
+<p>Display name</p>
+<hr class="docutils" />
+<p id="class-polyhedron-property-mesh"><strong>Mesh</strong> : <a class="reference internal" href="mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a></p>
+<p>Instantiated mesh, contains raw vertex data.</p>
+<hr class="docutils" />
+<p id="class-polyhedron-property-transform"><strong>Transform</strong> : <a class="reference internal" href="transform.html#class-transform"><span class="std std-ref">Transform</span></a></p>
+<p>Transform matrix defining the position, scale and rotation of the polyhedron</p>
+</section>
+<section id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this heading"></a></h2>
+<p id="class-polyhedron-method-cut"><strong>cut</strong> <strong>(</strong> planePosition : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, planeNormal : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, fillHoles : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean-values">bool</a> <strong>)</strong> -&gt; <a class="reference internal" href="#class-polyhedron"><span class="std std-ref">Polyhedron</span></a></p>
+<p>Cut the polyhedron using a plane defined by planePosition and planeNormal. Returns the polyhedron on the other side of the plane’s normal. If fillHoles is set to true, the hole created by the cut will be filled by a flat surface.</p>
+<hr class="docutils" />
+<p id="class-polyhedron-method-gridcut"><strong>gridCut</strong> <strong>(</strong> startPosition : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, endPosition : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, cellSize : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a>, fillHoles : <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean-values">bool</a> <strong>)</strong> -&gt; <a class="reference internal" href="#class-polyhedron"><span class="std std-ref">Polyhedron</span></a>[]</p>
+<p>Cut the polyhedron in a grid fashion from startPosition to endPosition. The result is a list of polyhedron smaller or equal than the grid given cellSize. If fillHoles is set to true, holes created by the cuts will be filled by a flat surface.</p>
+<hr class="docutils" />
+<p id="class-polyhedron-method-duplicate"><strong>duplicate</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference internal" href="#class-polyhedron"><span class="std std-ref">Polyhedron</span></a></p>
+<p>Creates a copy of the polyhedron. Its transform will be duplicated but its mesh will not.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="resist.html" class="btn btn-neutral float-left" title="Resist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mesh.html" class="btn btn-neutral float-right" title="Mesh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

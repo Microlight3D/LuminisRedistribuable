@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complex duplication pattern &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mesh generation" href="mesh_generation.html" />
+    <link rel="prev" title="Your first custom fabrication" href="first_custom_fabrication.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="first_custom_fabrication.html">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="first_custom_fabrication.html#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first_custom_fabrication.html#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first_custom_fabrication.html#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_generation.html">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh_generation.html#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_generation.html#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_generation.html#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_generation.html#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fabrication.html">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PPData.html">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PPParameters.html">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/polyhedron.html">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Complex duplication pattern</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/complex_duplication.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="complex-duplication-pattern">
+<span id="tuto-complex-duplication-pattern"></span><h1>Complex duplication pattern<a class="headerlink" href="#complex-duplication-pattern" title="Permalink to this heading"></a></h1>
+<p>In this tutorial you will learn to write a script that duplicates an object in a spiral pattern. Here is the full code bellow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">math</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">System.Numerics</span> <span class="kn">import</span> <span class="n">Vector3</span><span class="p">,</span> <span class="n">Vector2</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># Number of objects</span>
+<span class="linenos"> 5</span><span class="n">R</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># length of the radius from the center of the spiral</span>
+<span class="linenos"> 6</span><span class="n">D</span> <span class="o">=</span> <span class="mi">35</span> <span class="c1"># Approximate distance between objects</span>
+<span class="linenos"> 7</span><span class="n">P</span> <span class="o">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">)</span> <span class="c1"># Spiral center position</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">if</span><span class="p">(</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="o">.</span><span class="n">Count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getTasks</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+<span class="linenos">10</span>    <span class="n">task</span> <span class="o">=</span> <span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getTasks</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos">11</span>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<span class="linenos">12</span>        <span class="n">K</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="n">R</span>
+<span class="linenos">13</span>        <span class="n">copy</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">duplicate</span><span class="p">()</span>
+<span class="linenos">14</span>        <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">X</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">))</span>
+<span class="linenos">15</span>        <span class="n">y</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">Y</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">))</span>
+<span class="linenos">16</span>        <span class="n">copy</span><span class="o">.</span><span class="n">Parameters</span><span class="o">.</span><span class="n">Position</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="n">fabrication</span><span class="o">.</span><span class="n">addTaskToBlueprint</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+<span class="linenos">19</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">20</span>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No task to duplicate, please load or slice one.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="retrieving-a-task">
+<h2>Retrieving a task<a class="headerlink" href="#retrieving-a-task" title="Permalink to this heading"></a></h2>
+<p>In order to duplicate a task we need to retreive one. For this exemple we will use the first one we find in the Assembly tab:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">task</span> <span class="o">=</span> <span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getTasks</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>But what happens if no task is present in the Assembly tab ? We get an obscure error about an out of range index. Lets check first if the Assembly tab contains a task and raise a clear error if it doesn’t:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span><span class="p">(</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="o">.</span><span class="n">Count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getTasks</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="n">task</span> <span class="o">=</span> <span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getTasks</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos">3</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No task to duplicate, please load or slice one.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now when we execute the script without loading any task first we’re greeted by this error message:</p>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/complex_duplication_error_message.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="duplicate-n-times">
+<h2>Duplicate N times<a class="headerlink" href="#duplicate-n-times" title="Permalink to this heading"></a></h2>
+<p>In order to form a pattern we need to duplicate the object a number of times and add the duplicates to Luminis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># Number of objects</span>
+<span class="linenos">2</span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<span class="linenos">3</span>    <span class="n">copy</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">duplicate</span><span class="p">()</span>
+<span class="linenos">4</span>    <span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+<span class="linenos">5</span>    <span class="n">fabrication</span><span class="o">.</span><span class="n">addTaskToBlueprint</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="arrange-in-a-spiral-pattern">
+<h2>Arrange in a spiral pattern<a class="headerlink" href="#arrange-in-a-spiral-pattern" title="Permalink to this heading"></a></h2>
+<p>Now that we have a number of duplicates of the same object we can change their properties however we please. For this exemple we choose to arrange them in a spiral pattern. For this we will need to import some math from python and vectors from C#:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">math</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">System.Numerics</span> <span class="kn">import</span> <span class="n">Vector3</span><span class="p">,</span> <span class="n">Vector2</span>
+</pre></div>
+</div>
+<p>To dispose the tasks we’ll use the cartesian definition of a spiral from <a class="reference external" href="https://en.wikipedia.org/wiki/Spiral">Wikipedia</a> and modify it, for ease of use, to get a distance d between objects instead of an angle <span class="math notranslate nohighlight">\({\phi}\)</span>. We’ll also add a center position P for the spiral:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># Number of objects</span>
+<span class="linenos">2</span><span class="n">R</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># length of the radius from the center of the spiral</span>
+<span class="linenos">3</span><span class="n">D</span> <span class="o">=</span> <span class="mi">35</span> <span class="c1"># Approximate distance between objects</span>
+<span class="linenos">4</span><span class="n">P</span> <span class="o">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">)</span> <span class="c1"># Spiral center position</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<span class="linenos">7</span>    <span class="n">K</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="n">R</span>
+<span class="linenos">8</span>    <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">X</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">))</span>
+<span class="linenos">9</span>    <span class="n">y</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">Y</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Finaly we can simply set the computed position to each task copies:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">copy</span><span class="o">.</span><span class="n">Parameters</span><span class="o">.</span><span class="n">Position</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If we put all these steps in order we get our final script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">math</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">System.Numerics</span> <span class="kn">import</span> <span class="n">Vector3</span><span class="p">,</span> <span class="n">Vector2</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># Number of objects</span>
+<span class="linenos"> 5</span><span class="n">R</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># length of the radius from the center of the spiral</span>
+<span class="linenos"> 6</span><span class="n">D</span> <span class="o">=</span> <span class="mi">35</span> <span class="c1"># Approximate distance between objects</span>
+<span class="linenos"> 7</span><span class="n">P</span> <span class="o">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">)</span> <span class="c1"># Spiral center position</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">if</span><span class="p">(</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="o">.</span><span class="n">Count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getTasks</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+<span class="linenos">10</span>    <span class="n">task</span> <span class="o">=</span> <span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getTasks</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos">11</span>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<span class="linenos">12</span>        <span class="n">K</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="n">R</span>
+<span class="linenos">13</span>        <span class="n">copy</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">duplicate</span><span class="p">()</span>
+<span class="linenos">14</span>        <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">X</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">))</span>
+<span class="linenos">15</span>        <span class="n">y</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">Y</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">n</span><span class="p">))</span>
+<span class="linenos">16</span>        <span class="n">copy</span><span class="o">.</span><span class="n">Parameters</span><span class="o">.</span><span class="n">Position</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="n">fabrication</span><span class="o">.</span><span class="n">addTaskToBlueprint</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+<span class="linenos">19</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">20</span>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No task to duplicate, please load or slice one.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/complex_duplication_result.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="first_custom_fabrication.html" class="btn btn-neutral float-left" title="Your first custom fabrication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mesh_generation.html" class="btn btn-neutral float-right" title="Mesh generation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

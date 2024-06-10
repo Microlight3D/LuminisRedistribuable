@@ -1,0 +1,130 @@
+.. _tuto_first_custom_fabrication:
+
+Your first custom fabrication
+=============================
+
+In this step-by-step turorial you will create your first script creating a fabrication  programmatically. The script will create a task a simple task containing a single square path. The task will use a predefined resist and objective. Here is the full code bellow:
+
+.. code-block:: python
+    :linenos:
+
+    from System import Array,Single,UInt32
+    from ML3DFab.Models.FabricationTask import Task2PP,Assembly2PP
+    from Interface.src.models import SlicingParameters, Quality
+
+    size = 298
+    vertices = Array[Single]([-size/2,-size/2,0,-size/2,size/2,0,size/2,size/2,0,size/2,-size/2,0,-size/2,-size/2,0])
+    pathIndices = Array[UInt32]([0,4])
+    segmentIndices = Array[UInt32]([0,1,1,2,2,3,3,4])
+    task2PP = Task2PP(vertices, segmentIndices, pathIndices)
+
+    objective = next(obj for obj in SlicingParameters.Objectives if "20X/0.8" in obj.Name)
+    resist = next(r for r in SlicingParameters.Resists if "OrmoComp" == r.Name)
+    SlicingParameters.setTaskParameter(task2PP, objective, resist, Quality.STANDARD)
+
+    if(fabrication.Assemblies.Count <= 0):
+        fabrication.addAssembly(Assembly2PP())
+    fabrication.Assemblies[0].add(task2PP)
+    fabrication.addTaskToBlueprint(task2PP)
+
+A fabrication :ref:`task<class_task2PP>` contains a :ref:`task2PPData<class_task2PPData>` 
+and a :ref:`task2PPParameters<class_task2PPParameters>` object. The :ref:`task2PPData<class_task2PPData>` object contains the raw trajectories of the task whereas :ref:`task2PPData<class_task2PPData>` contains all metadata related to the task. 
+
+Define the task data
+--------------------
+
+First, let's define the task's data. Task data are, at their core, a set of paths. These paths contain segments themselves defined by vertices. Paths, segments and vertices are stored in three arrays, one for each type. Each path in the path array is defined by a pair of vertex indices. These indices respectively map to the first and last vertex of the path in the vertex array.
+
+.. figure:: /img/path_array_diagram.svg
+  :scale: 70%
+  :align: center
+  :alt: Image not loaded
+
+|
+
+The segment array, much like the path array, defines segments by vertex indices pairs. Segments must be sorted to maintain path integrity. This means all segments belonging to the same path are contiguous in the segment array.
+
+.. figure:: /img/segment_array_diagram.svg
+  :scale: 70%
+  :align: center
+  :alt: Image not loaded
+
+|
+
+The vertex array contain all vertices of the task. Each vertex is defined by three concecutive floats. To access a vertex given an index in the path or segment arrays, the index must therefor be multiplicated by three.
+
+
+Let's create vertex, segment and path arrays and assign them to a new task using the Task2PP constructor:
+
+.. code-block:: python
+    :linenos:
+
+    size = 298
+    vertices = Array[Single]([-size/2,-size/2,0,-size/2,size/2,0,size/2,size/2,0,size/2,-size/2,0,-size/2,-size/2,0])
+    pathIndices = Array[UInt32]([0,4])
+    segmentIndices = Array[UInt32]([0,1,1,2,2,3,3,4])
+    task2PP = Task2PP(vertices, segmentIndices, pathIndices)
+
+I order to interface properly with Luminis' C# backend, arrays need to have the C# System.Array type. In a similar fashion, array types need to be C# types: "Single" for floating point numbers and "Uint32" for unsigned integers. These C# libraries need to be imported in python like so:
+
+.. code-block:: python
+    :linenos:
+
+    from System import Array,Single,UInt32
+
+Define the task parameters
+--------------------------
+
+In order for a task to be valid, an :ref:`objective<class_objective>`, a :ref:`resist profil<class_resist>` and a :ref:`printing quality<class_slicingParameters_enum_quality>` need to be assigned in its :ref:`task2PPParameters<class_task2PPParameters>` object. They can either be defined using the :ref:`Objective<class_objective>` and :ref:`Resist<class_resist>` objects constructors or loaded from configuration. For this exemple we will choose the later.
+
+
+Objective and resist profils are stored in the :ref:`SlicingParameters<class_slicingParameters>` object.
+
+Pre-defined objectives and resists are each stored in an array, SlicingParameters.objectives and SlicingParameters.resists respectively. Let's retreive an objective and a resist by name:
+
+.. code-block:: python
+    :linenos:
+
+    objective = next(obj for obj in SlicingParameters.Objectives if "20X/0.8" in obj.Name)
+    resist = next(r for r in SlicingParameters.Resists if "OrmoComp" == r.Name)
+
+And assign them to our new task using:
+
+.. code-block:: python
+    :linenos:
+
+    SlicingParameters.setTaskParameter(task2PP, objective, resist, Quality.STANDARD)
+
+Adding the task to the fabrication
+----------------------------------
+
+In order to add your fabrication to Luminis we will need to import:
+
+.. code-block:: python
+    :linenos:
+
+    from ML3DFab.Models.FabricationTask import Task2PP,Assembly2PP
+
+To add the task we created to Luminis we will need to add it to the :ref:`fabrication<class_fabrication>` object. Simply add the task to an :ref:`assembly<class_assembly>`. Here we take the first assembly of the fabrication or create one if none is found:
+
+.. code-block:: python
+    :linenos:
+
+    if(fabrication.Assemblies.Count <= 0):
+        fabrication.addAssembly(Assembly2PP())
+    fabrication.Assemblies[0].add(task2PP)
+
+For the task to be printed it need to appear in the :ref:`blueprint<class_fabrication_property_blueprint>` list. The blueprint list defines what will be print in which order whereas the assemblies just contain tasks in an unordered fashion.
+
+.. code-block:: python
+    :linenos:
+
+    fabrication.addTaskToBlueprint(task2PP)
+
+And here we have it: a script that generates trajectories, add them to a newly created task and add that task to Luminis!
+
+.. figure:: /img/your_first_fabrication_result.png
+  :align: center
+  :alt: Image not loaded
+
+|

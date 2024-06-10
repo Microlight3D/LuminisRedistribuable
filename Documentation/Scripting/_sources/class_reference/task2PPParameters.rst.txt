@@ -1,0 +1,207 @@
+.. _class_task2PPParameters:
+
+Task2PPParameters
+=================
+
+**ML3DFab.Models.FabricationTask.Task2PPParameters**
+
+Description
+-----------
+
+Task2PPParameters holds all important fabrication task parameters. It is half the information needed to fabricate a task, the other half being the raw trajectories data 
+held in :ref:`Task2PPData<class_task2PPData>`. 
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `Vector3`_                                                                  | :ref:`Position<class_task2PPParameters_property_position>`                        |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `Vector3`_                                                                  | :ref:`StagePosition<class_task2PPParameters_property_stagePosition>`              |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `Vector2`_                                                                  | :ref:`VoxelSize<class_task2PPParameters_property_voxelSize>`                      |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `Vector2`_                                                                  | :ref:`VoxelOverLap<class_task2PPParameters_property_voxelOpverLap>`               |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `Dict`_\[ `float`_, `float`_ \]                                             | :ref:`LaserCurve<class_task2PPParameters_property_laserCurve>`                    |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`SlicingLaserPower<class_task2PPParameters_property_slicingLaserPower>`      | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`SlicingExposureTime<class_task2PPParameters_property_slicingExposureTime>`  | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`ShellLaserPower<class_task2PPParameters_property_shellLaserPower>`          | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`ShellExposureTime<class_task2PPParameters_property_shellExposureTime>`      | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`FillingLaserPower<class_task2PPParameters_property_fillingLaserPower>`      | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`FillingExposureTime<class_task2PPParameters_property_fillingExposureTime>`  | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`RefractiveIndex<class_task2PPParameters_property_refractiveIndex>`          | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`NumericalAperture<class_task2PPParameters_property_numericalAperture>`      | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `bool`_                                                                     | :ref:`IsImmersion<class_task2PPParameters_property_isImmersion>`                  | ``false`` |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `Vector3`_                                                                  | :ref:`Dimensions<class_task2PPParameters_property_dimensions>`                    |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`ZScaleFactor<class_task2PPParameters_property_zScaleFactor>`                | ``0``     |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +-----------------+--------------------------------------------------------------------------------------------------------+
+   | `None`_         | :ref:`duplicate<class_task2PPParameters_method_duplicate>` ( )                                         |
+   +-----------------+--------------------------------------------------------------------------------------------------------+
+
+Property Descriptions
+---------------------
+
+.. _class_task2PPParameters_property_position:
+
+**Position** : `Vector3`_
+
+Task's center of mass location in fabrication stage space. The center of mass of a task is defined as the center of its axis-aligned 
+bounding box on the X and Y axies and its lowest point on the Z axis.
+
+----
+
+.. _class_task2PPParameters_property_stagePosition:
+
+**StagePosition** : `Vector3`_
+
+Task's center of mass location in large stage space. The center of mass of a task is defined as the center of its axis-aligned 
+bounding box on the X and Y axies and its lowest point on the Z axis.
+
+----
+
+.. _class_task2PPParameters_property_voxelSize:
+
+**VoxelSize** : `Vector2`_
+
+Voxel lateral (X) and vertical (Y) theoretical targeted sizes for the task, in micro-meters (µm).
+
+----
+
+.. _class_task2PPParameters_property_voxelOpverLap:
+
+**VoxelOverLap** : `Vector2`_
+
+Voxel lateral (X) and vertical (Y) overlap for the task, in percent (%). Voxel overlap define the amount two given voxels extend over each other.
+If voxel overlap is set to 0%, the distance betweet two voxels centers will be exactly the size of a voxel.
+
+----
+
+.. _class_task2PPParameters_property_laserCurve:
+
+**LaserCurve** : `Dict`_\[ `float`_, `float`_ \]
+
+Piece-wise affine function deffined by the points LaserCurve(x) = y such as x is a Z elevation, in micro-meters (µm), in fabrication stage range and x a 
+laser power offset, in percent (%). Intermediate values are interpolated and extrapolated. Laser power offset will be added to task laser power to compensate resist thickness traversal.
+
+----
+
+.. _class_task2PPParameters_property_slicingLaserPower:
+
+**SlicingLaserPower** : `float`_
+
+Laser power, in percent (%), to be uniformely applied all slicing trajectories of the task.
+
+----
+
+.. _class_task2PPParameters_property_slicingExposureTime:
+
+**SlicingExposureTime** : `float`_
+
+Exposure time per voxel, in micro-seconds (µs), to be uniformely applied all slicing trajectories of the task.
+
+----
+
+.. _class_task2PPParameters_property_shellLaserPower:
+
+**ShellLaserPower** : `float`_
+
+Laser power, in percent (%), to be uniformely applied all shell trajectories of the task.
+
+----
+
+.. _class_task2PPParameters_property_shellExposureTime:
+
+**ShellExposureTime** : `float`_
+
+Exposure time per voxel, in micro-seconds (µs), to be uniformely applied all shell trajectories of the task.
+
+----
+
+.. _class_task2PPParameters_property_fillingLaserPower:
+
+**FillingLaserPower** : `float`_
+
+Laser power, in percent (%), to be uniformely applied to all infill trajectories of the task.
+
+----
+
+.. _class_task2PPParameters_property_fillingExposureTime:
+
+**FillingExposureTime** : `float`_
+
+Exposure time per voxel, in micro-seconds (µs), to be uniformely applied to all infill trajectories of the task.
+
+----
+
+.. _class_task2PPParameters_property_refractiveIndex:
+
+**RefractiveIndex** : `float`_
+
+Resin refractive index used for this task.
+
+----
+
+.. _class_task2PPParameters_property_numericalAperture:
+
+**NumericalAperture** : `float`_
+
+Numerical aperture of the objective used for this task.
+
+----
+
+.. _class_task2PPParameters_property_isImmersion:
+
+**IsImmersion** : `bool`_
+
+True if the objective used for this task is an immersive one, false otherwise.
+
+----
+
+.. _class_task2PPParameters_property_dimensions:
+
+**Dimensions** : `Vector3`_
+
+Dimensions of the task, in micro-meters (µm).
+
+----
+
+.. _class_task2PPParameters_property_zScaleFactor:
+
+**ZScaleFactor** : `float`_
+
+Z scale deformation compensation factor. Used to deform the task on the Z axis to compensate shrinking due to optical medium change.
+Given n the objective's numerical aperture and r the resist's refractive index the Z scale factor is defined like so :
+
+:math:`r * sqrt((1 - (n / (2 / r))^2) / (1 - (n / 2)^2))`
+
+Method Descriptions
+-------------------
+
+.. _class_task2PPParameters_method_duplicate:
+
+**duplicate** **(** **)** ->  `None`_
+
+Create and return a shallow copy of the task parameter.

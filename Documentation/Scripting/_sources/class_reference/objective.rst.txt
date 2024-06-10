@@ -1,0 +1,72 @@
+.. _class_objective:
+
+Objective
+=========
+
+**Interface.Common.Models.Objective**
+
+Description
+-----------
+
+The objective class defines an objective profil, it can be used to configure a :ref:`task2PP<class_task2PP>`.
+
+Constructors
+------------
+
+.. table::
+   :widths: auto
+
+   +----------------------------------------------------------------------------------------------------------+
+   | **Objective** **(** `str`_ name **)**                                                                    |
+   +----------------------------------------------------------------------------------------------------------+
+   | **Objective** **(** `str`_ name, `float`_ aperture, `bool`_ isImmersion, `float`_ workingDistance **)**  |
+   +----------------------------------------------------------------------------------------------------------+
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                             | :ref:`Name<class_objective_property_name>`                                        | ``""``    |
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                           | :ref:`RefractiveIndex<class_objective_property_aperture>`                         | ``0``     |
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `bool`_                            | :ref:`IsImmersion<class_objective_property_isImmersion>`                          | ``false`` |
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                           | :ref:`WorkingDistance<class_objective_property_workingDistance>`                  | ``0``     |
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+
+Property Descriptions
+---------------------
+
+.. _class_objective_property_name:
+
+**Name** : `str`_
+
+Objective display name.
+
+----
+
+.. _class_objective_property_aperture:
+
+**Aperture** : `float`_
+
+Objective numerical aperture.
+
+----
+
+.. _class_objective_property_isImmersion:
+
+**IsImmersion** : `bool`_
+
+Define wether or not the objective is oil immersive. Set to true if it is, false otherwise.
+
+----
+
+.. _class_objective_property_workingDistance:
+
+**WorkingDistance** : `float`_
+
+Objective's maximum working distance

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your first custom fabrication &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Complex duplication pattern" href="complex_duplication.html" />
+    <link rel="prev" title="Luminis scripting API documentation" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="complex_duplication.html">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="complex_duplication.html#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex_duplication.html#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex_duplication.html#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_generation.html">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh_generation.html#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_generation.html#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_generation.html#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_generation.html#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fabrication.html">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PPData.html">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PPParameters.html">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/polyhedron.html">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Your first custom fabrication</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/first_custom_fabrication.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="your-first-custom-fabrication">
+<span id="tuto-first-custom-fabrication"></span><h1>Your first custom fabrication<a class="headerlink" href="#your-first-custom-fabrication" title="Permalink to this heading"></a></h1>
+<p>In this step-by-step turorial you will create your first script creating a fabrication  programmatically. The script will create a task a simple task containing a single square path. The task will use a predefined resist and objective. Here is the full code bellow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">System</span> <span class="kn">import</span> <span class="n">Array</span><span class="p">,</span><span class="n">Single</span><span class="p">,</span><span class="n">UInt32</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">ML3DFab.Models.FabricationTask</span> <span class="kn">import</span> <span class="n">Task2PP</span><span class="p">,</span><span class="n">Assembly2PP</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">Interface.src.models</span> <span class="kn">import</span> <span class="n">SlicingParameters</span><span class="p">,</span> <span class="n">Quality</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">size</span> <span class="o">=</span> <span class="mi">298</span>
+<span class="linenos"> 6</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">Single</span><span class="p">]([</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 7</span><span class="n">pathIndices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">UInt32</span><span class="p">]([</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="linenos"> 8</span><span class="n">segmentIndices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">UInt32</span><span class="p">]([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="linenos"> 9</span><span class="n">task2PP</span> <span class="o">=</span> <span class="n">Task2PP</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">segmentIndices</span><span class="p">,</span> <span class="n">pathIndices</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">objective</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">SlicingParameters</span><span class="o">.</span><span class="n">Objectives</span> <span class="k">if</span> <span class="s2">&quot;20X/0.8&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">resist</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">SlicingParameters</span><span class="o">.</span><span class="n">Resists</span> <span class="k">if</span> <span class="s2">&quot;OrmoComp&quot;</span> <span class="o">==</span> <span class="n">r</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">SlicingParameters</span><span class="o">.</span><span class="n">setTaskParameter</span><span class="p">(</span><span class="n">task2PP</span><span class="p">,</span> <span class="n">objective</span><span class="p">,</span> <span class="n">resist</span><span class="p">,</span> <span class="n">Quality</span><span class="o">.</span><span class="n">STANDARD</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="k">if</span><span class="p">(</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="o">.</span><span class="n">Count</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="linenos">16</span>    <span class="n">fabrication</span><span class="o">.</span><span class="n">addAssembly</span><span class="p">(</span><span class="n">Assembly2PP</span><span class="p">())</span>
+<span class="linenos">17</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task2PP</span><span class="p">)</span>
+<span class="linenos">18</span><span class="n">fabrication</span><span class="o">.</span><span class="n">addTaskToBlueprint</span><span class="p">(</span><span class="n">task2PP</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A fabrication <a class="reference internal" href="../class_reference/task2PP.html#class-task2pp"><span class="std std-ref">task</span></a> contains a <a class="reference internal" href="../class_reference/task2PPData.html#class-task2ppdata"><span class="std std-ref">task2PPData</span></a>
+and a <a class="reference internal" href="../class_reference/task2PPParameters.html#class-task2ppparameters"><span class="std std-ref">task2PPParameters</span></a> object. The <a class="reference internal" href="../class_reference/task2PPData.html#class-task2ppdata"><span class="std std-ref">task2PPData</span></a> object contains the raw trajectories of the task whereas <a class="reference internal" href="../class_reference/task2PPData.html#class-task2ppdata"><span class="std std-ref">task2PPData</span></a> contains all metadata related to the task.</p>
+<section id="define-the-task-data">
+<h2>Define the task data<a class="headerlink" href="#define-the-task-data" title="Permalink to this heading"></a></h2>
+<p>First, let’s define the task’s data. Task data are, at their core, a set of paths. These paths contain segments themselves defined by vertices. Paths, segments and vertices are stored in three arrays, one for each type. Each path in the path array is defined by a pair of vertex indices. These indices respectively map to the first and last vertex of the path in the vertex array.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/path_array_diagram.svg"><img alt="Image not loaded" height="1803" src="../_images/path_array_diagram.svg" width="5354" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The segment array, much like the path array, defines segments by vertex indices pairs. Segments must be sorted to maintain path integrity. This means all segments belonging to the same path are contiguous in the segment array.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/segment_array_diagram.svg"><img alt="Image not loaded" height="1803" src="../_images/segment_array_diagram.svg" width="5432" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The vertex array contain all vertices of the task. Each vertex is defined by three concecutive floats. To access a vertex given an index in the path or segment arrays, the index must therefor be multiplicated by three.</p>
+<p>Let’s create vertex, segment and path arrays and assign them to a new task using the Task2PP constructor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">size</span> <span class="o">=</span> <span class="mi">298</span>
+<span class="linenos">2</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">Single</span><span class="p">]([</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos">3</span><span class="n">pathIndices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">UInt32</span><span class="p">]([</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="linenos">4</span><span class="n">segmentIndices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">UInt32</span><span class="p">]([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="linenos">5</span><span class="n">task2PP</span> <span class="o">=</span> <span class="n">Task2PP</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">segmentIndices</span><span class="p">,</span> <span class="n">pathIndices</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>I order to interface properly with Luminis’ C# backend, arrays need to have the C# System.Array type. In a similar fashion, array types need to be C# types: “Single” for floating point numbers and “Uint32” for unsigned integers. These C# libraries need to be imported in python like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">System</span> <span class="kn">import</span> <span class="n">Array</span><span class="p">,</span><span class="n">Single</span><span class="p">,</span><span class="n">UInt32</span>
+</pre></div>
+</div>
+</section>
+<section id="define-the-task-parameters">
+<h2>Define the task parameters<a class="headerlink" href="#define-the-task-parameters" title="Permalink to this heading"></a></h2>
+<p>In order for a task to be valid, an <a class="reference internal" href="../class_reference/objective.html#class-objective"><span class="std std-ref">objective</span></a>, a <a class="reference internal" href="../class_reference/resist.html#class-resist"><span class="std std-ref">resist profil</span></a> and a <a class="reference internal" href="../class_reference/slicingParameters.html#class-slicingparameters-enum-quality"><span class="std std-ref">printing quality</span></a> need to be assigned in its <a class="reference internal" href="../class_reference/task2PPParameters.html#class-task2ppparameters"><span class="std std-ref">task2PPParameters</span></a> object. They can either be defined using the <a class="reference internal" href="../class_reference/objective.html#class-objective"><span class="std std-ref">Objective</span></a> and <a class="reference internal" href="../class_reference/resist.html#class-resist"><span class="std std-ref">Resist</span></a> objects constructors or loaded from configuration. For this exemple we will choose the later.</p>
+<p>Objective and resist profils are stored in the <a class="reference internal" href="../class_reference/slicingParameters.html#class-slicingparameters"><span class="std std-ref">SlicingParameters</span></a> object.</p>
+<p>Pre-defined objectives and resists are each stored in an array, SlicingParameters.objectives and SlicingParameters.resists respectively. Let’s retreive an objective and a resist by name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">objective</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">SlicingParameters</span><span class="o">.</span><span class="n">Objectives</span> <span class="k">if</span> <span class="s2">&quot;20X/0.8&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">resist</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">SlicingParameters</span><span class="o">.</span><span class="n">Resists</span> <span class="k">if</span> <span class="s2">&quot;OrmoComp&quot;</span> <span class="o">==</span> <span class="n">r</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And assign them to our new task using:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">SlicingParameters</span><span class="o">.</span><span class="n">setTaskParameter</span><span class="p">(</span><span class="n">task2PP</span><span class="p">,</span> <span class="n">objective</span><span class="p">,</span> <span class="n">resist</span><span class="p">,</span> <span class="n">Quality</span><span class="o">.</span><span class="n">STANDARD</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-the-task-to-the-fabrication">
+<h2>Adding the task to the fabrication<a class="headerlink" href="#adding-the-task-to-the-fabrication" title="Permalink to this heading"></a></h2>
+<p>In order to add your fabrication to Luminis we will need to import:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">ML3DFab.Models.FabricationTask</span> <span class="kn">import</span> <span class="n">Task2PP</span><span class="p">,</span><span class="n">Assembly2PP</span>
+</pre></div>
+</div>
+<p>To add the task we created to Luminis we will need to add it to the <a class="reference internal" href="../class_reference/fabrication.html#class-fabrication"><span class="std std-ref">fabrication</span></a> object. Simply add the task to an <a class="reference internal" href="../class_reference/assembly.html#class-assembly"><span class="std std-ref">assembly</span></a>. Here we take the first assembly of the fabrication or create one if none is found:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span><span class="p">(</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="o">.</span><span class="n">Count</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="n">fabrication</span><span class="o">.</span><span class="n">addAssembly</span><span class="p">(</span><span class="n">Assembly2PP</span><span class="p">())</span>
+<span class="linenos">3</span><span class="n">fabrication</span><span class="o">.</span><span class="n">Assemblies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task2PP</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For the task to be printed it need to appear in the <a class="reference internal" href="../class_reference/fabrication.html#class-fabrication-property-blueprint"><span class="std std-ref">blueprint</span></a> list. The blueprint list defines what will be print in which order whereas the assemblies just contain tasks in an unordered fashion.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">fabrication</span><span class="o">.</span><span class="n">addTaskToBlueprint</span><span class="p">(</span><span class="n">task2PP</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And here we have it: a script that generates trajectories, add them to a newly created task and add that task to Luminis!</p>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/your_first_fabrication_result.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Luminis scripting API documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="complex_duplication.html" class="btn btn-neutral float-right" title="Complex duplication pattern" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

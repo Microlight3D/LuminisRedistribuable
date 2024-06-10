@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh generation &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Slicing via script" href="slicing_script.html" />
+    <link rel="prev" title="Complex duplication pattern" href="complex_duplication.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="first_custom_fabrication.html">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="first_custom_fabrication.html#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first_custom_fabrication.html#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first_custom_fabrication.html#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="complex_duplication.html">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="complex_duplication.html#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex_duplication.html#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex_duplication.html#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fabrication.html">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fabrication.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PPData.html">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPData.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/task2PPParameters.html">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/task2PPParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/polyhedron.html">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/polyhedron.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/transform.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../class_reference/meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../class_reference/meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mesh generation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/mesh_generation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesh-generation">
+<span id="tuto-mesh-generation"></span><h1>Mesh generation<a class="headerlink" href="#mesh-generation" title="Permalink to this heading"></a></h1>
+<p>In this tutorial you will learn to generate a mesh, transform its vertices and instanciate it in a Polyhedron object in order to create a prism array aproximating a lens. Here is the full code bellow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">Interface.Common.Models.Polyhedrons</span> <span class="kn">import</span> <span class="n">Polyhedron</span><span class="p">,</span> <span class="n">Transform</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">System</span> <span class="kn">import</span> <span class="n">Array</span><span class="p">,</span><span class="n">Single</span><span class="p">,</span><span class="n">UInt32</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">System.Numerics</span> <span class="kn">import</span> <span class="n">Vector3</span>
+<span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">math</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">COUNT</span> <span class="o">=</span> <span class="mi">11</span> <span class="c1"># Number of objects per rows and colums. Total object count is COUNT²</span>
+<span class="linenos"> 7</span><span class="n">FOCAL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">60</span> <span class="c1"># Focal point Z height, if FOCAL &lt; 0 the lens will be convex</span>
+<span class="linenos"> 8</span><span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Height at objects centers in µm</span>
+<span class="linenos"> 9</span><span class="n">SPACING</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Space between objects in µm</span>
+<span class="linenos">10</span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Objects base size in µm</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">COUNT</span><span class="p">):</span>
+<span class="linenos">13</span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">COUNT</span><span class="p">):</span>
+<span class="linenos">14</span>        <span class="n">polyhedron</span> <span class="o">=</span> <span class="n">Polyhedron</span><span class="p">()</span>
+<span class="linenos">15</span>        <span class="n">polyhedron</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Prism(&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;,&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;)&quot;</span>
+<span class="linenos">16</span>        <span class="n">surfId</span> <span class="o">=</span> <span class="n">polyhedron</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">addSurface</span><span class="p">()</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>        <span class="c1"># Define transforms to be applied to the cube upper plane</span>
+<span class="linenos">19</span>        <span class="n">translation</span> <span class="o">=</span> <span class="n">Transform</span><span class="p">()</span>
+<span class="linenos">20</span>        <span class="n">translation</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">HEIGHT</span><span class="p">))</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>        <span class="n">rotation</span> <span class="o">=</span> <span class="n">Transform</span><span class="p">()</span>
+<span class="linenos">23</span>        <span class="n">x</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">SIZE</span><span class="o">+</span><span class="n">SPACING</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">COUNT</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">24</span>        <span class="n">y</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">SIZE</span><span class="o">+</span><span class="n">SPACING</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">COUNT</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">25</span>        <span class="n">focal</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">FOCAL</span><span class="p">))</span>
+<span class="linenos">26</span>        <span class="n">xToFocal</span> <span class="o">=</span> <span class="n">Vector3</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">focal</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">27</span>        <span class="n">yToFocal</span> <span class="o">=</span> <span class="n">Vector3</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">focal</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
+<span class="linenos">28</span>        <span class="n">focal</span> <span class="o">=</span> <span class="n">Vector3</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">focal</span><span class="p">)</span>
+<span class="linenos">29</span>        <span class="n">angleXInRad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">Vector3</span><span class="o">.</span><span class="n">Dot</span><span class="p">(</span><span class="n">focal</span><span class="p">,</span> <span class="n">xToFocal</span><span class="p">));</span>
+<span class="linenos">30</span>        <span class="n">angleYInRad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">Vector3</span><span class="o">.</span><span class="n">Dot</span><span class="p">(</span><span class="n">focal</span><span class="p">,</span> <span class="n">yToFocal</span><span class="p">));</span>
+<span class="linenos">31</span>        <span class="n">invert</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="n">FOCAL</span><span class="p">)</span>
+<span class="linenos">32</span>        <span class="n">signedAngleXDeg</span> <span class="o">=</span> <span class="o">-</span><span class="n">invert</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="n">angleXInRad</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">X</span><span class="p">))</span>
+<span class="linenos">33</span>        <span class="n">signedAngleYDeg</span> <span class="o">=</span> <span class="n">invert</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="n">angleYInRad</span><span class="p">,</span><span class="n">y</span><span class="o">.</span><span class="n">Y</span><span class="p">))</span>
+<span class="linenos">34</span>        <span class="n">rotation</span><span class="o">.</span><span class="n">setRotationEulerXYZ</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="n">signedAngleYDeg</span><span class="p">,</span><span class="n">signedAngleXDeg</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span>        <span class="n">invTranslation</span> <span class="o">=</span> <span class="n">Transform</span><span class="p">()</span>
+<span class="linenos">37</span>        <span class="n">invTranslation</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">))</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span>        <span class="c1"># Define the cube&#39;s upper plane</span>
+<span class="linenos">40</span>        <span class="n">a</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">)</span>
+<span class="linenos">41</span>        <span class="n">b</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">)</span>
+<span class="linenos">42</span>        <span class="n">c</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">)</span>
+<span class="linenos">43</span>        <span class="n">d</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">)</span>
+<span class="linenos">44</span>
+<span class="linenos">45</span>        <span class="c1"># Apply rotation to the cube upper plane</span>
+<span class="linenos">46</span>        <span class="n">a</span> <span class="o">=</span> <span class="n">invTranslation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+<span class="linenos">47</span>        <span class="n">b</span> <span class="o">=</span> <span class="n">invTranslation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+<span class="linenos">48</span>        <span class="n">c</span> <span class="o">=</span> <span class="n">invTranslation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">c</span><span class="p">)))</span>
+<span class="linenos">49</span>        <span class="n">d</span> <span class="o">=</span> <span class="n">invTranslation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
+<span class="linenos">50</span>        <span class="n">n</span> <span class="o">=</span> <span class="n">Vector3</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">xToFocal</span><span class="o">+</span><span class="n">yToFocal</span><span class="p">);</span>
+<span class="linenos">51</span>
+<span class="linenos">52</span>        <span class="c1"># Define vertex, index and normal arrays</span>
+<span class="linenos">53</span>        <span class="n">vertices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">Single</span><span class="p">]([</span>
+<span class="linenos">54</span>        <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">55</span>        <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+<span class="linenos">56</span>         <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">57</span>         <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+<span class="linenos">58</span>        <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">59</span>        <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">60</span>         <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+<span class="linenos">61</span>         <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="linenos">62</span>
+<span class="linenos">63</span>        <span class="n">indices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">UInt32</span><span class="p">]([</span>
+<span class="linenos">64</span>         <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">65</span>         <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>
+<span class="linenos">66</span>         <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>
+<span class="linenos">67</span>        <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
+<span class="linenos">68</span>        <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>
+<span class="linenos">69</span>        <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="linenos">70</span>
+<span class="linenos">71</span>        <span class="n">normals</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">Single</span><span class="p">]([</span>
+<span class="linenos">72</span>          <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">73</span>        <span class="n">n</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+<span class="linenos">74</span>          <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">75</span>         <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">76</span>          <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">77</span>          <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">])</span>
+<span class="linenos">78</span>
+<span class="linenos">79</span>        <span class="c1"># Assign arrays to Polyhedron and add it to Luminis</span>
+<span class="linenos">80</span>        <span class="n">polyhedron</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">setSurfaceVertexArray</span><span class="p">(</span><span class="n">surfId</span><span class="p">,</span><span class="n">vertices</span><span class="p">)</span>
+<span class="linenos">81</span>        <span class="n">polyhedron</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">setSurfaceIndexArray</span><span class="p">(</span><span class="n">surfId</span><span class="p">,</span><span class="n">indices</span><span class="p">)</span>
+<span class="linenos">82</span>        <span class="n">polyhedron</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">setSurfaceNormalArray</span><span class="p">(</span><span class="n">surfId</span><span class="p">,</span><span class="n">normals</span><span class="p">)</span>
+<span class="linenos">83</span>        <span class="n">posX</span> <span class="o">=</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">SIZE</span><span class="o">+</span><span class="n">SPACING</span><span class="p">)</span><span class="o">*</span><span class="n">i</span>
+<span class="linenos">84</span>        <span class="n">posY</span> <span class="o">=</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">SIZE</span><span class="o">+</span><span class="n">SPACING</span><span class="p">)</span><span class="o">*</span><span class="n">j</span>
+<span class="linenos">85</span>        <span class="n">polyhedron</span><span class="o">.</span><span class="n">Transform</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="n">posX</span><span class="p">,</span><span class="n">posY</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="linenos">86</span>        <span class="n">polyhedrons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">polyhedron</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="mesh-arrays">
+<h2>Mesh arrays<a class="headerlink" href="#mesh-arrays" title="Permalink to this heading"></a></h2>
+<p>Before trying to create a prism let’s start simpler and generate a cuboid. We’ll need to create a <a class="reference internal" href="../class_reference/polyhedron.html#class-polyhedron"><span class="std std-ref">Polyhedron</span></a> object and fill its <a class="reference internal" href="../class_reference/mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> with vertex, index and normal data. To do so let’s create a <a class="reference internal" href="../class_reference/polyhedron.html#class-polyhedron"><span class="std std-ref">Polyhedron</span></a>, name it “Prism” and add a new surface to its <a class="reference internal" href="../class_reference/mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">Interface.Common.Models.Polyhedrons</span> <span class="kn">import</span> <span class="n">Polyhedron</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">polyhedron</span> <span class="o">=</span> <span class="n">Polyhedron</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">polyhedron</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Prism&quot;</span>
+<span class="linenos">5</span><span class="n">surfId</span> <span class="o">=</span> <span class="n">polyhedron</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">addSurface</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We now have a surface ID “surfId” which we can use to access our newly created surface and add data to it. A surface data is split into three arrays:</p>
+<ul class="simple">
+<li><p>a vertex array contraining vertice, three concecutive floating point values representing one vertex;</p></li>
+<li><p>an index array containing indices in the vertex array. Each vertex triplet is interpreted as a triangle face;</p></li>
+<li><p>a normal array containing a normal vector for each vertex in the vertex array.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/mesh_data_structure.svg" /></figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Let’s create these arrays for a cuboid of a given SIZE and HEIGHT:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">System</span> <span class="kn">import</span> <span class="n">Array</span><span class="p">,</span><span class="n">Single</span><span class="p">,</span><span class="n">UInt32</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Height at object center in µm</span>
+<span class="linenos"> 4</span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Object X,Y size in µm</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># Define vertex, index and normal arrays</span>
+<span class="linenos"> 7</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">Single</span><span class="p">]([</span>
+<span class="linenos"> 8</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span>
+<span class="linenos">10</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">11</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span>
+<span class="linenos">12</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">13</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">14</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span>
+<span class="linenos">15</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">indices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">UInt32</span><span class="p">]([</span>
+<span class="linenos">18</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">19</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>
+<span class="linenos">20</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>
+<span class="linenos">21</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
+<span class="linenos">22</span><span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>
+<span class="linenos">23</span><span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="n">normals</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">Single</span><span class="p">]([</span>
+<span class="linenos">26</span> <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">27</span> <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>
+<span class="linenos">28</span> <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">29</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">30</span> <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">31</span> <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>   <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Assign the arrays to our <a class="reference internal" href="../class_reference/mesh.html#class-mesh"><span class="std std-ref">Mesh</span></a> surface and add the polyhedron to Luminis by adding it to the polyhedrons list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Assign arrays to the mesh&#39;s surface using its ID</span>
+<span class="linenos">2</span><span class="n">polyhedron</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">setSurfaceVertexArray</span><span class="p">(</span><span class="n">surfId</span><span class="p">,</span><span class="n">vertices</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">polyhedron</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">setSurfaceIndexArray</span><span class="p">(</span><span class="n">surfId</span><span class="p">,</span><span class="n">indices</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">polyhedron</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">setSurfaceNormalArray</span><span class="p">(</span><span class="n">surfId</span><span class="p">,</span><span class="n">normals</span><span class="p">)</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="c1"># Add the Polyhedron to Luminis</span>
+<span class="linenos">7</span><span class="n">polyhedrons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">polyhedron</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>At this point if we execute our script we should see a cuboid of the right size and height, respectively 40µm and 30µm in the exemple bellow, appear in the 3D view:</p>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/mesh_generation_cuboid.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="creating-a-prism-by-transforming-vertices">
+<h2>Creating a prism by transforming vertices<a class="headerlink" href="#creating-a-prism-by-transforming-vertices" title="Permalink to this heading"></a></h2>
+<p>Now that we have generated a cuboid we can modify it to create prisms. To do so we will use <a class="reference internal" href="../class_reference/transform.html#class-transform"><span class="std std-ref">Transforms</span></a> to apply a rotation to the to faces of our cuboid. First, we define the cuboid’s upper points and incorporate them to the vertex array:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Define the cube&#39;s upper plane</span>
+<span class="linenos"> 2</span><span class="n">a</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">b</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">c</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">d</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">)</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">vertices</span> <span class="o">=</span> <span class="n">Array</span><span class="p">[</span><span class="n">Single</span><span class="p">]([</span>
+<span class="linenos"> 8</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+<span class="linenos">10</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">11</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+<span class="linenos">12</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">13</span><span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>    <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">14</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>
+<span class="linenos">15</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="o">-</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Let’s create <a class="reference internal" href="../class_reference/transform.html#class-transform"><span class="std std-ref">Transforms</span></a> to arbitrarily rotate our four points:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Define transforms to be applied to the cube upper plane</span>
+<span class="linenos">2</span><span class="n">translation</span> <span class="o">=</span> <span class="n">Transform</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">translation</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">HEIGHT</span><span class="p">))</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">Transform</span><span class="p">()</span>
+<span class="linenos">6</span><span class="n">rotation</span><span class="o">.</span><span class="n">setRotationEulerXYZ</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="n">invTranslation</span> <span class="o">=</span> <span class="n">Transform</span><span class="p">()</span>
+<span class="linenos">9</span><span class="n">invTranslation</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">HEIGHT</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>As shown in the diagram bellow, we need three <a class="reference internal" href="../class_reference/transform.html#class-transform"><span class="std std-ref">Transforms</span></a> to apply our rotation as we first need to place our points at the origin Z=0 before applying the rotation and replace the points back in place after the rotation.</p>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/mesh_generation_transform.svg" /></figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Finally, apply the <a class="reference internal" href="../class_reference/transform.html#class-transform"><span class="std std-ref">Transforms</span></a> to a,b,c and d:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Apply rotation to the cube upper plane</span>
+<span class="linenos">2</span><span class="n">a</span> <span class="o">=</span> <span class="n">invTranslation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+<span class="linenos">3</span><span class="n">b</span> <span class="o">=</span> <span class="n">invTranslation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+<span class="linenos">4</span><span class="n">c</span> <span class="o">=</span> <span class="n">invTranslation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">c</span><span class="p">)))</span>
+<span class="linenos">5</span><span class="n">d</span> <span class="o">=</span> <span class="n">invTranslation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">applyTo</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>Running our script should now add a prism to Luminis:</p>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/mesh_generation_prism.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="making-a-prism-array">
+<h2>Making a prism array<a class="headerlink" href="#making-a-prism-array" title="Permalink to this heading"></a></h2>
+<p>Now that we have a customizable prism, we can make a bunch to create a prism array. First define a COUNT and a SPACING constant respectively defining the number of prisms per rows and colums and the space between two prisms. Then loop over COUNT for rows and columns and generate prisms in an array pattern:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">COUNT</span> <span class="o">=</span> <span class="mi">11</span> <span class="c1"># Number of objects per rows and colums. Total object count is COUNT²</span>
+<span class="linenos"> 2</span><span class="n">SPACING</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Space between objects in µm</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">COUNT</span><span class="p">):</span>
+<span class="linenos"> 5</span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">COUNT</span><span class="p">):</span>
+<span class="linenos"> 6</span>        <span class="n">polyhedron</span> <span class="o">=</span> <span class="n">Polyhedron</span><span class="p">()</span>
+<span class="linenos"> 7</span>        <span class="n">polyhedron</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Prism(&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;,&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;)&quot;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>        <span class="c1"># [Prism generation code]</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>        <span class="n">posX</span> <span class="o">=</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">SIZE</span><span class="o">+</span><span class="n">SPACING</span><span class="p">)</span><span class="o">*</span><span class="n">i</span>
+<span class="linenos">12</span>        <span class="n">posY</span> <span class="o">=</span> <span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">SIZE</span><span class="o">+</span><span class="n">SPACING</span><span class="p">)</span><span class="o">*</span><span class="n">j</span>
+<span class="linenos">13</span>        <span class="n">polyhedron</span><span class="o">.</span><span class="n">Transform</span><span class="o">.</span><span class="n">setPosition</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="n">posX</span><span class="p">,</span><span class="n">posY</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="linenos">14</span>        <span class="n">polyhedrons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">polyhedron</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="orienting-prisms-to-create-a-lens">
+<h2>Orienting prisms to create a lens<a class="headerlink" href="#orienting-prisms-to-create-a-lens" title="Permalink to this heading"></a></h2>
+<p>If we want to approximate a lens from our lens array we need to make all prisms align to a focal point. Like so:</p>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/mesh_generation_focus_alignment.svg" /></figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To do so we need to extract the <span class="math notranslate nohighlight">\(\theta\)</span> angle above on the XZ and YZ planes and assign it as our rotation for each prism in our array:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">FOCAL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">60</span> <span class="c1"># Focal point Z height, if FOCAL &lt; 0 the lens will be convex</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">Transform</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">x</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">SIZE</span><span class="o">+</span><span class="n">SPACING</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">COUNT</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">y</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">SIZE</span><span class="o">+</span><span class="n">SPACING</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">COUNT</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">focal</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">FOCAL</span><span class="p">))</span>
+<span class="linenos"> 7</span><span class="n">xToFocal</span> <span class="o">=</span> <span class="n">Vector3</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">focal</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">yToFocal</span> <span class="o">=</span> <span class="n">Vector3</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">focal</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">focal</span> <span class="o">=</span> <span class="n">Vector3</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">focal</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">angleXInRad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">Vector3</span><span class="o">.</span><span class="n">Dot</span><span class="p">(</span><span class="n">focal</span><span class="p">,</span> <span class="n">xToFocal</span><span class="p">));</span>
+<span class="linenos">11</span><span class="n">angleYInRad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">Vector3</span><span class="o">.</span><span class="n">Dot</span><span class="p">(</span><span class="n">focal</span><span class="p">,</span> <span class="n">yToFocal</span><span class="p">));</span>
+<span class="linenos">12</span><span class="n">invert</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="n">FOCAL</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">signedAngleXDeg</span> <span class="o">=</span> <span class="o">-</span><span class="n">invert</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="n">angleXInRad</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">X</span><span class="p">))</span>
+<span class="linenos">14</span><span class="n">signedAngleYDeg</span> <span class="o">=</span> <span class="n">invert</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="n">angleYInRad</span><span class="p">,</span><span class="n">y</span><span class="o">.</span><span class="n">Y</span><span class="p">))</span>
+<span class="linenos">15</span><span class="n">rotation</span><span class="o">.</span><span class="n">setRotationEulerXYZ</span><span class="p">(</span><span class="n">Vector3</span><span class="p">(</span><span class="n">signedAngleYDeg</span><span class="p">,</span><span class="n">signedAngleXDeg</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If we put every steps above together we obtain a script that generates parametrizable prism arrays approximating a spherical lens of a given focal point.</p>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/mesh_generation_lens_1.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<figure class="align-center">
+<img alt="Image not loaded" src="../_images/mesh_generation_lens_2.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="complex_duplication.html" class="btn btn-neutral float-left" title="Complex duplication pattern" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="slicing_script.html" class="btn btn-neutral float-right" title="Slicing via script" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

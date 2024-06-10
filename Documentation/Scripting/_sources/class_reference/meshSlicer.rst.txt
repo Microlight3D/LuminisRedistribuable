@@ -1,0 +1,344 @@
+.. _class_meshSlicer:
+
+MeshSlicer
+==========
+
+**ML3DSlicer** 
+
+Description
+-----------
+
+The MeshSlicer gives access to the Luminis Slicer. The slicing process is highly customizable, every parts can be enabled separately.
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setSlicingVoxelSize<class_meshSlicer_method_setSlicingVoxelSize>` ( value : `Vector2`_ )                                                |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_   | :ref:`getSlicingVoxelSize<class_meshSlicer_method_getSlicingVoxelSize>` ( )                                                                   |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setSlicingVoxelOverLap<class_meshSlicer_method_setSlicingVoxelOverlap>` ( value : `Vector2`_ )                                          |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_   | :ref:`getSlicingVoxelVoxelOverlap<class_meshSlicer_method_getSlicingVoxelOverlap>` ( )                                                        |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setShellVoxelSize<class_meshSlicer_method_setShellVoxelSize>` ( value : `Vector2`_ )                                                    |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_   | :ref:`getShellVoxelSize<class_meshSlicer_method_getShellVoxelSize>` ( )                                                                       |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setShellVoxelOverLap<class_meshSlicer_method_setShellVoxelOverlap>` ( value : `Vector2`_ )                                              |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_   | :ref:`getShellVoxelVoxelOverlap<class_meshSlicer_method_getShellVoxelOverlap>` ( )                                                            |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setFillingVoxelSize<class_meshSlicer_method_setFillingVoxelSize>` ( value : `Vector2`_ )                                                |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_   | :ref:`getFillingVoxelSize<class_meshSlicer_method_getFillingVoxelSize>` ( )                                                                   |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setFillingVoxelOverLap<class_meshSlicer_method_setFillingVoxelOverlap>` ( value : `Vector2`_ )                                          |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_   | :ref:`getFillingVoxelVoxelOverlap<class_meshSlicer_method_getFillingVoxelOverlap>` ( )                                                        |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setSlicingDirection<class_meshSlicer_method_setSlicingDirection>` ( value : `Vector2`_ )                                                |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_   | :ref:`getSlicingDirection<class_meshSlicer_method_getSlicingDirection>` ( )                                                                   |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setShellThickness<class_meshSlicer_method_setShellThickness>` ( value : `int`_ )                                                        |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_       | :ref:`getShellThickness<class_meshSlicer_method_getShellThickness>` ( )                                                                       |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setShellSpacing<class_meshSlicer_method_setShellSpacing>` ( value : `float`_ )                                                          |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_       | :ref:`getShellSpacing<class_meshSlicer_method_getShellSpacing>` ( )                                                                           |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setMeshVertices<class_meshSlicer_method_setMeshVertices>` ( vertices : `Single`_\[\] )                                                  |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setMeshNormals<class_meshSlicer_method_setMeshNormals>` ( normals : `Single`_\[\] )                                                     |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setMeshIndices<class_meshSlicer_method_setMeshIndices>` ( indices : `UInt32`_\[\] )                                                     |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setMeshTransform<class_meshSlicer_method_setMeshTransform>` ( transform : `Matrix4x4`_ )                                                |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`initializeSlicing<class_meshSlicer_method_initializeSlicing>` ( )                                                                       |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`initializeHatching<class_meshSlicer_method_initializeHatching>` ( hatchCriticalAngle : `float`_, hatchPatern : `int`_ )                 |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`initializeFilling<class_meshSlicer_method_initializeFilling>` ( distanceLines : `float`_, distanceLayers : `float`_, patern : `int`_ )  |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`initializeTextToPath<class_meshSlicer_method_initializeTextToPath>` ( text : `str`_, fontSize : `float`_, position : `Vector3`_ )       |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`progressComputing<class_meshSlicer_method_progressComputing>` ( )                                                                       |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`getResult<class_meshSlicer_method_getResult>` ( )                                                                                       |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`getAABBMax<class_meshSlicer_method_getAABBMax>` ( )                                                                                     |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`getAABBMin<class_meshSlicer_method_getAABBMin>` ( )                                                                                     |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_       | :ref:`getProgress<class_meshSlicer_method_getProgress>` ( )                                                                                   |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   | `bool`_      | :ref:`isComputeDone<class_meshSlicer_method_isComputeDone>` ( )                                                                               |
+   +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+Method Descriptions
+-------------------
+
+.. _class_meshSlicer_method_setSlicingVoxelSize:
+
+**setSlicingVoxelSize** **(** value : `Vector2`_ **)** -> `None`_
+
+Assign the voxel size, in µm, for all slicing trajectories.
+
+----
+
+.. _class_meshSlicer_method_getSlicingVoxelSize:
+
+**getSlicingVoxelSize** **(** **)** -> `Vector2`_
+
+Retrieve the voxel size, in µm, for all slicing trajectories
+
+----
+
+.. _class_meshSlicer_method_setSlicingVoxelOverLap:
+
+**setSlicingVoxelOverLap** **(** value : `Vector2`_ **)** -> `None`_
+
+Assign the voxel overlap, in range \[0;1\], for all slicing trajectories.
+
+----
+
+.. _class_meshSlicer_method_getSlicingVoxelOverlap:
+
+**getSlicingVoxelOverlap** **(** **)** -> `Vector2`_
+
+Retrieve the voxel overlap, in range \[0;1\], for all slicing trajectories
+
+----
+
+.. _class_meshSlicer_method_setShellVoxelSize:
+
+**setShellVoxelSize** **(** value : `Vector2`_ **)** -> `None`_
+
+Assign the voxel size, in µm, for all shell trajectories.
+
+----
+
+.. _class_meshSlicer_method_getShellVoxelSize:
+
+**getShellVoxelSize** **(** **)** -> `Vector2`_
+
+Retrieve the voxel size, in µm, for all shell trajectories
+
+----
+
+.. _class_meshSlicer_method_setShellVoxelOverLap:
+
+**setShellVoxelOverLap** **(** value : `Vector2`_ **)** -> `None`_
+
+Assign the voxel overlap, in range \[0;1\], for all shell trajectories.
+
+----
+
+.. _class_meshSlicer_method_getShellVoxelOverlap:
+
+**getShellVoxelOverlap** **(** **)** -> `Vector2`_
+
+Retrieve the voxel overlap, in range \[0;1\], for all shell trajectories
+
+----
+
+.. _class_meshSlicer_method_setFillingVoxelSize:
+
+**setFillingVoxelSize** **(** value : `Vector2`_ **)** -> `None`_
+
+
+Assign the voxel size, in µm, for all filling trajectories.
+
+----
+
+.. _class_meshSlicer_method_getFillingVoxelSize:
+
+**getFillingVoxelSize** **(** **)** -> `Vector2`_
+
+
+Assign the voxel size, in µm, for all filling trajectories.
+
+----
+
+.. _class_meshSlicer_method_setFillingVoxelOverLap:
+
+**setFillingVoxelOverLap** **(** value : `Vector2`_ **)** -> `None`_
+
+
+Assign the voxel overlap, in range \[0;1\], for all filling trajectories.
+
+----
+
+.. _class_meshSlicer_method_getFillingVoxelOverlap:
+
+**getFillingVoxelOverlap** **(** **)** -> `Vector2`_
+
+
+Assign the voxel overlap, in range \[0;1\], for all filling trajectories.
+
+----
+
+.. _class_meshSlicer_method_setSlicingDirection:
+
+**setSlicingDirection** **(** value : `Vector3`_ **)** -> `None`_
+
+Set slicing direction vector.
+
+----
+
+.. _class_meshSlicer_method_getSlicingDirection:
+
+**getSlicingDirection** **(** **)** -> `Vector3`_
+
+Get slicing direction vector.
+
+----
+
+.. _class_meshSlicer_method_setShellThickness:
+
+**setShellThickness** **(** value : `int`_ **)** -> `None`_
+
+Set the number of shell layers.
+
+----
+
+.. _class_meshSlicer_method_getShellThickness:
+
+**getShellThickness** **(** **)** -> `int`_
+
+Get the number of shell layers.
+
+----
+
+.. _class_meshSlicer_method_setShellSpacing:
+
+**setShellSpacing** **(** value : `int`_ **)** -> `None`_
+
+Set the space, in µm, between shell layers.
+
+----
+
+.. _class_meshSlicer_method_getShellSpacing:
+
+**getShellSpacing** **(** **)** -> `int`_
+
+Get the space, in µm, between shell layers.
+
+----
+
+.. _class_meshSlicer_method_setMeshVertices:
+
+**setMeshVertices** **(** vertices : `Single`_\[\] **)** -> `None`_
+
+Set the mesh vertices to slice see :ref:`the mesh page<class_mesh>` for information about data layout. The data must be normalized, any transforms should be applied using the mesh transform.
+
+----
+
+.. _class_meshSlicer_method_setMeshNormals:
+
+**setMeshNormals** **(** normals : `Single`_\[\] **)** -> `None`_
+
+Set the mesh normals to slice see :ref:`the mesh page<class_mesh>` for information about data layout.
+
+----
+
+.. _class_meshSlicer_method_setMeshIndices:
+
+**setMeshIndices** **(** indices : `UInt32`_\[\] **)** -> `None`_
+
+Set the mesh indices to slice see :ref:`the mesh page<class_mesh>` for information about data layout.
+
+----
+
+.. _class_meshSlicer_method_setMeshTransform:
+
+**setMeshTransform** **(** transform : `Matrix4x4`_ **)** -> `None`_
+
+Set the transform matrix to be applied to each vertex of the mesh.
+
+----
+
+.. _class_meshSlicer_method_initializeSlicing:
+
+**initializeSlicing** **(** **)** -> `None`_
+
+Initialise horizontal slicing.
+
+----
+
+.. _class_meshSlicer_method_initializeHatching:
+
+**initializeHatching** **(** hatchCriticalAngle : `float`_, hatchPatern : `int`_ **)** -> `None`_
+
+Initialise vertical slicing. hatchCriticalAngle isn't used and should be set to 0.
+
+----
+
+.. _class_meshSlicer_method_initializeFilling:
+
+**initializeFilling** **(** distanceLines : `float`_, distanceLayers : `float`_, patern : `int`_ **)** -> `None`_
+
+Initialise filling slicing given distanceLines the distance between lines in a fill layer, distanceLayers the distance between fill layers and patern patern used for shell slicing process.
+
+----
+
+.. _class_meshSlicer_method_initializeTextToPath:
+
+**initializeTextToPath** **(** text : `str`_, fontSize : `float`_, position : `Vector3`_ **)** -> `None`_
+
+Initialize text generation. If initializeFilling or initializeHatching is also called, adds paths to the mesh's path, offseted by position.
+
+----
+
+.. _class_meshSlicer_method_progressComputing:
+
+**progressComputing** **(** **)** -> `None`_
+
+Compute a small part of the initialized processes, needs to be called repeatedly until isComputeDone() returns true.
+
+----
+
+.. _class_meshSlicer_method_getResult:
+
+**getResult** **(** **)** -> `None`_
+
+Returns the computed fabrication task data.
+
+----
+
+.. _class_meshSlicer_method_getAABBMax:
+
+**getAABBMax** **(** **)** -> `Vector3`_
+
+Get bounding box max position of result, throws an exception if computation is not finished.
+
+----
+
+.. _class_meshSlicer_method_getAABBMin:
+
+**getAABBMin** **(** **)** -> `Vector3`_
+
+Get bounding box min position of result, throws an exception if computation is not finished.
+
+----
+
+.. _class_meshSlicer_method_getProgress:
+
+**getProgress** **(** **)** -> `int`_
+
+Returns progress, in percent (%) of the current slicing.
+
+----
+
+.. _class_meshSlicer_method_isComputeDone:
+
+**isComputeDone** **(** **)** -> `bool`_
+
+Returns true if the current slicing process is over, false otherwise.

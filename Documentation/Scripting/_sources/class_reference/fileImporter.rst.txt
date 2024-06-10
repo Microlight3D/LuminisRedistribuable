@@ -1,0 +1,30 @@
+.. _class_fileImporter:
+
+FileImporter
+============
+
+**Interface.Utils.FileImporters.FileImporter**
+
+Description
+-----------
+
+The FileImporter static class allows to import files of any supported formats (STL, FAB and OBJ).
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +-----------+------------------------------------------------------------------------------------+
+   | `object`_ | :ref:`Load<class_fileImporter_method_load>` ( filePath : `str`_ )                  |
+   +-----------+------------------------------------------------------------------------------------+
+  
+Method Descriptions
+-------------------
+
+.. _class_fileImporter_method_load:
+
+**Load** **(** filePath : `str`_ **)** -> `object`_
+
+Load object from given file path. The loaded object type depends on the file extension.

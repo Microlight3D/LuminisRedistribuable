@@ -1,0 +1,242 @@
+.. _class_mesh:
+
+Mesh
+====
+
+**Interface.Common.Models.Polyhedrons.Mesh** 
+
+Description
+-----------
+
+The Mesh class contains all the data required to define a 3D facetized object. A mesh is broke down into surfaces. Each surface contains three data arrays:
+
+* a vertex array contraining vertice, three concecutive floating point values representing one vertex;
+* an index array containing indices in the vertex array. Each vertex triplet is interpreted as a triangle face;
+* a normal array containing a normal vector for each vertex in the vertex array.
+
+.. figure:: /img/mesh_data_structure.svg
+  :align: center
+  :alt: Image not loaded
+
+|
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_        | :ref:`addSurface<class_mesh_method_addSurface>` ( )                                                                                  |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_        | :ref:`getSurfaceCount<class_mesh_method_getSurfaceCount>` ( )                                                                        |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_       | :ref:`setSurfaceVertexArray<class_mesh_method_setSurfaceVertexArray>` ( surfaceId : `int`_, vertices : `Single`_\[\] )               |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_       | :ref:`setSurfaceIndexArray<class_mesh_method_setSurfaceIndexArray>` ( surfaceId : `int`_, indices : `UInt32`_\[\] )                  |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_       | :ref:`setSurfaceNormalArray<class_mesh_method_setSurfaceNormalArray>` ( surfaceId : `int`_, normals : `Single`_\[\] )                |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `Single`_\[\] | :ref:`getSurfaceVertexArray<class_mesh_method_getSurfaceVertexArray>` ( surfaceId : `int`_ )                                         |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `UInt32`_\[\] | :ref:`getSurfaceIndexArray<class_mesh_method_getSurfaceIndexArray>` ( surfaceId : `int`_ )                                           |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `Single`_\[\] | :ref:`getSurfaceNormalArray<class_mesh_method_getSurfaceNormalArray>` ( surfaceId : `int`_ )                                         |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_        | :ref:`getVertexCount<class_mesh_method_getVertexCount>` ( )                                                                          |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_        | :ref:`getEdgeCount<class_mesh_method_getEdgeCount>` ( )                                                                              |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_        | :ref:`getTriangleCount<class_mesh_method_getTriangleCount>` ( )                                                                      |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_        | :ref:`getSurfaceVertexCount<class_mesh_method_getSurfaceVertexCount>` ( surfaceId : `int`_ )                                         |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_        | :ref:`getSurfaceEdgeCount<class_mesh_method_getSurfaceEdgeCount>` ( surfaceId : `int`_ )                                             |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `int`_        | :ref:`getSurfaceTriangleCount<class_mesh_method_getSurfaceTriangleCount>` ( surfaceId : `int`_ )                                     |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector3`_    | :ref:`getAabbMin<class_mesh_method_getAabbMin>` ( )                                                                                  |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector3`_    | :ref:`getAabbMin<class_mesh_method_getAabbMin2>` ( transform : `Matrix4x4`_ )                                                        |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector3`_    | :ref:`getAabbMax<class_mesh_method_getAabbMax>` ( )                                                                                  |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector3`_    | :ref:`getAabbMax<class_mesh_method_getAabbMax2>` ( transform : `Matrix4x4`_ )                                                        |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector3`_    | :ref:`getAabbCenter<class_mesh_method_getAabbCenter>` ( )                                                                            |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector3`_    | :ref:`getAabbCenter<class_mesh_method_getAabbCenter2>` ( transform : `Matrix4x4`_ )                                                  |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_       | :ref:`applyTransform<class_mesh_method_applyTransform>` ( transform : `Matrix4x4`_ )                                                 |
+   +---------------+--------------------------------------------------------------------------------------------------------------------------------------+
+
+Method Descriptions
+-------------------
+
+.. _class_mesh_method_addSurface:
+
+**addSurface** **(** **)** -> `int`_
+
+Creates a new empty surface to the mesh. Returns the created surface ID.
+
+----
+
+.. _class_mesh_method_getSurfaceCount:
+
+**getSurfaceCount** **(** **)** -> `int`_
+
+Returns the number of surfaces that the mesh contains.
+
+----
+
+.. _class_mesh_method_setSurfaceVertexArray:
+
+**setSurfaceVertexArray** **(** surfaceId : `int`_, vertices : `Single`_\[\] **)** -> `None`_
+
+Sets the vertex array of the surface with the given surface ID.
+
+----
+
+.. _class_mesh_method_setSurfaceIndexArray:
+
+**setSurfaceIndexArray** **(** surfaceId : `int`_, indices : `UInt32`_\[\] **)** -> `None`_
+
+Sets the index array of the surface with the given surface ID.
+
+----
+
+.. _class_mesh_method_setSurfaceNormalArray:
+
+**setSurfaceNormalArray** **(** surfaceId : `int`_, indices : `UInt32`_\[\] **)** -> `None`_
+
+Sets the normal array of the given surface ID.
+
+----
+
+.. _class_mesh_method_getSurfaceVertexArray:
+
+**getSurfaceVertexArray** **(** surfaceId : `int`_ **)** -> `Single`_\[\]
+
+Returns the vertex array of the surface with the given surface ID.
+
+----
+
+.. _class_mesh_method_getSurfaceIndexArray:
+
+**getSurfaceIndexArray** **(** surfaceId : `int`_ **)** -> `UInt32`_\[\]
+
+Returns the index array of the surface with the given surface ID.
+
+----
+
+.. _class_mesh_method_getSurfaceNormalArray:
+
+**getSurfaceNormalArray** **(** surfaceId : `int`_ **)** -> `Single`_\[\]
+
+Returns the normal array of the given surface ID.
+
+----
+
+.. _class_mesh_method_getVertexCount:
+
+**getVertexCount** **(** **)** -> `int`_
+
+Returns the total vertex count across all of mesh's surfaces.
+
+----
+
+.. _class_mesh_method_getEdgeCount:
+
+**getEdgeCount** **(** **)** -> `int`_
+
+Returns the total edge count across all of mesh's surfaces.
+
+----
+
+.. _class_mesh_method_getTriangleCount:
+
+**getTriangleCount** **(** **)** -> `int`_
+
+Returns the total triangle (face) count across all of mesh's surfaces.
+
+----
+
+.. _class_mesh_method_getSurfaceVertexCount:
+
+**getSurfaceVertexCount** **(** surfaceId : `int`_ **)** -> `int`_
+
+Returns the vertex count of the given surface ID.
+
+----
+
+.. _class_mesh_method_getSurfaceEdgeCount:
+
+**getSurfaceEdgeCount** **(** surfaceId : `int`_ **)** -> `int`_
+
+
+Returns the edge count of the given surface ID.
+
+----
+
+.. _class_mesh_method_getSurfaceTriangleCount:
+
+**getSurfaceTriangleCount** **(** surfaceId : `int`_ **)** -> `int`_
+
+
+Returns the triangle (face) count of the given surface ID.
+
+----
+
+.. _class_mesh_method_getAabbMin:
+
+**getAabbMin** **(** **)** -> `Vector3`_
+
+Returns the minimum x,y and z coordinate values of the axis aligned bounding box of the mesh.
+
+----
+
+.. _class_mesh_method_getAabbMin2:
+
+**getAabbMin** **(** transform : `Matrix4x4`_ **)** -> `Vector3`_
+
+Returns the minimum x,y and z coordinate values of the axis aligned bounding box of the mesh transformed by the given transform matrix. Does not alter mesh data.
+
+----
+
+.. _class_mesh_method_getAabbMax:
+
+**getAabbMax** **(** **)** -> `Vector3`_
+
+Returns the maximum x,y and z coordinate values of the axis aligned bounding box of the mesh.
+
+----
+
+.. _class_mesh_method_getAabbMax2:
+
+**getAabbMax** **(** transform : `Matrix4x4`_ **)** -> `Vector3`_
+
+Returns the maximum x,y and z coordinate values of the axis aligned bounding box of the mesh transformed by the given transform matrix. Does not alter mesh data.
+
+----
+
+.. _class_mesh_method_getAabbCenter:
+
+**getAabbCenter** **(** **)** -> `Vector3`_
+
+Returns the center x,y and z coordinate values of the axis aligned bounding box of the mesh.
+
+----
+
+.. _class_mesh_method_getAabbCenter2:
+
+**getAabbCenter** **(** transform : `Matrix4x4`_ **)** -> `Vector3`_
+
+Returns the barycenter x,y and z coordinate values of the axis aligned bounding box of the mesh transformed by the given transform matrix. Does not alter mesh data.
+
+----
+
+.. _class_mesh_method_applyTransform:
+
+**applyTransform** **(** transform : `Matrix4x4`_ **)** -> `None`_
+
+Applies the barycenter transform matrix on the mesh's vertex data. Permanently alters the mesh.

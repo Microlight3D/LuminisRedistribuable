@@ -1,0 +1,91 @@
+.. _class_task2PP:
+
+Task2PP
+=======
+
+**ML3DFab.Models.FabricationTask.Task2PP**
+
+Description
+-----------
+
+A Task2PP is an object representing one fabrication task. It contains all information required to 
+print the task including: its raw data, in :ref:`Task2PPData<class_task2PPData>` and its parameters 
+in :ref:`Task2PPParameter<class_task2PPParameters>`.
+
+Constructors
+------------
+
+.. table::
+   :widths: auto
+
+   +---------------------------------------------------------------------------------------------------------------------------------+
+   | **Task2PP** **(** **)**                                                                                                         |
+   +---------------------------------------------------------------------------------------------------------------------------------+
+   | **Task2PP** **(** `Array`_\[`Single`_\] vertices, `Array`_\[`UInt32`_\] segmentIndices, `Array`_\[`UInt32`_\] pathIndices **)** |
+   +---------------------------------------------------------------------------------------------------------------------------------+
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                                                                    | :ref:`EstimatedTime<class_task2PP_property_estimatedTime>`                        | ``""``    |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`Task2PPParameter<class_task2PPParameters>`                            | :ref:`Parameters<class_task2PP_property_parameters>`                              |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`Task2PPData<class_task2PPData>`                                       | :ref:`Data<class_task2PP_property_data>`                                          |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +-----------------+--------------------------------------------------------------------------------------------------------+
+   | `int`_          | :ref:`SegmentEstimatedTime<class_task2PP_method_segmentEstimatedTime>` ( segmentId : `int`_ )          |
+   +-----------------+--------------------------------------------------------------------------------------------------------+
+   | `bool`_         | :ref:`isInside<class_task2PP_method_isInside>` ( rectPosition : `Vector3`_, rectSize : `Vector3`_)     |
+   +-----------------+--------------------------------------------------------------------------------------------------------+
+
+Property Descriptions
+---------------------
+
+.. _class_task2PP_property_estimatedTime:
+
+**EstimatedTime** : `float`_
+
+Estimated time, in seconds (s), for the task's fabrication.
+
+----
+
+.. _class_task2PP_property_parameters:
+
+**Parameters** : :ref:`Task2PPParameter<class_task2PPParameters>`
+
+----
+
+.. _class_task2PP_property_data:
+
+**Data** : :ref:`Task2PPData<class_task2PPData>`
+
+Method Descriptions
+-------------------
+
+.. _class_task2PP_method_segmentEstimatedTime:
+
+**SegmentEstimatedTime** **(** segmentId : `int`_ **)** ->  `int`_
+
+Returns the estimated time needed to print the given segment. The
+segment is given by it's ID in the task's segment array.
+
+----
+
+.. _class_task2PP_method_isInside:
+
+**isInside** **(** rectPosition : `Vector3`_, rectSize : `Vector3`_ **)** -> `bool`_
+
+Returns wether or not the task is contained in the given rectangle. The 
+rectangle is defined by it's minimum position on all axis and its size.

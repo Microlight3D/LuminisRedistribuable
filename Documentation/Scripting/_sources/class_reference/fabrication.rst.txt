@@ -1,0 +1,186 @@
+.. _class_fabrication:
+
+Fabrication
+===========
+
+**ML3DFab.Models.FabricationTask.Fabrication**
+
+Description
+-----------
+
+A Fabrication is the container for all print data including fabrication :ref:`tasks<class_task2PP>`, print order etc. There is a single Fabrication object per Luminis instance. This object is available in python scripts
+through the fabrication object. Direct modifications to this object allows to add, remove or modify fabrication tasks and modify print order.
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`Configuration<class_configuration>`\[\]                               | :ref:`Configurations<class_fabrication_property_configurations>`                  |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`Assembly<class_assembly>`\[\]                                         | :ref:`Assemblies<class_fabrication_property_assemblies>`                          |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`Task<class_task2PP>`\[\]                                              | :ref:`Blueprint<class_fabrication_property_blueprint>`                            |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Assembly<class_assembly>`                                             | :ref:`findAssemblyById<class_fabrication_method_findAssemblyById>` ( id : `str`_ )                                           |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Task<class_task2PP>`                                                  | :ref:`findTaskByIdFromAssemblies<class_fabrication_method_findTaskByIdFromAssemblies>` ( id : `str`_ )                       |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Task<class_task2PP>`                                                  | :ref:`findTaskByFileName<class_fabrication_method_findTaskByFileName>` ( fileName : `str`_ )                                 |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Task<class_task2PP>`                                                  | :ref:`findTaskByIdFromBlueprint<class_fabrication_method_findTaskByIdFromBlueprint>` ( id : `str`_ )                         |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `bool`_                                                                     | :ref:`containsId<class_fabrication_method_containsId>` ( id : `str`_ )                                                       |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`addAssembly<class_fabrication_method_addAssembly>` ( assembly : :ref:`Assembly<class_assembly>` )                      |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`removeAssemblies<class_fabrication_method_removeAssemblies>` ( assemblyArray : :ref:`Assembly<class_assembly>`\[\] )   |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`removeTask<class_fabrication_method_removeTask>` ( task : :ref:`Task<class_task2PP>` )                                 |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`removeTasks<class_fabrication_method_removeTasks>` ( tasks : :ref:`Task<class_task2PP>`\[\] )                          |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`addTasksToBlueprint<class_fabrication_method_addTasksToBlueprint>` ( tasks : :ref:`Task<class_task2PP>`\[\] )          |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`addTaskToBlueprint<class_fabrication_method_addTaskToBlueprint>` ( task : :ref:`Task<class_task2PP>` )                 |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`clear<class_fabrication_method_clear>` ( )                                                                             |
+   +-----------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+
+Property Descriptions
+---------------------
+
+.. _class_fabrication_property_configurations:
+
+**Configurations** : :ref:`Configuration<class_configuration>`\[\]
+
+Hardware configuration required to print every tasks in the fabrication. This is optional and not used in 2PP fabrication handling yet.
+
+----
+
+.. _class_fabrication_property_assemblies:
+
+**Assemblies** : :ref:`Assembly<class_assembly>`\[\]
+
+Unsorted list of fabrication assemblies. Assemblies contain fabrication tasks.
+
+----
+
+.. _class_fabrication_property_blueprint:
+
+**Blueprint** : :ref:`Task<class_task2PP>`\[\]
+
+List of all fabrication tasks ordered by print order. This list defines what tasks will be printed. If a task is not present in 
+the Blueprint list it will not be printed.
+
+Method Descriptions
+-------------------
+
+.. _class_fabrication_method_findAssemblyById:
+
+**findAssemblyById** **(** id : `str`_ **)** -> :ref:`Assembly<class_assembly>` 
+
+Returns the first assembly matching the given id in :ref:`Assemblies<class_fabrication_property_assemblies>` if it exists, null otherwise.
+
+----
+
+.. _class_fabrication_method_findTaskByIdFromAssemblies:
+
+**findTaskByIdFromAssemblies** **(** id : `str`_ **)** -> :ref:`Task<class_task2PP>`
+
+Returns the first task matching the given id in all tasks of all assemblies in :ref:`Assemblies<class_fabrication_property_assemblies>` if it exists, null otherwise
+
+----
+
+.. _class_fabrication_method_findTaskByFileName:
+
+**findTaskByFileName** **(** fileName : `str`_ **)** -> :ref:`Task<class_task2PP>`
+
+Returns the first task matching the given file name in :ref:`Assemblies<class_fabrication_property_assemblies>` if it exists, null otherwise.
+
+----
+
+.. _class_fabrication_method_findTaskByIdFromBlueprint:
+
+**findTaskByIdFromBlueprint** **(** id : `str`_ **)** -> :ref:`Task<class_task2PP>`
+
+Returns the first task matching the given id in :ref:`Blueprint<class_fabrication_property_blueprint>` if it exists, null otherwise.
+
+----
+
+.. _class_fabrication_method_containsId:
+
+**containsId** **(** id : `str`_ **)** -> `bool`_
+
+Returns true if a task with the given id is present in either any assembly of :ref:`Assemblies<class_fabrication_property_assemblies>` or in 
+:ref:`Blueprint<class_fabrication_property_blueprint>`, false otherwise.
+
+----
+
+.. _class_fabrication_method_addAssembly:
+
+**addAssembly** **(** assembly : :ref:`Assembly<class_assembly>` **)** -> `None`_
+
+Add an assembly to Assemblies. Fires the AssemblyAdded event. If the assembly contains tasks 
+also fires the TaskAddedToAssembly event for each of its tasks.
+
+----
+
+.. _class_fabrication_method_removeAssemblies:
+
+**removeAssemblies** **(** assemblyArray : :ref:`Assembly<class_assembly>`\[\] **)** -> `None`_
+
+Remove the given assembly from Assemblies. Fires the AssemblyDeleted event. If the assembly contains tasks 
+also fires the TaskDeletedFromAssembly event for each of its tasks
+
+----
+
+.. _class_fabrication_method_removeTask:
+
+**removeTask** **(** task : :ref:`Task<class_task2PP>` **)** -> `None`_
+
+Remove remove the given task from :ref:`Assemblies<class_fabrication_property_assemblies>` and
+:ref:`Blueprint<class_fabrication_property_blueprint>`.
+
+----
+
+.. _class_fabrication_method_removeTasks:
+
+**removeTasks** **(** tasks : :ref:`Task<class_task2PP>`\[\] **)** -> `None`_
+
+Remove all tasks in the given "task" array from :ref:`Assemblies<class_fabrication_property_assemblies>` and
+:ref:`Blueprint<class_fabrication_property_blueprint>`.
+
+----
+
+.. _class_fabrication_method_addTasksToBlueprint:
+
+**addTasksToBlueprint** **(** tasks : :ref:`Task<class_task2PP>`\[\] **)** -> `None`_
+
+Add the given tasks in the given "task" array to :ref:`Blueprint<class_fabrication_property_blueprint>` only.
+
+----
+
+.. _class_fabrication_method_addTaskToBlueprint:
+
+**addTaskToBlueprint** **(** task : :ref:`Task<class_task2PP>` **)** -> `None`_
+
+Add the given task to :ref:`Blueprint<class_fabrication_property_blueprint>` only.
+
+----
+
+.. _class_fabrication_method_clear:
+
+**clear** **(** **)** -> `None`_
+
+Remove all assemblies from :ref:`Assemblies<class_fabrication_property_assemblies>` and tasks from :ref:`Blueprint<class_fabrication_property_blueprint>`

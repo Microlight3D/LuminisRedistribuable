@@ -1,0 +1,5 @@
+2024-01-09 01:14:59,990 Interface.Program - Launching Luminis version 2.0.1.0
+2024-01-09 01:15:00,016 Interface.Program - Slicer version 1.0.7.0
+2024-01-09 01:15:00,798 Interface.Program - Checking license.
+2024-01-09 01:15:00,803 Interface.Program - No license found, opening license validator.
+2024-01-09 01:15:52,506 Interface.Program - Invalid license detected. Closing.

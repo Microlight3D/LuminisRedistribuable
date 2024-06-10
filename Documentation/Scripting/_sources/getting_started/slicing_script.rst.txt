@@ -1,0 +1,227 @@
+.. _tuto_slicing_script:
+
+Slicing via script
+==================
+
+In this exemple we will write a script that loads an object from the file system and slice it in all the qualities options. Here is the full code bellow:
+
+.. code-block:: python
+    :linenos:
+
+    from Interface.Common.Models import SlicingParameters, Quality
+    from ML3DFab.Models.FabricationTask import Task2PP, Assembly2PP
+    from Interface.Common.Models.Polyhedrons import Polyhedron
+    from Interface.Utils.FileImporters import FileImporter
+    from System.Numerics import Vector3
+    from ML3DSlicer import MeshSlicer
+    from System import Single, UInt32
+
+    LOADPATH = ""
+    SPACING = 5
+
+    objective = next(obj for obj in SlicingParameters.Objectives if "20X/0.8" in obj.Name)
+    resist = next(r for r in SlicingParameters.Resists if "OrmoComp" == r.Name)
+    slicer = MeshSlicer()
+
+    polyhedron : Polyhedron = FileImporter.Load(LOADPATH)
+    vertexArray : Array[Single] = polyhedron.Mesh.getSurfaceVertexArray(0)
+    indexArray : Array[UInt32] = polyhedron.Mesh.getSurfaceIndexArray(0)
+    normalArray : Array[Single] = polyhedron.Mesh.getSurfaceNormalArray(0)
+
+    qualities = [Quality.HIGHEST, Quality.HIGH, Quality.STANDARD, Quality.LOW, Quality.LOWEST]
+    for id, quality in enumerate(qualities):
+        
+        SlicingParameters.setSlicingParameters(slicer, objective, resist, quality)
+
+        slicer.setMeshVertices(vertexArray)
+        slicer.setMeshIndices(indexArray)
+        slicer.setMeshNormals(normalArray)
+        slicer.setMeshTransform(polyhedron.Transform.getMatrix())
+        
+        slicer.initializeSlicing()
+        slicer.initializeHatching(0,0)
+        while(not slicer.isComputeDone()):
+            slicer.progressComputing()
+        
+        task2PP = Task2PP()
+        task2PP.Name = polyhedron.Name+"_"+str(quality)+"_"+str(objective.Aperture)+"NA_"+str(resist.RefractiveIndex)+"RI"
+        task2PP.Data = slicer.getResult()
+        SlicingParameters.setTaskParameter(task2PP, objective, resist, quality)
+        task2PP.Parameters.Position = Vector3(1,1,0)*(slicer.getAABBMax() - slicer.getAABBMin())/2
+        task2PP.Parameters.Position += Vector3(0,(task2PP.Parameters.Position.Y+SPACING)*2*id,0)
+        
+        if(fabrication.Assemblies.Count <= 0):
+            fabrication.addAssembly(Assembly2PP())
+        fabrication.Assemblies[0].add(task2PP)
+        fabrication.addTaskToBlueprint(task2PP)
+
+Load a polyhedron from file
+---------------------------
+
+First let's import an object from file using the :ref:`FileImporter<class_fileImporter>` static class:
+ 
+.. code-block:: python
+    :linenos:
+
+    from Interface.Common.Models.Polyhedrons import Polyhedron
+    from Interface.Utils.FileImporters import FileImporter
+
+    LOADPATH = ""
+
+We retrieve a :ref:`Polyhedron<class_polyhedron>` object of which we extract it's arrays for later use in the slicer:
+
+.. code-block:: python
+    :linenos:
+
+    from System import Single, UInt32
+
+    polyhedron : Polyhedron = FileImporter.Load(LOADPATH)
+    vertexArray : Array[Single] = polyhedron.Mesh.getSurfaceVertexArray(0)
+    indexArray : Array[UInt32] = polyhedron.Mesh.getSurfaceIndexArray(0)
+    normalArray : Array[Single] = polyhedron.Mesh.getSurfaceNormalArray(0)
+
+Initialize and run the slicer
+-----------------------------
+
+Now that we have an object to slice, let's create and initialize the slicer:
+
+.. code-block:: python
+    :linenos:
+
+    from ML3DSlicer import MeshSlicer
+
+    slicer = MeshSlicer()
+
+The slicer needs informations about voxel size and overlap. For this we can use the :ref:`SlicingParameters<class_slicingParameters>` static helper class. We'll just need an :ref:`objective<class_objective>`, a :ref:`resist<class_resist>` and define a :ref:`print quality<class_slicingParameters_enum_quality>`:
+
+.. code-block:: python
+    :linenos:
+
+    from Interface.Common.Models import SlicingParameters, Quality
+
+    objective = next(obj for obj in SlicingParameters.Objectives if "20X/0.8" in obj.Name)
+    resist = next(r for r in SlicingParameters.Resists if "OrmoComp" == r.Name)
+
+    SlicingParameters.setSlicingParameters(slicer, objective, resist, Quality.STANDARD)
+
+We'll pass our :ref:`Polyhedron<class_polyhedron>` arrays and transform to the slicer:
+
+.. code-block:: python
+    :linenos:
+
+    slicer.setMeshVertices(vertexArray)
+    slicer.setMeshIndices(indexArray)
+    slicer.setMeshNormals(normalArray)
+    slicer.setMeshTransform(polyhedron.Transform.getMatrix())
+
+
+The slicer is now ready to be initialized. All slicing modules need to be initialized separately using their initialization function:
+
+* :ref:`initializeSlicing<class_meshSlicer_method_initializeSlicing>` for slicing trajectories;
+* :ref:`initializeHatching<class_meshSlicer_method_initializeHatching>` for hatching trajectories;
+* :ref:`initializeFilling<class_meshSlicer_method_initializeFilling>` for infill trajectories;
+* :ref:`initializeTextToPath<class_meshSlicer_method_initializeTextToPath>` for text generation;
+
+.. code-block:: python
+    :linenos:
+
+    slicer.initializeSlicing()
+    slicer.initializeHatching(0,0)
+
+To operate the slicing, we call :ref:`progressComputing<class_meshSlicer_method_progressComputing>` over and over while the slicer doesn't notify the process being done via :ref:`isComputeDone<class_meshSlicer_method_isComputeDone>`:
+
+.. code-block:: python
+    :linenos:
+
+    while(not slicer.isComputeDone()):
+        slicer.progressComputing()
+    
+Create the fabrication task
+---------------------------
+
+One the slicing process over, we can retreive the result: a :ref:`Task2PPParameters<class_task2PPParameters>` object. We'll need to create a :ref:`task<class_task2PP>`, assign it parameters and set it data to the slicing result:
+
+.. code-block:: python
+    :linenos:
+    
+    from ML3DFab.Models.FabricationTask import Task2PP, Assembly2PP
+    from System.Numerics import Vector3
+
+    task2PP = Task2PP()
+    # Give the task a comprehensive name including its resist refractive index, objective apreture and print quality
+    task2PP.Name = polyhedron.Name+"_"+str(Quality.STANDARD)+"_"+str(objective.Aperture)+"NA_"+str(resist.RefractiveIndex)+"RI"
+    task2PP.Data = slicer.getResult()
+    # Assign parameters using objectve, resist and print quality
+    SlicingParameters.setTaskParameter(task2PP, objective, resist, Quality.STANDARD)
+    # Set the position to be in fabrication stage bounds
+    task2PP.Parameters.Position = Vector3(1,1,0)*(slicer.getAABBMax() - slicer.getAABBMin())/2
+
+Finally we'll add the :ref:`task<class_task2PP>` to Luminis:
+
+.. code-block:: python
+    :linenos:
+
+    if(fabrication.Assemblies.Count <= 0):
+        fabrication.addAssembly(Assembly2PP())
+    fabrication.Assemblies[0].add(task2PP)
+    fabrication.addTaskToBlueprint(task2PP)
+
+Slice for all print qualities
+-----------------------------
+
+Now that we know how to slice an object let's do it multiple times for all print quality. To do so we'll define an array containing all of the print quality:
+
+.. code-block:: python
+    :linenos:
+
+    qualities = [Quality.HIGHEST, Quality.HIGH, Quality.STANDARD, Quality.LOW, Quality.LOWEST]
+ 
+Loop over them and slice our object for each quality:
+
+.. code-block:: python
+    :linenos:
+
+    qualities = [Quality.HIGHEST, Quality.HIGH, Quality.STANDARD, Quality.LOW, Quality.LOWEST]
+    for id, quality in enumerate(qualities):
+        
+        SlicingParameters.setSlicingParameters(slicer, objective, resist, quality)
+
+        slicer.setMeshVertices(vertexArray)
+        slicer.setMeshIndices(indexArray)
+        slicer.setMeshNormals(normalArray)
+        slicer.setMeshTransform(polyhedron.Transform.getMatrix())
+        
+        slicer.initializeSlicing()
+        slicer.initializeHatching(0,0)
+        while(not slicer.isComputeDone()):
+            slicer.progressComputing()
+
+And assign the results to tasks:
+
+.. code-block:: python
+    :linenos:
+
+    SPACING = 5
+
+    # To add inside the loop
+    task2PP = Task2PP()
+    # Replace the constant quality by the current resist in the loop
+    task2PP.Name = polyhedron.Name+"_"+str(quality)+"_"+str(objective.Aperture)+"NA_"+str(resist.RefractiveIndex)+"RI"
+    task2PP.Data = slicer.getResult()
+    SlicingParameters.setTaskParameter(task2PP, objective, resist, quality)
+    task2PP.Parameters.Position = Vector3(1,1,0)*(slicer.getAABBMax() - slicer.getAABBMin())/2
+    # Offset the tasks positions so they're not overlaping
+    task2PP.Parameters.Position += Vector3(0,(task2PP.Parameters.Position.Y+SPACING)*2*id,0)
+    
+    if(fabrication.Assemblies.Count <= 0):
+        fabrication.addAssembly(Assembly2PP())
+    fabrication.Assemblies[0].add(task2PP)
+    fabrication.addTaskToBlueprint(task2PP)
+
+And our script is done ! Here are some example results:
+
+.. figure:: /img/sclicing_result.png
+  :align: center
+  :alt: Image not loaded
+
+|

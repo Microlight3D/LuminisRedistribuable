@@ -1,0 +1,131 @@
+.. _class_assembly:
+
+Assembly
+========
+
+**ML3DFab.Models.FabricationTask.Assembly**
+
+Description
+-----------
+
+Assemblies are part of a :ref:`fabrication<class_fabrication>`. They contain fabrication :ref:`tasks<class_task2PP>` and ways to access them.
+
+Constructors
+------------
+
+.. table::
+   :widths: auto
+
+   +--------------------------------------+
+   | **Assembly** **(** **)**             |
+   +--------------------------------------+
+   | **Assembly** **(** `str`_ name **)** |
+   +--------------------------------------+
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                                                                      | :ref:`Id<class_assembly_property_id>`                                             | ``""``    |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                                                                      | :ref:`Name<class_assembly_property_name>`                                         | ``""``    |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+   | :ref:`Task<class_task2PP>`                                                  | :ref:`findTaskByName<class_assembly_method_findTaskByName>` ( name : `str`_ )                   |
+   +-----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+   | :ref:`Task<class_task2PP>`                                                  | :ref:`findTaskByName<class_assembly_method_findTaskById>` ( id : `str`_ )                       |
+   +-----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`findTaskByName<class_assembly_method_add1>` ( task : :ref:`Task<class_task2PP>` )         |
+   +-----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`findTaskByName<class_assembly_method_add2>` ( taskArray : :ref:`Task<class_task2PP>`\[\] )|
+   +-----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+   | `None`_                                                                     | :ref:`findTaskByName<class_assembly_method_remove>` ( task : :ref:`Task<class_task2PP>` )       |
+   +-----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+   | :ref:`Task<class_task2PP>`\[\]                                              | :ref:`findTaskByName<class_assembly_method_getTasks>` ( )                                       |
+   +-----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+   | :ref:`Assembly<class_assembly>`                                             | :ref:`findTaskByName<class_assembly_method_duplicate>` ( )                                      |
+   +-----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+
+Property Descriptions
+---------------------
+
+.. _class_assembly_property_id:
+
+**Id** : `str`_
+
+Unique identifier describing the object.
+
+----
+
+.. _class_assembly_property_name:
+
+**Name** : `str`_
+
+Display name for the object.
+
+Method Descriptions
+-------------------
+
+.. _class_assembly_method_findTaskByName:
+
+**findTaskByName** **(** name : `str`_ **)** -> :ref:`Task<class_task2PP>` 
+
+Returns the first task in the assembly that matches the given name or `None`_ if none is found.
+
+----
+
+.. _class_assembly_method_findTaskById:
+
+**findTaskById** **(** id : `str`_ **)** -> :ref:`Task<class_task2PP>` 
+
+Returns the first task in the assembly that matches the given id or `None`_ if none is found.
+
+----
+
+.. _class_assembly_method_add1:
+
+**add** **(** task : :ref:`Task<class_task2PP>` **)** -> `None`_
+
+Add the given task to the assembly.
+
+----
+
+.. _class_assembly_method_add2:
+
+**add** **(** taskArray : :ref:`Task<class_task2PP>`\[\] **)** -> `None`_
+
+Add the given task array to the assembly.
+
+----
+
+.. _class_assembly_method_remove:
+
+**remove** **(** task : :ref:`Task<class_task2PP>` **)** -> `None`_
+
+Remove the given task from the assembly.
+
+----
+
+.. _class_assembly_method_getTasks:
+
+**getTasks** **(** **)** -> :ref:`Task<class_task2PP>`\[\]
+
+Returns a list of all the tasks in the assembly
+
+----
+
+.. _class_assembly_method_duplicate:
+
+**duplicate** **(** **)** -> :ref:`Assembly<class_assembly>`
+
+Returns a deep copy of the assembly. Duplicates its tasks.

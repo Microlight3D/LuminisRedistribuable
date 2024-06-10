@@ -1,0 +1,318 @@
+.. _tuto_mesh_generation:
+
+Mesh generation
+===============
+
+In this tutorial you will learn to generate a mesh, transform its vertices and instanciate it in a Polyhedron object in order to create a prism array aproximating a lens. Here is the full code bellow:
+
+.. code-block:: python
+    :linenos:
+
+    from Interface.Common.Models.Polyhedrons import Polyhedron, Transform
+    from System import Array,Single,UInt32
+    from System.Numerics import Vector3
+    import math
+
+    COUNT = 11 # Number of objects per rows and colums. Total object count is COUNT²
+    FOCAL = -60 # Focal point Z height, if FOCAL < 0 the lens will be convex
+    HEIGHT = 20 # Height at objects centers in µm
+    SPACING = 1 # Space between objects in µm
+    SIZE = 10 # Objects base size in µm
+
+    for i in range(0,COUNT):
+        for j in range(0,COUNT):
+            polyhedron = Polyhedron()
+            polyhedron.Name = "Prism("+str(i)+","+str(j)+")"
+            surfId = polyhedron.Mesh.addSurface()
+            
+            # Define transforms to be applied to the cube upper plane
+            translation = Transform()
+            translation.setPosition(Vector3(0,0,-HEIGHT))
+            
+            rotation = Transform()
+            x = Vector3(SIZE/2+(SIZE+SPACING)*(i-COUNT/2),0,0)
+            y = Vector3(0,SIZE/2+(SIZE+SPACING)*(j-COUNT/2),0)
+            focal = Vector3(0,0,abs(FOCAL))
+            xToFocal = Vector3.Normalize(focal-x)
+            yToFocal = Vector3.Normalize(focal-y)
+            focal = Vector3.Normalize(focal)
+            angleXInRad = math.acos(Vector3.Dot(focal, xToFocal));
+            angleYInRad = math.acos(Vector3.Dot(focal, yToFocal));
+            invert = math.copysign(1,-FOCAL)
+            signedAngleXDeg = -invert*math.degrees(math.copysign(angleXInRad,x.X))
+            signedAngleYDeg = invert*math.degrees(math.copysign(angleYInRad,y.Y))
+            rotation.setRotationEulerXYZ(Vector3(signedAngleYDeg,signedAngleXDeg,0))
+            
+            invTranslation = Transform()
+            invTranslation.setPosition(Vector3(0,0,HEIGHT))
+            
+            # Define the cube's upper plane
+            a = Vector3(-SIZE/2,-SIZE/2,HEIGHT)
+            b = Vector3(SIZE/2,-SIZE/2,HEIGHT)
+            c = Vector3(SIZE/2,SIZE/2,HEIGHT)
+            d = Vector3(-SIZE/2,SIZE/2,HEIGHT)
+            
+            # Apply rotation to the cube upper plane
+            a = invTranslation.applyTo(rotation.applyTo(translation.applyTo(a)))
+            b = invTranslation.applyTo(rotation.applyTo(translation.applyTo(b)))
+            c = invTranslation.applyTo(rotation.applyTo(translation.applyTo(c)))
+            d = invTranslation.applyTo(rotation.applyTo(translation.applyTo(d)))
+            n = Vector3.Normalize(xToFocal+yToFocal);
+            
+            # Define vertex, index and normal arrays
+            vertices = Array[Single]([
+            -SIZE/2,  SIZE/2, 0,    SIZE/2,  SIZE/2, 0,    SIZE/2, -SIZE/2, 0,
+            -SIZE/2, -SIZE/2, 0,   -SIZE/2, -SIZE/2, a.Z,  SIZE/2, -SIZE/2, b.Z,
+             SIZE/2,  SIZE/2, c.Z, -SIZE/2,  SIZE/2, d.Z,  SIZE/2, -SIZE/2, 0,
+             SIZE/2,  SIZE/2, 0,    SIZE/2,  SIZE/2, c.Z,  SIZE/2, -SIZE/2, b.Z,
+            -SIZE/2, -SIZE/2, a.Z, -SIZE/2,  SIZE/2, d.Z, -SIZE/2,  SIZE/2, 0,
+            -SIZE/2, -SIZE/2, 0,   -SIZE/2, -SIZE/2, 0,    SIZE/2, -SIZE/2, 0,
+             SIZE/2, -SIZE/2, b.Z, -SIZE/2, -SIZE/2, a.Z, -SIZE/2,  SIZE/2, d.Z,
+             SIZE/2,  SIZE/2, c.Z,  SIZE/2,  SIZE/2, 0,   -SIZE/2,  SIZE/2, 0])
+            
+            indices = Array[UInt32]([
+             0,  1,  2,  2,  3,  0,
+             4,  5,  6,  6,  7,  4,
+             8,  9, 10, 10, 11,  8,
+            12, 13, 14, 14, 15, 12,
+            16, 17, 18, 18, 19, 16,
+            20, 21, 22, 22, 23, 20])
+            
+            normals = Array[Single]([
+              0,   0,  -1,   0,   0,  -1,   0,   0,  -1,   0,   0,  -1,
+            n.X, n.Y, n.Z, n.X, n.Y, n.Z, n.X, n.Y, n.Z, n.X, n.Y, n.Z,
+              1,   0,   0,   1,   0,   0,   1,   0,   0,   1,   0,   0,
+             -1,   0,   0,  -1,   0,   0,  -1,   0,   0,  -1,   0,   0,
+              0,  -1,   0,   0,  -1,   0,   0,  -1,   0,   0,  -1,   0,
+              0,   1,   0,   0,   1,   0,   0,   1,   0,   0,   1,   0])
+            
+            # Assign arrays to Polyhedron and add it to Luminis
+            polyhedron.Mesh.setSurfaceVertexArray(surfId,vertices)
+            polyhedron.Mesh.setSurfaceIndexArray(surfId,indices)
+            polyhedron.Mesh.setSurfaceNormalArray(surfId,normals)
+            posX = SIZE/2+(SIZE+SPACING)*i
+            posY = SIZE/2+(SIZE+SPACING)*j
+            polyhedron.Transform.setPosition(Vector3(posX,posY,0))
+            polyhedrons.add(polyhedron)
+
+Mesh arrays
+-----------
+
+Before trying to create a prism let's start simpler and generate a cuboid. We'll need to create a :ref:`Polyhedron<class_polyhedron>` object and fill its :ref:`Mesh<class_mesh>` with vertex, index and normal data. To do so let's create a :ref:`Polyhedron<class_polyhedron>`, name it "Prism" and add a new surface to its :ref:`Mesh<class_mesh>`:
+
+.. code-block:: python
+    :linenos:
+
+    from Interface.Common.Models.Polyhedrons import Polyhedron
+    
+    polyhedron = Polyhedron()
+    polyhedron.Name = "Prism"
+    surfId = polyhedron.Mesh.addSurface()
+
+We now have a surface ID "surfId" which we can use to access our newly created surface and add data to it. A surface data is split into three arrays: 
+
+* a vertex array contraining vertice, three concecutive floating point values representing one vertex;
+* an index array containing indices in the vertex array. Each vertex triplet is interpreted as a triangle face;
+* a normal array containing a normal vector for each vertex in the vertex array.
+
+.. figure:: /img/mesh_data_structure.svg
+  :align: center
+  :alt: Image not loaded
+
+|
+
+Let's create these arrays for a cuboid of a given SIZE and HEIGHT:
+
+.. code-block:: python
+    :linenos:
+
+    from System import Array,Single,UInt32
+
+    HEIGHT = 20 # Height at object center in µm
+    SIZE = 10 # Object X,Y size in µm
+
+    # Define vertex, index and normal arrays
+    vertices = Array[Single]([
+    -SIZE/2,  SIZE/2,      0,  SIZE/2,  SIZE/2,      0,  SIZE/2, -SIZE/2, 0,
+    -SIZE/2, -SIZE/2,      0, -SIZE/2, -SIZE/2, HEIGHT,  SIZE/2, -SIZE/2, HEIGHT,
+     SIZE/2,  SIZE/2, HEIGHT, -SIZE/2,  SIZE/2, HEIGHT,  SIZE/2, -SIZE/2, 0,
+     SIZE/2,  SIZE/2,      0,  SIZE/2,  SIZE/2, HEIGHT,  SIZE/2, -SIZE/2, HEIGHT,
+    -SIZE/2, -SIZE/2, HEIGHT, -SIZE/2,  SIZE/2, HEIGHT, -SIZE/2,  SIZE/2, 0,
+    -SIZE/2, -SIZE/2,      0, -SIZE/2, -SIZE/2,      0,  SIZE/2, -SIZE/2, 0,
+     SIZE/2, -SIZE/2, HEIGHT, -SIZE/2, -SIZE/2, HEIGHT, -SIZE/2,  SIZE/2, HEIGHT,
+     SIZE/2,  SIZE/2, HEIGHT,  SIZE/2,  SIZE/2,      0, -SIZE/2,  SIZE/2, 0])
+    
+    indices = Array[UInt32]([
+     0,  1,  2,  2,  3,  0,
+     4,  5,  6,  6,  7,  4,
+     8,  9, 10, 10, 11,  8,
+    12, 13, 14, 14, 15, 12,
+    16, 17, 18, 18, 19, 16,
+    20, 21, 22, 22, 23, 20])
+    
+    normals = Array[Single]([
+     0,   0,  -1,   0,   0,  -1,   0,   0,  -1,   0,   0,  -1,
+     0,   0,   1,   0,   0,   1,   0,   0,   1,   0,   0,   1,
+     1,   0,   0,   1,   0,   0,   1,   0,   0,   1,   0,   0,
+    -1,   0,   0,  -1,   0,   0,  -1,   0,   0,  -1,   0,   0,
+     0,  -1,   0,   0,  -1,   0,   0,  -1,   0,   0,  -1,   0,
+     0,   1,   0,   0,   1,   0,   0,   1,   0,   0,   1,   0])
+
+Assign the arrays to our :ref:`Mesh<class_mesh>` surface and add the polyhedron to Luminis by adding it to the polyhedrons list:
+
+
+.. code-block:: python
+    :linenos:
+    
+    # Assign arrays to the mesh's surface using its ID
+    polyhedron.Mesh.setSurfaceVertexArray(surfId,vertices)
+    polyhedron.Mesh.setSurfaceIndexArray(surfId,indices)
+    polyhedron.Mesh.setSurfaceNormalArray(surfId,normals)
+
+    # Add the Polyhedron to Luminis
+    polyhedrons.add(polyhedron)
+
+At this point if we execute our script we should see a cuboid of the right size and height, respectively 40µm and 30µm in the exemple bellow, appear in the 3D view:
+
+.. figure:: /img/mesh_generation_cuboid.png
+  :align: center
+  :alt: Image not loaded
+
+|
+
+Creating a prism by transforming vertices
+-----------------------------------------
+
+Now that we have generated a cuboid we can modify it to create prisms. To do so we will use :ref:`Transforms<class_transform>` to apply a rotation to the to faces of our cuboid. First, we define the cuboid's upper points and incorporate them to the vertex array:
+
+.. code-block:: python
+    :linenos:
+    
+    # Define the cube's upper plane
+    a = Vector3(-SIZE/2,-SIZE/2,HEIGHT)
+    b = Vector3(SIZE/2,-SIZE/2,HEIGHT)
+    c = Vector3(SIZE/2,SIZE/2,HEIGHT)
+    d = Vector3(-SIZE/2,SIZE/2,HEIGHT)            
+    
+    vertices = Array[Single]([
+    -SIZE/2,  SIZE/2, 0,    SIZE/2,  SIZE/2, 0,    SIZE/2, -SIZE/2, 0,
+    -SIZE/2, -SIZE/2, 0,   -SIZE/2, -SIZE/2, a.Z,  SIZE/2, -SIZE/2, b.Z,
+     SIZE/2,  SIZE/2, c.Z, -SIZE/2,  SIZE/2, d.Z,  SIZE/2, -SIZE/2, 0,
+     SIZE/2,  SIZE/2, 0,    SIZE/2,  SIZE/2, c.Z,  SIZE/2, -SIZE/2, b.Z,
+    -SIZE/2, -SIZE/2, a.Z, -SIZE/2,  SIZE/2, d.Z, -SIZE/2,  SIZE/2, 0,
+    -SIZE/2, -SIZE/2, 0,   -SIZE/2, -SIZE/2, 0,    SIZE/2, -SIZE/2, 0,
+     SIZE/2, -SIZE/2, b.Z, -SIZE/2, -SIZE/2, a.Z, -SIZE/2,  SIZE/2, d.Z,
+     SIZE/2,  SIZE/2, c.Z,  SIZE/2,  SIZE/2, 0,   -SIZE/2,  SIZE/2, 0])
+
+Let's create :ref:`Transforms<class_transform>` to arbitrarily rotate our four points:
+
+.. code-block:: python
+    :linenos:
+    
+    # Define transforms to be applied to the cube upper plane
+    translation = Transform()
+    translation.setPosition(Vector3(0,0,-HEIGHT))
+    
+    rotation = Transform()
+    rotation.setRotationEulerXYZ(Vector3(10,10,0))
+    
+    invTranslation = Transform()
+    invTranslation.setPosition(Vector3(0,0,HEIGHT))
+
+As shown in the diagram bellow, we need three :ref:`Transforms<class_transform>` to apply our rotation as we first need to place our points at the origin Z=0 before applying the rotation and replace the points back in place after the rotation.
+
+.. figure:: /img/mesh_generation_transform.svg
+  :align: center
+  :alt: Image not loaded
+
+|
+
+Finally, apply the :ref:`Transforms<class_transform>` to a,b,c and d:
+
+.. code-block:: python
+    :linenos:
+    
+    # Apply rotation to the cube upper plane
+    a = invTranslation.applyTo(rotation.applyTo(translation.applyTo(a)))
+    b = invTranslation.applyTo(rotation.applyTo(translation.applyTo(b)))
+    c = invTranslation.applyTo(rotation.applyTo(translation.applyTo(c)))
+    d = invTranslation.applyTo(rotation.applyTo(translation.applyTo(d)))
+
+Running our script should now add a prism to Luminis:
+
+.. figure:: /img/mesh_generation_prism.png
+  :align: center
+  :alt: Image not loaded
+
+|
+
+Making a prism array
+--------------------
+
+Now that we have a customizable prism, we can make a bunch to create a prism array. First define a COUNT and a SPACING constant respectively defining the number of prisms per rows and colums and the space between two prisms. Then loop over COUNT for rows and columns and generate prisms in an array pattern:
+
+
+.. code-block:: python
+    :linenos:
+
+    COUNT = 11 # Number of objects per rows and colums. Total object count is COUNT²
+    SPACING = 1 # Space between objects in µm
+
+    for i in range(0,COUNT):
+        for j in range(0,COUNT):
+            polyhedron = Polyhedron()
+            polyhedron.Name = "Prism("+str(i)+","+str(j)+")"
+
+            # [Prism generation code]
+            
+            posX = SIZE/2+(SIZE+SPACING)*i
+            posY = SIZE/2+(SIZE+SPACING)*j
+            polyhedron.Transform.setPosition(Vector3(posX,posY,0))
+            polyhedrons.add(polyhedron)
+
+Orienting prisms to create a lens
+---------------------------------
+
+If we want to approximate a lens from our lens array we need to make all prisms align to a focal point. Like so:
+
+.. figure:: /img/mesh_generation_focus_alignment.svg
+  :align: center
+  :alt: Image not loaded
+
+|
+
+To do so we need to extract the :math:`\theta` angle above on the XZ and YZ planes and assign it as our rotation for each prism in our array:
+
+.. code-block:: python
+    :linenos:
+
+    FOCAL = -60 # Focal point Z height, if FOCAL < 0 the lens will be convex
+
+    rotation = Transform()
+    x = Vector3(SIZE/2+(SIZE+SPACING)*(i-COUNT/2),0,0)
+    y = Vector3(0,SIZE/2+(SIZE+SPACING)*(j-COUNT/2),0)
+    focal = Vector3(0,0,abs(FOCAL))
+    xToFocal = Vector3.Normalize(focal-x)
+    yToFocal = Vector3.Normalize(focal-y)
+    focal = Vector3.Normalize(focal)
+    angleXInRad = math.acos(Vector3.Dot(focal, xToFocal));
+    angleYInRad = math.acos(Vector3.Dot(focal, yToFocal));
+    invert = math.copysign(1,-FOCAL)
+    signedAngleXDeg = -invert*math.degrees(math.copysign(angleXInRad,x.X))
+    signedAngleYDeg = invert*math.degrees(math.copysign(angleYInRad,y.Y))
+    rotation.setRotationEulerXYZ(Vector3(signedAngleYDeg,signedAngleXDeg,0))
+  
+If we put every steps above together we obtain a script that generates parametrizable prism arrays approximating a spherical lens of a given focal point.
+
+
+.. figure:: /img/mesh_generation_lens_1.png
+  :align: center
+  :alt: Image not loaded
+
+|
+
+.. figure:: /img/mesh_generation_lens_2.png
+  :align: center
+  :alt: Image not loaded
+
+|

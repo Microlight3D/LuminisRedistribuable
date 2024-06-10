@@ -1,0 +1,65 @@
+.. _class_resist:
+
+Resist
+======
+
+**Interface.Common.Models.Resist**
+
+Description
+-----------
+
+The resist class defines a resist profil, it can be used to configure a :ref:`task2PP<class_task2PP>`.
+
+Constructors
+------------
+
+.. table::
+   :widths: auto
+
+   +------------------------------------------------------------------------------------------------------------+
+   | **Resist** **(** `str`_ name **)**                                                                         |
+   +------------------------------------------------------------------------------------------------------------+
+   | **Resist** **(** `str`_ name, , `float`_ refractiveIndex **)**                                             |
+   +------------------------------------------------------------------------------------------------------------+
+   | **Resist** **(** `str`_ name, , `float`_ refractiveIndex, `Dict`_\[ `float`_, `float`_ \] laserCurve **)** |
+   +------------------------------------------------------------------------------------------------------------+
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                             | :ref:`Name<class_resist_property_name>`                                           | ``""``    |
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `float`_                           | :ref:`RefractiveIndex<class_resist_property_refractiveIndex>`                     | ``0``     |
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `Dict`_\[ `float`_, `float`_ \]    | :ref:`LaserCurve<class_resist_property_laserCurve>`                               |           |
+   +------------------------------------+-----------------------------------------------------------------------------------+-----------+
+
+Property Descriptions
+---------------------
+
+.. _class_resist_property_name:
+
+**Name** : `str`_
+
+Resist's display name.
+
+----
+
+.. _class_resist_property_refractiveIndex:
+
+**RefractiveIndex** : `float`_
+
+Resist uncured refractive index.
+
+----
+
+.. _class_resist_property_laserCurve:
+
+**LaserCurve** : `Dict`_\[ `float`_, `float`_ \]
+
+Piece-wise affine function deffined by the points LaserCurve(x) = y such as x is a Z elevation, in micro-meters (µm), in fabrication stage range and x a 
+laser power offset, in percent (%). Intermediate values are interpolated and extrapolated. Laser power offset will be added to task laser power to compensate resist thickness traversal.

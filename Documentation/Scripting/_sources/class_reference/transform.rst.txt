@@ -1,0 +1,153 @@
+.. _class_transform:
+
+Transform
+=========
+
+**Interface.Common.Models.Polyhedrons.Transform** 
+
+Description
+-----------
+
+    A transform stores the translation P, orientation axis X,Y,Z and scale S of an orthogonal coordinate system in 3D space as a 4x4 matrix like so :
+
+    .. _class_transform_matrix:
+
+    .. math::
+
+        T = \begin{bmatrix}
+                {X}_{x} \cdot {S}_{x} & {Y}_{x} & {Z}_{x} & {P}_{x} \\
+                {X}_{y} & {Y}_{y} \cdot {S}_{y} & {Z}_{y} & {P}_{y} \\
+                {X}_{z} & {Y}_{z} & {Z}_{z} \cdot {S}_{z} & {P}_{z} \\
+                0 & 0 & 0 & 1 \\
+            \end{bmatrix}
+
+    This format allows to effortlessly transform a vector in 3D space to the defined coordinate system. The class itself contains plenty of helper functions to access, modify and apply the transform matrix.
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`getTranslation<class_transform_method_getTranslation>` ( )                                  |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`getScale<class_transform_method_getScale>` ( )                                              |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`getRotationEulerXYZ<class_transform_method_getRotationEulerXYZ>` ( )                        |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`getX<class_transform_method_getX>` ( )                                                      |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`getY<class_transform_method_getY>` ( )                                                      |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`getZ<class_transform_method_getZ>` ( )                                                      |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `Matrix4x4`_ | :ref:`getMatrix<class_transform_method_getMatrix>` ( )                                            |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setPosition<class_transform_method_setPosition>` ( position : `Vector3`_ )                  |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setScale<class_transform_method_setScale>` ( scale : `Vector3`_ )                           |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setRotationEulerXYZ<class_transform_method_setRotationEulerXYZ>` ( eulerXYZ : `Vector3`_ )  |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `None`_      | :ref:`setMatrix<class_transform_method_setMatrix>` ( matrix : `Matrix4x4`_ )                      |
+   +--------------+---------------------------------------------------------------------------------------------------+
+   | `Vector3`_   | :ref:`applyTo<class_transform_method_applyTo>` ( point : `Vector3`_ )                             |
+   +--------------+---------------------------------------------------------------------------------------------------+
+
+Method Descriptions
+-------------------
+
+.. _class_transform_method_getTranslation:
+
+**getTranslation** **(** **)** -> `Vector3`_
+
+Returns the transform's translation :ref:`P<class_transform_matrix>`.
+
+----
+
+.. _class_transform_method_getScale:
+
+**getScale** **(** **)** -> `Vector3`_
+
+Returns the transform's scale :ref:`S<class_transform_matrix>`.
+
+----
+
+.. _class_transform_method_getRotationEulerXYZ:
+
+**getRotationEulerXYZ** **(** **)** -> `Vector3`_
+
+Returns the transform's rotation in XYZ Euler angles (in degrees) form
+
+----
+
+.. _class_transform_method_getX:
+
+**getX** **(** **)** -> `Vector3`_
+
+Returns the :ref:`X axis<class_transform_matrix>` of the transform's coordinate system.
+
+----
+
+.. _class_transform_method_getY:
+
+**getY** **(** **)** -> `Vector3`_
+
+Returns the :ref:Y axis<class_transform_matrix>` of the transform's coordinate system.
+
+----
+
+.. _class_transform_method_getZ:
+
+**getZ** **(** **)** -> `Vector3`_
+
+Returns the :ref:`Z axis<class_transform_matrix>` of the transform's coordinate system.
+
+----
+
+.. _class_transform_method_getMatrix:
+
+**getMatrix** **(** **)** -> `Matrix4x4`_
+
+Returns the transform's :ref:`matrix<class_transform_matrix>`.
+
+----
+
+.. _class_transform_method_setPosition:
+
+**setPosition** **(** position : `Vector3`_ **)** -> `None`_
+
+Sets the transform's translation :ref:`P<class_transform_matrix>`.
+
+----
+
+.. _class_transform_method_setScale:
+
+**setScale** **(** scale : `Vector3`_ **)** -> `None`_
+
+Sets the transform's scale :ref:`S<class_transform_matrix>`.
+
+----
+
+.. _class_transform_method_setRotationEulerXYZ:
+
+**setRotationEulerXYZ** **(** rotation : `Vector3`_ **)** -> `None`_
+
+Set the :ref:`X<class_transform_matrix>`, :ref:`Y<class_transform_matrix>` and :ref:`Z<class_transform_matrix>` axis of the transform to mirror the given XYZ Euler angles in degrees.
+
+----
+
+.. _class_transform_method_setMatrix:
+
+**setMatrix** **(** matrix : `Matrix4x4`_ **)** -> `None`_
+
+Set the transform's :ref:`matrix<class_transform_matrix>`.
+
+----
+
+.. _class_transform_method_applyTo:
+
+**applyTo** **(** vector : `Vector3`_ **)** -> `Vector3`_
+
+Return the given vector transformed by the transform matrix.

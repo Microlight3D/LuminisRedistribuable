@@ -1,0 +1,124 @@
+.. _class_slicingParameters:
+
+SlicingParameters
+==================
+
+**Interface.Common.Models.SlicingParameters**
+
+Description
+-----------
+
+The SlicingParameters static class contains all slicing parameters defined in the SLICING_PRESETS.xml configuration file.
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +-------------------------------------------+----------------------------------------------------------------------------------------+-----------+
+   | :ref:`Objective<class_objective>`\[\]     | :ref:`Objectives<class_slicingParameters_property_objectives>`                         |           |
+   +-------------------------------------------+----------------------------------------------------------------------------------------+-----------+
+   | :ref:`Resists<class_resist>`\[\]          | :ref:`Resists<class_slicingParameters_property_resists>`                               |           |
+   +-------------------------------------------+----------------------------------------------------------------------------------------+-----------+
+   | `int`_                                    | :ref:`DefaultObjectiveIndex<class_slicingParameters_property_defaultObjectiveIndex>`   |           |
+   +-------------------------------------------+----------------------------------------------------------------------------------------+-----------+
+   | `int`_                                    | :ref:`DefaultResistIndex<class_slicingParameters_property_defaultResistIndex>`         |           |
+   +-------------------------------------------+----------------------------------------------------------------------------------------+-----------+
+   | `int`_                                    | :ref:`DefaultResistThickness<class_slicingParameters_property_defaultResistThickness>` |           |
+   +-------------------------------------------+----------------------------------------------------------------------------------------+-----------+
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_ | :ref:`getVoxelSize<class_slicingParameters_method_getVoxelSize>` ( objective : :ref:`Objective<class_objective>`, quality : :ref:`Quality<class_slicingParameters_enum_quality>` )                                                                                           |
+   +------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | `Vector2`_ | :ref:`getVoxelOverLap<class_slicingParameters_method_getVoxelOverLap>` ( objective : :ref:`Objective<class_objective>`, quality : :ref:`Quality<class_slicingParameters_enum_quality>` )                                                                                     |
+   +------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | `None`_    | :ref:`setTaskParameter<class_slicingParameters_method_setTaskParameter>` ( task2PP : :ref:`Task2PP<class_task2PP>`, objective : :ref:`Objective<class_objective>`, resist : :ref:`Resist<class_resist>`, quality : :ref:`Quality<class_slicingParameters_enum_quality>` )    |
+   +------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Enumerations
+------------
+
+.. _class_slicingParameters_enum_quality:
+
+.. code-block:: C
+
+   enum Quality {
+      HIGHEST,
+      HIGH,
+      STANDARD,
+      LOW,
+      LOWEST
+   }
+
+Property Descriptions
+---------------------
+
+.. _class_slicingParameters_property_objectives:
+
+**Objectives** : :ref:`Objective<class_objective>`\[\]
+
+Objective list loaded from configuration.
+
+----
+
+.. _class_slicingParameters_property_resists:
+
+**Resists** : :ref:`Resists<class_resist>`\[\]
+
+Resist list loaded from configuration.
+
+----
+
+.. _class_slicingParameters_property_defaultObjectiveIndex:
+
+**DefaultObjectiveIndex** : `int`_
+
+Index in the :ref:`Objectives<class_slicingParameters_property_objectives>` list of the objective selected by default in Luminis.
+
+----
+
+.. _class_slicingParameters_property_defaultResistIndex:
+
+**DefaultResistIndex** : `int`_
+
+Index in the :ref:`Resists<class_slicingParameters_property_resists>` list of the resist selected by default in Luminis.
+
+----
+
+.. _class_slicingParameters_property_defaultResistThickness:
+
+**DefaultResistThickness** : `int`_
+
+Default resist thickness, in micrometers (µm), used for upside-down fabrications.
+
+Method Descriptions
+-------------------
+
+.. _class_slicingParameters_method_getVoxelSize:
+
+**getVoxelSize** **(** objective : :ref:`Objective<class_objective>`, quality : Quality **)** -> `Vector2`_
+
+Retrieve the voxel size from the objective numerical aperture and the given quality.
+
+----
+
+.. _class_slicingParameters_method_getVoxelOverLap:
+
+**getVoxelOverLap** **(** objective : :ref:`Objective<class_objective>`, quality : Quality **)** -> `Vector2`_
+
+Retrieve the voxel overlap from the objective numerical aperture and the given quality.
+
+----
+
+.. _class_slicingParameters_method_setTaskParameter:
+
+**setTaskParameter** **(** task2PP : :ref:`Task2PP<class_task2PP>`, objective : :ref:`Objective<class_objective>`, resist : :ref:`Resist<class_resist>`, quality : Quality **)** -> `None`_
+
+Set the given task voxel size, voxel overlap, numerical aperture, immersion, refractive index and laser curve using the given objective, resist and quality. 

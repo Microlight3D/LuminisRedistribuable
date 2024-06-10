@@ -1,0 +1,99 @@
+.. _class_polyhedron:
+
+Polyhedron
+==========
+
+**Interface.Common.Models.Polyhedrons.Polyhedron** 
+
+Description
+-----------
+
+A polyhedron is a :ref:`mesh<class_mesh>` instanciated with a :ref:`transform<class_transform>`. They allow to duplicate objects at low cost. The Luminis' polyhedron list is accessible via the "polyhedrons" object.
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +--------------------------------------------------+-------------------------------------------------------+-----------+
+   | `str`_                                           | :ref:`Id<class_polyhedron_property_id>`               | ""        |
+   +--------------------------------------------------+-------------------------------------------------------+-----------+
+   | `str`_                                           | :ref:`Name<class_polyhedron_property_name>`           | ""        |
+   +--------------------------------------------------+-------------------------------------------------------+-----------+
+   | :ref:`Mesh<class_mesh>`                          | :ref:`Mesh<class_polyhedron_property_mesh>`           | `None`_   |
+   +--------------------------------------------------+-------------------------------------------------------+-----------+
+   | :ref:`Transform<class_transform>`                | :ref:`Transform<class_polyhedron_property_transform>` | `None`_   |
+   +--------------------------------------------------+-------------------------------------------------------+-----------+
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Polyhedron<class_polyhedron>`     | :ref:`cut<class_polyhedron_method_cut>` ( planePosition : `Vector3`_, planeNormal : `Vector3`_, fillHoles : `bool`_ )                                |
+   +-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Polyhedron<class_polyhedron>`\[\] | :ref:`gridCut<class_polyhedron_method_gridCut>` ( startPosition : `Vector3`_, endPosition : `Vector3`_, cellSize : `Vector3`_, fillHoles : `bool`_ ) |
+   +-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Polyhedron<class_polyhedron>`     | :ref:`duplicate<class_polyhedron_method_duplicate>` ( )                                                                                              |
+   +-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Property Descriptions
+---------------------
+
+.. _class_polyhedron_property_id:
+
+**Id** : `str`_
+
+Unique ID
+
+----
+
+.. _class_polyhedron_property_name:
+
+**Name** : `str`_
+
+Display name
+
+----
+
+.. _class_polyhedron_property_mesh:
+
+**Mesh** : :ref:`Mesh<class_mesh>`
+
+Instantiated mesh, contains raw vertex data.
+
+----
+
+.. _class_polyhedron_property_transform:
+
+**Transform** : :ref:`Transform<class_transform>`
+
+Transform matrix defining the position, scale and rotation of the polyhedron
+
+Method Descriptions
+-------------------
+
+.. _class_polyhedron_method_cut:
+
+**cut** **(** planePosition : `Vector3`_, planeNormal : `Vector3`_, fillHoles : `bool`_ **)** -> :ref:`Polyhedron<class_polyhedron>`
+
+Cut the polyhedron using a plane defined by planePosition and planeNormal. Returns the polyhedron on the other side of the plane's normal. If fillHoles is set to true, the hole created by the cut will be filled by a flat surface.
+
+----
+
+.. _class_polyhedron_method_gridCut:
+
+**gridCut** **(** startPosition : `Vector3`_, endPosition : `Vector3`_, cellSize : `Vector3`_, fillHoles : `bool`_ **)** -> :ref:`Polyhedron<class_polyhedron>`\[\]
+
+Cut the polyhedron in a grid fashion from startPosition to endPosition. The result is a list of polyhedron smaller or equal than the grid given cellSize. If fillHoles is set to true, holes created by the cuts will be filled by a flat surface.
+
+----
+
+.. _class_polyhedron_method_duplicate:
+
+**duplicate** **(** **)** -> :ref:`Polyhedron<class_polyhedron>`
+
+Creates a copy of the polyhedron. Its transform will be duplicated but its mesh will not.

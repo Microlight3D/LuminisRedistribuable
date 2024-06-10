@@ -1,0 +1,30 @@
+.. _class_fileExporter:
+
+FileExporter
+============
+
+**Interface.Utils.FileExporters.FileExporter**
+
+Description
+-----------
+
+The FileImporter static class allows to export fabrication tasks and polyhedrons to file.
+Methods
+
+-------
+
+.. table::
+   :widths: auto
+
+   +----------+------------------------------------------------------------------------------------+
+   | `none`_  | :ref:`Save<class_fileExporter_method_save>` ( obj : `object`_, filePath : `str`_ ) |
+   +----------+------------------------------------------------------------------------------------+
+  
+Method Descriptions
+-------------------
+
+.. _class_fileExporter_method_save:
+
+**Save** **(** obj : `object`_, filePath : `str`_ **)** -> `none`_
+
+Save the given object to file.

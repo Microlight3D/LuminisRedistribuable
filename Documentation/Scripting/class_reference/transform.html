@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transform &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FileImporter" href="fileImporter.html" />
+    <link rel="prev" title="Mesh" href="mesh.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/first_custom_fabrication.html">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/complex_duplication.html">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/mesh_generation.html">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fabrication.html">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PPData.html">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPData.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PPParameters.html">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="polyhedron.html">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Transform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/class_reference/transform.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="transform">
+<span id="class-transform"></span><h1>Transform<a class="headerlink" href="#transform" title="Permalink to this heading"></a></h1>
+<p><strong>Interface.Common.Models.Polyhedrons.Transform</strong></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>A transform stores the translation P, orientation axis X,Y,Z and scale S of an orthogonal coordinate system in 3D space as a 4x4 matrix like so :</p>
+<div class="math notranslate nohighlight" id="class-transform-matrix">
+\[\begin{split}T = \begin{bmatrix}
+        {X}_{x} \cdot {S}_{x} &amp; {Y}_{x} &amp; {Z}_{x} &amp; {P}_{x} \\
+        {X}_{y} &amp; {Y}_{y} \cdot {S}_{y} &amp; {Z}_{y} &amp; {P}_{y} \\
+        {X}_{z} &amp; {Y}_{z} &amp; {Z}_{z} \cdot {S}_{z} &amp; {P}_{z} \\
+        0 &amp; 0 &amp; 0 &amp; 1 \\
+    \end{bmatrix}\end{split}\]</div>
+<p>This format allows to effortlessly transform a vector in 3D space to the defined coordinate system. The class itself contains plenty of helper functions to access, modify and apply the transform matrix.</p>
+</div></blockquote>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-gettranslation"><span class="std std-ref">getTranslation</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-getscale"><span class="std std-ref">getScale</span></a> ( )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-getrotationeulerxyz"><span class="std std-ref">getRotationEulerXYZ</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-getx"><span class="std std-ref">getX</span></a> ( )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-gety"><span class="std std-ref">getY</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-getz"><span class="std std-ref">getZ</span></a> ( )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-getmatrix"><span class="std std-ref">getMatrix</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-setposition"><span class="std std-ref">setPosition</span></a> ( position : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a> )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-setscale"><span class="std std-ref">setScale</span></a> ( scale : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a> )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-setrotationeulerxyz"><span class="std std-ref">setRotationEulerXYZ</span></a> ( eulerXYZ : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a> )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-setmatrix"><span class="std std-ref">setMatrix</span></a> ( matrix : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p></td>
+<td><p><a class="reference internal" href="#class-transform-method-applyto"><span class="std std-ref">applyTo</span></a> ( point : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a> )</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this heading"></a></h2>
+<p id="class-transform-method-gettranslation"><strong>getTranslation</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Returns the transform’s translation <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">P</span></a>.</p>
+<hr class="docutils" />
+<p id="class-transform-method-getscale"><strong>getScale</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Returns the transform’s scale <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">S</span></a>.</p>
+<hr class="docutils" />
+<p id="class-transform-method-getrotationeulerxyz"><strong>getRotationEulerXYZ</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Returns the transform’s rotation in XYZ Euler angles (in degrees) form</p>
+<hr class="docutils" />
+<p id="class-transform-method-getx"><strong>getX</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Returns the <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">X axis</span></a> of the transform’s coordinate system.</p>
+<hr class="docutils" />
+<p id="class-transform-method-gety"><strong>getY</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Returns the :ref:Y axis&lt;class_transform_matrix&gt;` of the transform’s coordinate system.</p>
+<hr class="docutils" />
+<p id="class-transform-method-getz"><strong>getZ</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Returns the <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">Z axis</span></a> of the transform’s coordinate system.</p>
+<hr class="docutils" />
+<p id="class-transform-method-getmatrix"><strong>getMatrix</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a></p>
+<p>Returns the transform’s <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">matrix</span></a>.</p>
+<hr class="docutils" />
+<p id="class-transform-method-setposition"><strong>setPosition</strong> <strong>(</strong> position : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Sets the transform’s translation <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">P</span></a>.</p>
+<hr class="docutils" />
+<p id="class-transform-method-setscale"><strong>setScale</strong> <strong>(</strong> scale : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Sets the transform’s scale <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">S</span></a>.</p>
+<hr class="docutils" />
+<p id="class-transform-method-setrotationeulerxyz"><strong>setRotationEulerXYZ</strong> <strong>(</strong> rotation : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Set the <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">X</span></a>, <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">Y</span></a> and <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">Z</span></a> axis of the transform to mirror the given XYZ Euler angles in degrees.</p>
+<hr class="docutils" />
+<p id="class-transform-method-setmatrix"><strong>setMatrix</strong> <strong>(</strong> matrix : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Set the transform’s <a class="reference internal" href="#class-transform-matrix"><span class="std std-ref">matrix</span></a>.</p>
+<hr class="docutils" />
+<p id="class-transform-method-applyto"><strong>applyTo</strong> <strong>(</strong> vector : <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a> <strong>)</strong> -&gt; <a class="reference external" href="https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3">Vector3</a></p>
+<p>Return the given vector transformed by the transform matrix.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mesh.html" class="btn btn-neutral float-left" title="Mesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fileImporter.html" class="btn btn-neutral float-right" title="FileImporter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

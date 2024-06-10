@@ -1,0 +1,85 @@
+.. _class_configuration:
+
+Configuration
+=============
+
+Description
+-----------
+
+The configuration class is composed of a list of :ref:`Parameters<class_parameter>` and ways to
+access it. Two configuration objects are available in the scripting API: SlicingConfiguration and 
+HardwareConfiguration. HardwareConfiguration contains all hardware related parameters whereas 
+SlicingConfiguration contains slicing related configuration such as resist and objective 
+definitions.
+
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                                                                      | :ref:`Type<class_configuration_property_type>`                                    | ""        |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`Parameter<class_parameter>`\[\]                                       | :ref:`Parameters<class_configuration_property_parameters>`                        |           |
+   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+
+Methods
+-------
+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | `bool`_                                       | :ref:`hasHardware<class_configuration_method_hasHardware>` ( hardware : `str`_ )                                             |
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Parameter<class_parameter>`             | :ref:`findSpecification<class_configuration_method_findSpecification>` ( hardware : `str`_, name : `str`_ )                  |
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Parameter<class_parameter>`\[\]         | :ref:`findAllSpecifications<class_configuration_method_findAllSpecifications>` ( hardware : `str`_ )                         |
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+
+
+Property Descriptions
+---------------------
+
+.. _class_configuration_property_type:
+
+**Type** : `str`_
+
+Configuration type. Should be "micro-FAB3d".
+
+----
+
+.. _class_configuration_property_parameters:
+
+**Parameters** : :ref:`Parameter<class_parameter>`\[\]
+
+List of configuration :ref:`Parameter<class_parameter>`.
+
+Method Descriptions
+-------------------
+
+.. _class_configuration_method_hasHardware:
+
+**hasHardware** **(** hardware : `str`_ **)** -> `bool`_
+
+Returns True if the configuration has parameters assigned to 
+the given hardware, False otherwise.
+
+----
+
+.. _class_configuration_method_findSpecification:
+
+**findSpecification** **(** hardware : `str`_, name : `str`_ **)** -> :ref:`Parameter<class_parameter>`
+
+Returns the first :ref:`Parameter<class_parameter>` matching the 
+given name and hardware or `None`_ if none is found.
+
+----
+
+.. _class_configuration_method_findAllSpecifications:
+
+**findAllSpecifications** **(** hardware : `str`_ **)** -> :ref:`Parameter<class_parameter>`\[\]
+
+Returns a list of all :ref:`Parameter<class_parameter>` assigned to the given hardware

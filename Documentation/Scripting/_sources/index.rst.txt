@@ -1,0 +1,66 @@
+.. Luminis scripting documentation master file, created by
+   sphinx-quickstart on Wed Aug  2 11:47:03 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Luminis scripting API documentation
+=============================================
+
+Introduction
+============
+
+Welcome to the documentation for Luminis scripting API. This API enables 
+Luminis advanced user to automate, optimize and customize their 3D micro-printing process 
+using Microlight3D micro-printer.
+
+
+This documentation contains all API class reference and tutorials to help you use Luminis' Python scripting to it's full potential. A good place to start is the turorial on how to generate :ref:`your first curstom fabrication<tuto_first_custom_fabrication>` using Luminis' scripting.
+
+Technology
+----------
+
+Luminis' scripting language is `Python 2.7 <https://docs.python.org/2.7/>`_ interfaced to the Luminis' C# API using `IronPython <https://ironpython.net/documentation/>`_.
+
+Execute a script
+----------------
+
+Executing a script is very strait forward: simply open Luminis and click on the "import" button (Ctrl + i), choose a python file and load it. Luminis will automaticaly detect it is a script and try to execute it. If any error occurs during execution a pop-up message will appear describing the error.
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Getting started
+   :name: sec-start
+
+   getting_started/first_custom_fabrication
+   getting_started/complex_duplication
+   getting_started/mesh_generation
+   getting_started/slicing_script
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Class reference
+   :name: sec-manual
+
+   class_reference/fabrication
+   class_reference/assembly
+   class_reference/task2PP
+   class_reference/task2PPData
+   class_reference/task2PPParameters
+   class_reference/slicingParameters
+   class_reference/objective
+   class_reference/resist
+   class_reference/polyhedron
+   class_reference/mesh
+   class_reference/transform
+   class_reference/fileImporter
+   class_reference/fileExporter
+   class_reference/meshSlicer
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

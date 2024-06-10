@@ -1,0 +1,80 @@
+.. _class_parameter:
+
+Parameter
+=========
+
+Description
+-----------
+
+A configuration parameter contains the name, value, type and description of one 
+configuration field. It also contains informations about the field's assigned hardware
+storing its name and model.
+
+Properties
+----------
+
+.. table::
+   :widths: auto
+
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `object`_                                        | :ref:`Value<class_parameter_property_value>`                                      | `None`_   |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `type`_                                          | :ref:`Type<class_parameter_property_type>`                                        |           |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                                           | :ref:`Description<class_parameter_property_description>`                          | ""        |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                                           | :ref:`Parent<class_parameter_property_parent>`                                    | ""        |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                                           | :ref:`Model<class_parameter_property_model>`                                      | ""        |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | `str`_                                           | :ref:`Unit<class_parameter_property_unit>`                                        | ""        |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+
+Property Descriptions
+---------------------
+
+.. _class_parameter_property_value:
+
+**Value** : `object`_
+
+Parameter value
+
+----
+
+.. _class_parameter_property_type:
+
+**Type** : `type`_
+
+Value's type
+
+----
+
+.. _class_parameter_property_description:
+
+**Description** : `str`_
+
+Parameter description
+
+----
+
+.. _class_parameter_property_parent:
+
+**Parent** : `str`_
+
+Parameter hardware
+
+----
+
+.. _class_parameter_property_model:
+
+**Model** : `str`_
+
+hardware's model
+
+----
+
+.. _class_parameter_property_unit:
+
+**Unit** : `str`_
+
+Associated unit

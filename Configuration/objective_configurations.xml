@@ -1,0 +1,43 @@
+<!-- This is a library for all known objective definitions -->
+
+<Objective Model="Zeiss 100X/1.25">
+	<Aperture Unit="none" Type="Single"> 1.25 </Aperture>
+	<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
+	<WorkingDistance Unit="µm" Type="Single"> 220 </WorkingDistance>
+</Objective>
+
+<Objective Model="Olympus 100X/1.45">
+	<Aperture Unit="none" Type="Single"> 1.45 </Aperture>
+	<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
+	<WorkingDistance Unit="µm" Type="Single"> 130 <WorkingDistance>
+</Objective>
+
+<Objective Model="Olympus 100X/1.25">
+	<Aperture Unit="none" Type="Single"> 1.25 </Aperture>
+	<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
+	<WorkingDistance Unit="µm" Type="Single"> 150 <WorkingDistance>
+</Objective>
+
+<Objective Model="Olympus 40X/0.95">
+	<Aperture Unit="none" Type="Single"> 0.95 </Aperture>
+	<IsImmersion Unit="none" Type="Boolean"> False </IsImmersion>
+	<WorkingDistance Unit="µm" Type="Single"> 180 </WorkingDistance>
+</Objective>
+
+<Objective Model="Olympus 20X/0.8">
+	<Aperture Unit="none" Type="Single"> 0.8 </Aperture>
+	<IsImmersion Unit="none" Type="Boolean"> False </IsImmersion>
+	<WorkingDistance Unit="µm" Type="Single"> 600 </WorkingDistance>
+</Objective>
+
+<Objective Model="Olympus 20X/0.75">
+	<Aperture Unit="none" Type="Single"> 0.75 </Aperture>
+	<IsImmersion Unit="none" Type="Boolean"> False </IsImmersion>
+	<WorkingDistance Unit="µm" Type="Single"> 650 </WorkingDistance>
+</Objective>
+
+<Objective Model="Olympus 20X/0.5">
+	<Aperture Unit="none" Type="Single"> 0.5 </Aperture>
+	<IsImmersion Unit="none" Type="Boolean"> False </IsImmersion>
+	<WorkingDistance Unit="µm" Type="Single"> 2100 </WorkingDistance>
+</Objective>

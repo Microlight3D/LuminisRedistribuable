@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task2PPData &mdash; Luminis scripting 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Task2PPParameters" href="task2PPParameters.html" />
+    <link rel="prev" title="Task2PP" href="task2PP.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_luminis.ico" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/first_custom_fabrication.html">Your first custom fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-data">Define the task data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#define-the-task-parameters">Define the task parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/first_custom_fabrication.html#adding-the-task-to-the-fabrication">Adding the task to the fabrication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/complex_duplication.html">Complex duplication pattern</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#retrieving-a-task">Retrieving a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#duplicate-n-times">Duplicate N times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/complex_duplication.html#arrange-in-a-spiral-pattern">Arrange in a spiral pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/mesh_generation.html">Mesh generation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#mesh-arrays">Mesh arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#creating-a-prism-by-transforming-vertices">Creating a prism by transforming vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#making-a-prism-array">Making a prism array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/mesh_generation.html#orienting-prisms-to-create-a-lens">Orienting prisms to create a lens</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/slicing_script.html">Slicing via script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#load-a-polyhedron-from-file">Load a polyhedron from file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#initialize-and-run-the-slicer">Initialize and run the slicer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#create-the-fabrication-task">Create the fabrication task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/slicing_script.html#slice-for-all-print-qualities">Slice for all print qualities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Class reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fabrication.html">Fabrication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PP.html">Task2PP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PP.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Task2PPData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task2PPParameters.html">Task2PPParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task2PPParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slicingParameters.html">SlicingParameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#enumerations">Enumerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicingParameters.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="objective.html">Objective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objective.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resist.html">Resist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#constructors">Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resist.html#property-descriptions">Property Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="polyhedron.html">Polyhedron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#property-descriptions">Property Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyhedron.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileImporter.html">FileImporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileImporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fileExporter.html">FileExporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileExporter.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="meshSlicer.html">MeshSlicer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meshSlicer.html#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Luminis scripting</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Task2PPData</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/class_reference/task2PPData.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="task2ppdata">
+<span id="class-task2ppdata"></span><h1>Task2PPData<a class="headerlink" href="#task2ppdata" title="Permalink to this heading"></a></h1>
+<p><strong>ML3DFab.Models.FabricationTask.Task2PPData</strong></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>Task2PPData are a part of every fabrication <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">task</span></a> they contain all the raw
+data defining the task’s printing trajectories, laser power, speed, etc. There is one Task2PPData
+in each fabrication <a class="reference internal" href="task2PP.html#class-task2pp"><span class="std std-ref">task</span></a>.</p>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a>[]</p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-getvertices"><span class="std std-ref">getVertices</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-setvertices"><span class="std std-ref">setVertices</span></a> ( value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a>[] )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-getpathindices"><span class="std std-ref">getPathIndices</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-setpathindices"><span class="std std-ref">setPathIndices</span></a> ( value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-getsegmentindices"><span class="std std-ref">getSegmentIndices</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-setsegmentindices"><span class="std std-ref">setSegmentIndices</span></a> ( value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-getverticalsliceindices"><span class="std std-ref">getVerticalSliceIndices</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-setverticalsliceindices"><span class="std std-ref">setVerticalSliceIndices</span></a> ( value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-gethorizontalsliceindices"><span class="std std-ref">getHorizontalSliceIndices</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-sethorizontalsliceindices"><span class="std std-ref">setHorizontalSliceIndices</span></a> ( value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-getfillingsliceindices"><span class="std std-ref">getFillingSliceIndices</span></a> ( )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-setfillingsliceindices"><span class="std std-ref">setFillingSliceIndices</span></a> ( value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] )</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-segmentindextopathindex"><span class="std std-ref">SegmentIndexToPathIndex</span></a> ( segmentIndex : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a> )</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a></p></td>
+<td><p><a class="reference internal" href="#class-task2ppdata-method-pathindextosegmentindex"><span class="std std-ref">PathIndexToSegmentIndex</span></a> ( pathIndex : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a> )</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this heading"></a></h2>
+<p id="class-task2ppdata-method-getvertices"><strong>getVertices</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a>[]</p>
+<p>Get the array of all slicing segments. The vertices array can be sorted in an arbitrary
+way but alway keeping path integrity. An array of float, representing 3 by 3 the fabrication
+points.</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-setvertices"><strong>setVertices</strong> <strong>(</strong> value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#float">float</a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Set the array of all slicing segments.</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-getpathindices"><strong>getPathIndices</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p>
+<p>Get the vertex indices pointing to all slice paths. Each couple of values represents
+the start and end vertex indices of a path. To access the corresponding vertex in the
+vertices array the value must be multiplied by 3 (as one vertex takes 3 slots in the vertices array).</p>
+<p>vertices:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>…</p></td>
+<td><p>i</p></td>
+<td><p>i+1</p></td>
+<td><p>i+2</p></td>
+<td><p>…</p></td>
+<td><p>j</p></td>
+<td><p>j+1</p></td>
+<td><p>j+2</p></td>
+</tr>
+<tr class="row-even"><td><p>x1</p></td>
+<td><p>y1</p></td>
+<td><p>z1</p></td>
+<td><p>…</p></td>
+<td><p>xn</p></td>
+<td><p>yn</p></td>
+<td><p>zn</p></td>
+<td><p>…</p></td>
+<td><p>xm</p></td>
+<td><p>ym</p></td>
+<td><p>zm</p></td>
+</tr>
+</tbody>
+</table>
+<p>pathIndices:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>i/3</p></td>
+<td><p>(i+3)/3</p></td>
+<td><p>j/3</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-setpathindices"><strong>setPathIndices</strong> <strong>(</strong> value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>TODO</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-getsegmentindices"><strong>getSegmentIndices</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p>
+<p>Get the vertex indices pointing to starts and ends of path segments.
+Each couple of values represents the start and end vertex indices of
+a segment of a path. To access the corresponding vertex in the vertices
+array the value must be multiplied by 3 (as one vertex takes 3 slots in
+the vertices array).</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-setsegmentindices"><strong>setSegmentIndices</strong> <strong>(</strong> value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Set the vertex indices pointing to starts and ends of path segments.</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-getverticalsliceindices"><strong>getVerticalSliceIndices</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p>
+<p>Get vertex indices pointing to starts and ends of vertical slice segments.
+Each couple of values represents the start and end vertex indices of a
+vertical slice path segment. To access the corresponding vertex in the
+vertices array the value must be multiplied by 3 (as one vertex takes 3
+slots in the vertices array).</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-setverticalsliceindices"><strong>setVerticalSliceIndices</strong> <strong>(</strong> value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Get vertex indices pointing to starts and ends of vertical slice segments.</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-gethorizontalsliceindices"><strong>getHorizontalSliceIndices</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p>
+<p>Get vertex indices pointing to starts and ends of horizontal slice segments.
+Each couple of values represents the start and end vertex indices of a horizontal
+slice  path segment. To access the corresponding vertex in the vertices array the
+value must be multiplied by 3 (as one vertex takes 3 slots in the vertices array).</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-sethorizontalsliceindices"><strong>setHorizontalSliceIndices</strong> <strong>(</strong> value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Set vertex indices pointing to starts and ends of horizontal slice segments.</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-getfillingsliceindices"><strong>getFillingSliceIndices</strong> <strong>(</strong> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[]</p>
+<p>Get vertex indices pointing to starts and ends of filling slice segments. Each couple
+of values represents the start  and end vertex indices of a filling slice  path segment.
+To access the corresponding vertex in the vertices array the value must be multiplied
+by 3 (as one vertex takes 3 slots in the vertices array).</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-setfillingsliceindices"><strong>setFillingSliceIndices</strong> <strong>(</strong> value : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a>[] <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#the-null-object">None</a></p>
+<p>Set vertex indices pointing to starts and ends of filling slice segments.</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-segmentindextopathindex"><strong>SegmentIndexToPathIndex</strong> <strong>(</strong> segmentIndex : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a></p>
+<p>Returns the index in the path array of the path containing the given vertex.</p>
+<hr class="docutils" />
+<p id="class-task2ppdata-method-pathindextosegmentindex"><strong>PathIndexToSegmentIndex</strong> <strong>(</strong> pathIndex : <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a> <strong>)</strong> -&gt; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int">int</a></p>
+<p>Returns the index in the segment array of the first vertex of the given path.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="task2PP.html" class="btn btn-neutral float-left" title="Task2PP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="task2PPParameters.html" class="btn btn-neutral float-right" title="Task2PPParameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Microlight3D.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

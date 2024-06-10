@@ -1,0 +1,148 @@
+<!-- This is a library for all known resist profiles -->
+
+<Resist Model="Unknown">
+	<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="OrmoComp">
+	<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (300;3.0846) </LaserCurveElement>
+</Resist>
+
+<Resist Model="OrmoBio">
+	<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (327.8;4.323682) </LaserCurveElement>
+</Resist>
+
+<Resist Model="OrmoGreen">
+	<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="OrmoRed">
+	<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="Green-A">
+	<RefractiveIndex Unit="none" Type="Single"> 1.48 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="Green-A-Bio">
+	<RefractiveIndex Unit="none" Type="Single"> 1.48 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="UV-Gel">
+	<!-- TODO: DEFINE REFRACTIVE INDEX -->
+	<RefractiveIndex Unit="none" Type="Single"> 1.41 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="Green-Gel">
+	<!-- TODO: DEFINE REFRACTIVE INDEX -->
+	<RefractiveIndex Unit="none" Type="Single"> 1.41 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="RIGID-A">
+	<!-- TODO: DEFINE REFRACTIVE INDEX -->
+	<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="RIGID-E">
+	<!-- TODO: DEFINE REFRACTIVE INDEX -->
+	<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="FLEX-A">
+	<!-- TODO: DEFINE REFRACTIVE INDEX -->
+	<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="NOA 81/NOA 61">
+	<RefractiveIndex Unit="none" Type="Single"> 1.527 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (300;1.8333) </LaserCurveElement>
+</Resist>
+
+<Resist Model="NOA 85">
+	<RefractiveIndex Unit="none" Type="Single"> 1.443 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;1.80098001356) </LaserCurveElement>
+</Resist>
+
+<Resist Model="GelMA">
+	<RefractiveIndex Unit="none" Type="Single"> 1.38 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;4.5) </LaserCurveElement>
+</Resist>
+
+<Resist Model="Clear Resist">
+	<!-- TODO: DEFINE REFRACTIVE INDEX -->
+	<RefractiveIndex Unit="none" Type="Single"> 1.54 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="BioMed Amber">
+	<!-- TODO: DEFINE REFRACTIVE INDEX -->
+	<RefractiveIndex Unit="none" Type="Single"> 0 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>
+
+<Resist Model="Dental LT Clear">
+	<!-- TODO: DEFINE REFRACTIVE INDEX -->
+	<RefractiveIndex Unit="none" Type="Single"> 0 </RefractiveIndex>
+	<!-- Laser curve f(position (um)) = laser power (%) -->
+	<!-- TODO: DEFINE LASER CURVE -->
+	<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+	<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+</Resist>

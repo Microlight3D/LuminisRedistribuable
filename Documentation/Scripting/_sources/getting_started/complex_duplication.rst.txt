@@ -1,0 +1,138 @@
+.. _tuto_complex_duplication_pattern:
+
+Complex duplication pattern
+===========================
+
+In this tutorial you will learn to write a script that duplicates an object in a spiral pattern. Here is the full code bellow:
+
+.. code-block:: python
+    :linenos:
+
+    import math
+    from System.Numerics import Vector3, Vector2
+
+    N = 50 # Number of objects
+    R = 5  # length of the radius from the center of the spiral
+    D = 35 # Approximate distance between objects
+    P = Vector2(150,150) # Spiral center position
+
+    if(fabrication.Assemblies.Count > 0 and len(fabrication.Assemblies[0].getTasks()) > 0):
+        task = fabrication.Assemblies[0].getTasks()[0]
+        for n in range(1,N+1):
+            K = (2*D)/R
+            copy = task.duplicate()
+            x : float = P.X + R*math.sqrt(K*n)*math.cos(math.sqrt(K*n))
+            y : float = P.Y + R*math.sqrt(K*n)*math.sin(math.sqrt(K*n))
+            copy.Parameters.Position = Vector3(x,y,0)
+            fabrication.Assemblies[0].add(copy)
+            fabrication.addTaskToBlueprint(copy)
+    else:
+        raise ValueError("No task to duplicate, please load or slice one.")
+
+Retrieving a task
+-----------------
+
+In order to duplicate a task we need to retreive one. For this exemple we will use the first one we find in the Assembly tab:
+
+.. code-block:: python
+    :linenos:
+    
+    task = fabrication.Assemblies[0].getTasks()[0]
+
+But what happens if no task is present in the Assembly tab ? We get an obscure error about an out of range index. Lets check first if the Assembly tab contains a task and raise a clear error if it doesn't:
+
+.. code-block:: python
+    :linenos:
+
+    if(fabrication.Assemblies.Count > 0 and len(fabrication.Assemblies[0].getTasks()) > 0):
+        task = fabrication.Assemblies[0].getTasks()[0]
+    else:
+        raise ValueError("No task to duplicate, please load or slice one.")
+
+Now when we execute the script without loading any task first we're greeted by this error message:
+
+.. figure:: /img/complex_duplication_error_message.png
+  :align: center
+  :alt: Image not loaded
+
+|
+
+Duplicate N times
+-----------------
+
+In order to form a pattern we need to duplicate the object a number of times and add the duplicates to Luminis:
+
+.. code-block:: python
+    :linenos:
+
+    N = 50 # Number of objects
+    for n in range(1,N+1):
+        copy = task.duplicate()
+        fabrication.Assemblies[0].add(copy)
+        fabrication.addTaskToBlueprint(copy)
+
+
+Arrange in a spiral pattern
+---------------------------
+
+Now that we have a number of duplicates of the same object we can change their properties however we please. For this exemple we choose to arrange them in a spiral pattern. For this we will need to import some math from python and vectors from C#:
+
+.. code-block:: python
+    :linenos:
+
+    import math
+    from System.Numerics import Vector3, Vector2
+
+To dispose the tasks we'll use the cartesian definition of a spiral from `Wikipedia <https://en.wikipedia.org/wiki/Spiral>`_ and modify it, for ease of use, to get a distance d between objects instead of an angle :math:`{\phi}`. We'll also add a center position P for the spiral:
+
+.. code-block:: python
+    :linenos:
+
+    N = 50 # Number of objects
+    R = 5  # length of the radius from the center of the spiral
+    D = 35 # Approximate distance between objects
+    P = Vector2(150,150) # Spiral center position
+
+    for n in range(1,N+1):
+        K = (2*D)/R
+        x : float = P.X + R*math.sqrt(K*n)*math.cos(math.sqrt(K*n))
+        y : float = P.Y + R*math.sqrt(K*n)*math.sin(math.sqrt(K*n))
+
+Finaly we can simply set the computed position to each task copies:
+
+.. code-block:: python
+    :linenos:
+    
+    copy.Parameters.Position = Vector3(x,y,0)
+
+If we put all these steps in order we get our final script:
+
+.. code-block:: python
+    :linenos:
+
+    import math
+    from System.Numerics import Vector3, Vector2
+
+    N = 50 # Number of objects
+    R = 5  # length of the radius from the center of the spiral
+    D = 35 # Approximate distance between objects
+    P = Vector2(150,150) # Spiral center position
+
+    if(fabrication.Assemblies.Count > 0 and len(fabrication.Assemblies[0].getTasks()) > 0):
+        task = fabrication.Assemblies[0].getTasks()[0]
+        for n in range(1,N+1):
+            K = (2*D)/R
+            copy = task.duplicate()
+            x : float = P.X + R*math.sqrt(K*n)*math.cos(math.sqrt(K*n))
+            y : float = P.Y + R*math.sqrt(K*n)*math.sin(math.sqrt(K*n))
+            copy.Parameters.Position = Vector3(x,y,0)
+            fabrication.Assemblies[0].add(copy)
+            fabrication.addTaskToBlueprint(copy)
+    else:
+        raise ValueError("No task to duplicate, please load or slice one.")
+
+.. figure:: /img/complex_duplication_result.png
+  :align: center
+  :alt: Image not loaded
+
+|
