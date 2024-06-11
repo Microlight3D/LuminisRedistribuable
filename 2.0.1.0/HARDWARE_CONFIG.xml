@@ -1,0 +1,132 @@
+<Configuration Type="micro-FAB3d">
+	<!-- MACHINE SPECIFICATION -->
+	<!-- all device models mentioned here must be defined
+	in the device model specification section bellow -->
+	<Machine Model="MicroFab">
+		<Laser>NIDaqMX</Laser>
+		<Camera>IDS uEye</Camera>
+		<Stage>NIDaqMX</Stage>
+		<LargeStageXY>ASI MS2000</LargeStageXY>
+		<LargeStageZ>SmartActMCS2</LargeStageZ>
+        <LightLogo>NIDaqMX</LightLogo>
+		<AutoFocus>Software</AutoFocus>
+	</Machine>
+	
+	<!-- DEVICE MODEL SPECIFICATIONS -->
+	
+	<!-- Analog piezo controller driven by a NI Daq MX board -->
+	<Stage Model="NIDaqMX">
+		<Name Unit="none" Type="String"> Fabrication Stage </Name>
+		<Range Unit="mm" Type="Vector3"> (300;300;300) </Range>
+		<DaqName Unit="none" Type="String"> Dev1 </DaqName>
+		<XAxisPin Unit="none" Type="String"> ao0 </XAxisPin>
+		<YAxisPin Unit="none" Type="String"> ao1 </YAxisPin>
+		<ZAxisPin Unit="none" Type="String"> ao2 </ZAxisPin>
+		<XAxisVoltageRange Unit="V" Type="Vector2"> (0;10) </XAxisVoltageRange>
+		<YAxisVoltageRange Unit="V" Type="Vector2"> (0;10) </YAxisVoltageRange>
+		<ZAxisVoltageRange Unit="V" Type="Vector2"> (0;10) </ZAxisVoltageRange>
+		<XAxisInversion Unit="none" Type="Boolean"> false </XAxisInversion>
+		<YAxisInversion Unit="none" Type="Boolean"> false </YAxisInversion>
+		<ZAxisInversion Unit="none" Type="Boolean"> true </ZAxisInversion>
+		<MaxVelocity Unit="mm/s" Type="Single"> 0.7 </MaxVelocity>
+		<!-- Delays laser activation at the start of trajectories. Compensate stage deceleration -->
+		<LaserDelay Unit="s" Type="Vector3"> (0.015;0.015;0.015) </LaserDelay>
+		<!-- Keep the laser on at the end of trajectories. Compenate stage acceleration -->
+		<StabilisationDelay Unit="s" Type="Vector3"> (0.03;0.03;0.03) </StabilisationDelay>
+		
+	</Stage>
+	
+	<!-- Large XY stage driven by ASI MS2000 or Tiger controller -->
+	<LargeStageXY Model="ASI MS2000">
+		<Name Unit="none" Type="String"> Large stage </Name>
+		<PortName Unit="none" Type="String">COM3</PortName>
+		<!-- BaudRate is 115200 for Tiger, 9600 for MS2000-->
+		<BaudRate Unit="none" Type="Int32"> 115200 </BaudRate>
+		<XAxisInversion Unit="none" Type="Boolean"> true </XAxisInversion>
+		<YAxisInversion Unit="none" Type="Boolean"> true </YAxisInversion>
+		<RangeMargin Unit="µm" Type="Single"> 1000 </RangeMargin>
+		<PositionRefreshDelay Unit="ms" Type="Int32"> 40 </PositionRefreshDelay>
+		<ProportionalError Unit="none" Type="Vector2"> (40;40) </ProportionalError>
+		<DriftError Unit="mm" Type="Vector2"> (0.0001;0.0001) </DriftError>
+		<PositioningError Unit="mm" Type="Vector2"> (0.000011;0.000011) </PositioningError>
+		<Backlash Unit="mm" Type="Vector2"> (0.004;0.004) </Backlash>
+		<MaxVelocity Unit="mm/s" Type="Single"> 3 </MaxVelocity>
+		<MaxAcceleration Unit="mm/s" Type="Single"> 3 </MaxAcceleration>
+	</LargeStageXY>
+	
+	<!-- SmartAct large Z stage controlled by MCS2 controller -->
+	<LargeStageZ Model="SmartActMCS2">
+		<Name Unit="none" Type="String"> Z Large stage </Name>
+		<DeviceName Unit="none" Type="String">usb:sn:MCS2-00005802</DeviceName>
+		<ZChannel Unit="none" Type="Int32"> 0 </ZChannel>
+		<RangeMargin Unit="µm" Type="Single"> 1000 </RangeMargin>
+		<MaxVelocity Unit="mm/s" Type="Single"> 1 </MaxVelocity> 
+		<PositionRefreshDelay Unit="ms" Type="Int32"> 100 </PositionRefreshDelay>
+	</LargeStageZ>
+	
+	<!-- Laser power analog controller controlled	using NI Daq MX board -->
+	<Laser Model="NIDaqMX">
+		<Name Unit="none" Type="String"> Green laser (λ=532nm) </Name>
+		<WaveLength Unit="nm" Type="Single"> 532 </WaveLength>
+		<Precision Unit="percent" Type="Single"> 0 </Precision>
+		<DaqName Unit="none" Type="String"> Dev1 </DaqName>
+		<Pin Unit="none" Type="String"> ao3 </Pin>
+		<VoltageRange Unit="V" Type="Vector2"> (0;1) </VoltageRange>
+	</Laser>
+	
+	<!-- IDS camera UI154xLE-M controlled via legacy IDS driver (no GeniCam implementation) -->
+	<Camera Model="IDS uEye">
+		<Name Unit="none" Type="String">UI154xLE-M</Name>
+		<ExposureMax Unit="µs" Type="Single"> 38000 </ExposureMax>
+		<IsColor Unit="none" Type="Boolean"> false </IsColor>
+		<!-- Micro per pixels for each objectives defined in SLICING_PRESETS.xml -->
+		<MicronsPerPixelObj1 Unit="µm" Type="Single"> 0.05172413793 </MicronsPerPixelObj1>
+		<MicronsPerPixelObj2 Unit="µm" Type="Single"> 0.13054830287 </MicronsPerPixelObj2>
+		<MicronsPerPixelObj3 Unit="µm" Type="Single"> 0.25862068965 </MicronsPerPixelObj3>
+		<MicronsPerPixelObj4 Unit="µm" Type="Single"> 0.25862068965 </MicronsPerPixelObj4>
+		<MicronsPerPixelObj5 Unit="µm" Type="Single"> 0.25862068965 </MicronsPerPixelObj5>
+		<!-- Default laser target position -->
+		<TargetPosition Unit="px" Type="Vector2"> (622;490) </TargetPosition>
+		<!-- Default zoom level in focus mode -->
+		<FocusModeZoom Unit="%" Type="Single"> 300 </FocusModeZoom>
+		<AlignmentModeExposure Unit="%" Type="Single"> 4 </AlignmentModeExposure>
+		<AlignmentModeGain Unit="%" Type="Single"> 0 </AlignmentModeGain>
+		<FocusModeExposure Unit="%" Type="Single"> 100 </FocusModeExposure>
+		<FocusModeGain Unit="%" Type="Single"> 20 </FocusModeGain>
+	</Camera>
+    
+	<!--
+	<Camera Model="IDS">
+		<Name Unit="none" Type="String">U3-368xXLE-M</Name>
+		<ExposureMax Unit="µm" Type="Single"> 47490 </ExposureMax>
+		<IsColor Unit="none" Type="Boolean"> false </IsColor>
+		<MicronsPerPixelObj1 Unit="µm" Type="Single"> 0.05172413793 </MicronsPerPixelObj1>
+		<MicronsPerPixelObj2 Unit="µm" Type="Single"> 0.13054830287 </MicronsPerPixelObj2>
+		<MicronsPerPixelObj3 Unit="µm" Type="Single"> 0.25862068965 </MicronsPerPixelObj3>
+		<MicronsPerPixelObj4 Unit="µm" Type="Single"> 0.25862068965 </MicronsPerPixelObj4>
+		<MicronsPerPixelObj5 Unit="µm" Type="Single"> 0.25862068965 </MicronsPerPixelObj5>
+		<TargetPosition Unit="px" Type="Vector2"> (622;490) </TargetPosition>
+		<FocusModeZoom Unit="%" Type="Single"> 300 </FocusModeZoom>
+		<AlignmentModeExposure Unit="%" Type="Single"> 4 </AlignmentModeExposure>
+		<AlignmentModeGain Unit="%" Type="Single"> 0 </AlignmentModeGain>
+		<FocusModeExposure Unit="%" Type="Single"> 100 </FocusModeExposure>
+		<FocusModeGain Unit="%" Type="Single"> 20 </FocusModeGain>
+	</Camera>
+	-->
+	
+	<!-- Light logo controlled by a NI Daq MX board -->
+    <LightLogo Model="NIDaqMX">
+        <Name Unit="none" Type="String"> ML3DLogo </Name>
+        <Line1Pin Unit="none" Type="String"> port0/line5 </Line1Pin>
+        <Line2Pin Unit="none" Type="String"> port0/line6 </Line2Pin>
+        <Line3Pin Unit="none" Type="String"> port0/line7 </Line3Pin>
+    </LightLogo>
+	
+	<!-- Software autofocus module -->
+	<AutoFocus Model="Software">
+		<Range Unit="µm" Type="Vector2"> (0;20) </Range>
+		<Step Unit="µm" Type="Single"> 0.5 </Step>
+		<DriftThreshold Unit="µm" Type="Single"> 100 </DriftThreshold>
+	</AutoFocus>
+	
+</Configuration>

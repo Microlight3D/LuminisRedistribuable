@@ -1,0 +1,232 @@
+<Configuration Type="options">
+	<General>
+		<DefaultObjectiveIndex Unit="none" Type="Int32"> 2 </DefaultObjectiveIndex>
+		<DefaultResistIndex Unit="none" Type="Int32"> 1 </DefaultResistIndex>
+		<DefaultResistThickness Unit="µm" Type="Int32"> 500 </DefaultResistThickness>
+	</General>
+	
+	<!-- Objective definitions -->
+	<Objective Model="Zeiss 100X/1.45">
+		<Aperture Unit="none" Type="Single"> 1.45 </Aperture>
+		<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
+		<WorkingDistance Unit="µm" Type="Single"> 500 </WorkingDistance>
+	</Objective>
+	
+	<Objective Model="Zeiss 100X/1.25">
+		<Aperture Unit="none" Type="Single"> 1.25 </Aperture>
+		<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
+		<WorkingDistance Unit="µm" Type="Single"> 220 </WorkingDistance>
+	</Objective>
+	
+	<Objective Model="Olympus 40X/0.95">
+		<Aperture Unit="none" Type="Single"> 0.95 </Aperture>
+		<IsImmersion Unit="none" Type="Boolean"> False </IsImmersion>
+		<WorkingDistance Unit="µm" Type="Single"> 180 </WorkingDistance>
+	</Objective>
+	
+	<!--
+	<Objective Model="Olympus 100X/1.25">
+		<Aperture Unit="none" Type="Single"> 1.25 </Aperture>
+		<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
+		<WorkingDistance Unit="µm" Type="Single"> 150 <WorkingDistance>
+	</Objective>
+	-->
+	
+	<Objective Model="Olympus 20X/0.8">
+		<Aperture Unit="none" Type="Single"> 0.8 </Aperture>
+		<IsImmersion Unit="none" Type="Boolean"> False </IsImmersion>
+		<WorkingDistance Unit="µm" Type="Single"> 600 </WorkingDistance>
+	</Objective>
+	
+	<Objective Model="Olympus 20X/0.75">
+		<Aperture Unit="none" Type="Single"> 0.75 </Aperture>
+		<IsImmersion Unit="none" Type="Boolean"> False </IsImmersion>
+		<WorkingDistance Unit="µm" Type="Single"> 650 </WorkingDistance>
+	</Objective>
+	
+	<Objective Model="Olympus 20X/0.5">
+		<Aperture Unit="none" Type="Single"> 0.5 </Aperture>
+		<IsImmersion Unit="none" Type="Boolean"> False </IsImmersion>
+		<WorkingDistance Unit="µm" Type="Single"> 2100 </WorkingDistance>
+	</Objective>
+	
+	<!-- Resist definitions -->
+
+	<Resist Model="Unknown">
+		<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="OrmoComp">
+		<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (300;3.0846) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="OrmoBio">
+		<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (327.8;4.323682) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="OrmoGreen">
+		<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;2.447631) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="OrmoRed">
+		<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="Green-A">
+		<RefractiveIndex Unit="none" Type="Single"> 1.48 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="Green-A-Bio">
+		<RefractiveIndex Unit="none" Type="Single"> 1.48 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="UV-Gel">
+		<!-- TODO: DEFINE REFRACTIVE INDEX -->
+		<RefractiveIndex Unit="none" Type="Single"> 1.41 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="Green-Gel">
+		<!-- TODO: DEFINE REFRACTIVE INDEX -->
+		<RefractiveIndex Unit="none" Type="Single"> 1.41 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="RIGID-A">
+		<!-- TODO: DEFINE REFRACTIVE INDEX -->
+		<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="RIGID-E">
+		<!-- TODO: DEFINE REFRACTIVE INDEX -->
+		<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="FLEX-A">
+		<!-- TODO: DEFINE REFRACTIVE INDEX -->
+		<RefractiveIndex Unit="none" Type="Single"> 1.49 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="NOA 81/NOA 61">
+		<RefractiveIndex Unit="none" Type="Single"> 1.527 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (300;1.8333) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="NOA 85">
+		<RefractiveIndex Unit="none" Type="Single"> 1.443 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;1.80098001356) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="GelMA">
+		<RefractiveIndex Unit="none" Type="Single"> 1.38 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;4.5) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="Clear Resist">
+		<!-- TODO: DEFINE REFRACTIVE INDEX -->
+		<RefractiveIndex Unit="none" Type="Single"> 1.54 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="BioMed Amber">
+		<!-- TODO: DEFINE REFRACTIVE INDEX -->
+		<RefractiveIndex Unit="none" Type="Single"> 0 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+
+	<Resist Model="Dental LT Clear">
+		<!-- TODO: DEFINE REFRACTIVE INDEX -->
+		<RefractiveIndex Unit="none" Type="Single"> 0 </RefractiveIndex>
+		<!-- Laser curve f(position (um)) = laser power (%) -->
+		<!-- TODO: DEFINE LASER CURVE -->
+		<LaserCurveElement Unit="none" Type="Vector2"> (0;0) </LaserCurveElement>
+		<LaserCurveElement Unit="none" Type="Vector2"> (450;0) </LaserCurveElement>
+	</Resist>
+	
+	<!-- Slicing empirical data for linking print quality, objective aperture and voxel size -->
+	<Highest>
+		<Na1.25 Unit="micron" Type="Vector2"> (0.2;0.5) </Na1.25>
+		<Na0.95 Unit="micron" Type="Vector2"> (0.22;0.97) </Na0.95>
+		<Na0.8 Unit="micron" Type="Vector2"> (0.25;1.42) </Na0.8>
+		<Na0.5 Unit="micron" Type="Vector2"> (0.4;4) </Na0.5>
+	</Highest>
+	<High>
+		<Na1.25 Unit="micron" Type="Vector2"> (0.27;0.67) </Na1.25>
+		<Na0.95 Unit="micron" Type="Vector2"> (0.28;1.25) </Na0.95>
+		<Na0.8 Unit="micron" Type="Vector2"> (0.5;2.83) </Na0.8>
+		<Na0.5 Unit="micron" Type="Vector2"> (0.83;8.3) </Na0.5>
+	</High>	
+	<Standard>
+		<Na1.25 Unit="micron" Type="Vector2"> (0.4;1) </Na1.25>
+		<Na0.95 Unit="micron" Type="Vector2"> (0.43;1.93) </Na0.95>
+		<Na0.8 Unit="micron" Type="Vector2"> (1.25;7) </Na0.8>
+		<Na0.5 Unit="micron" Type="Vector2"> (1.67;16.67) </Na0.5>
+	</Standard>	
+	<Low>
+		<Na1.25 Unit="micron" Type="Vector2"> (0.53;1.33) </Na1.25>
+		<Na0.95 Unit="micron" Type="Vector2"> (0.9;3.9) </Na0.95>
+		<Na0.8 Unit="micron" Type="Vector2"> (2.5;14) </Na0.8>
+		<Na0.5 Unit="micron" Type="Vector2"> (3;30) </Na0.5>
+	</Low>	
+	<Lowest>
+		<Na1.25 Unit="micron" Type="Vector2"> (0.8;2) </Na1.25>
+		<Na0.95 Unit="micron" Type="Vector2"> (1.70;7.73) </Na0.95>
+		<Na0.8 Unit="micron" Type="Vector2"> (5;28.3) </Na0.8>
+		<Na0.5 Unit="micron" Type="Vector2"> (5;50) </Na0.5>
+	</Lowest>
+</Configuration>
