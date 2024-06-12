@@ -1,5 +1,0 @@
-Interface.Program 2024-06-12 09:20:05,540 ERROR - Error occured in controller "µFAB-3D": La méthode 'get_FocusQuality' du type 'ML3DAutoFocus.AutoFocus2PP' de l'assembly 'ML3DAutoFocus, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null' n'a pas d'implémentation.
-
-Interface.Program 2024-06-12 09:20:11,157 ERROR - Error occured in controller "": Impossible de charger le fichier ou l'assembly 'NationalInstruments.DAQmx, Version=21.3.45.49317, Culture=neutral, PublicKeyToken=4febd62461bf11a4' ou une de ses dépendances. Tentative de chargement d’un programme de format incorrect.
-   à ML3DNIDaqMXController.NIDaqMXController.<terminate>b__145_0()
-   à System.Threading.Tasks.Task.Execute()
