@@ -22,9 +22,9 @@
 		<XAxisPin Unit="none" Type="String"> ao0 </XAxisPin>
 		<YAxisPin Unit="none" Type="String"> ao1 </YAxisPin>
 		<ZAxisPin Unit="none" Type="String"> ao2 </ZAxisPin>
-		<XAxisVoltageRange Unit="V" Type="Vector2"> (0;1) </XAxisVoltageRange>
-		<YAxisVoltageRange Unit="V" Type="Vector2"> (0;1) </YAxisVoltageRange>
-		<ZAxisVoltageRange Unit="V" Type="Vector2"> (0;1) </ZAxisVoltageRange>
+		<XAxisVoltageRange Unit="V" Type="Vector2"> (0;10) </XAxisVoltageRange>
+		<YAxisVoltageRange Unit="V" Type="Vector2"> (0;10) </YAxisVoltageRange>
+		<ZAxisVoltageRange Unit="V" Type="Vector2"> (0;10) </ZAxisVoltageRange>
 		<XAxisInversion Unit="none" Type="Boolean"> false </XAxisInversion>
 		<YAxisInversion Unit="none" Type="Boolean"> false </YAxisInversion>
 		<ZAxisInversion Unit="none" Type="Boolean"> true </ZAxisInversion>
@@ -82,7 +82,7 @@
 	
 	<!-- IDS camera UI154xLE-M controlled via legacy IDS driver (no GeniCam implementation) -->
 	<Camera Model="IDS uEye">
-		<Name Unit="none" Type="String">UI154xLE-M</Name>
+		<Name Unit="none" Type="String">UI124xLE-M</Name>
 		<ExposureMax Unit="µs" Type="Single"> 38000 </ExposureMax>
 		<IsColor Unit="none" Type="Boolean"> false </IsColor>
 		<!-- Micro per pixels for each objectives defined in SLICING_PRESETS.xml -->
