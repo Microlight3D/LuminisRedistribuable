@@ -6,20 +6,17 @@
 	</General>
 	
 	<!-- Objective definitions -->
-	<!--
 	<Objective Model="Zeiss 100X/1.45">
 		<Aperture Unit="none" Type="Single"> 1.45 </Aperture>
 		<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
 		<WorkingDistance Unit="µm" Type="Single"> 500 </WorkingDistance>
 	</Objective>
 	
-	
 	<Objective Model="Zeiss 100X/1.25">
 		<Aperture Unit="none" Type="Single"> 1.25 </Aperture>
 		<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
 		<WorkingDistance Unit="µm" Type="Single"> 220 </WorkingDistance>
 	</Objective>
-	-->
 	
 	<Objective Model="Olympus 40X/0.95">
 		<Aperture Unit="none" Type="Single"> 0.95 </Aperture>
@@ -31,7 +28,7 @@
 	<Objective Model="Olympus 100X/1.25">
 		<Aperture Unit="none" Type="Single"> 1.25 </Aperture>
 		<IsImmersion Unit="none" Type="Boolean"> True </IsImmersion>
-		<WorkingDistance Unit="µm" Type="Single"> 150 </WorkingDistance>
+		<WorkingDistance Unit="µm" Type="Single"> 150 <WorkingDistance>
 	</Objective>
 	-->
 	
