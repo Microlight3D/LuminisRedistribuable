@@ -1,0 +1,6 @@
+Interface.src.presenters.FileImporters.FileLoadingPresenter 2024-07-17 17:14:37,844 ERROR - Exception thrown while importingtestpiezo.obj
+System.IO.IOException: the file contains isolated edges, only triangles are supported
+   à Interface.Utils.FileImporters.ObjLoader.progressLoading()
+   à Interface.src.presenters.FileImporters.FileLoadingPresenter.doWork(Object sender, DoWorkEventArgs e)
+   à System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   à System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
